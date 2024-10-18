@@ -1,0 +1,8 @@
+# npm
+node_modules
+
+# rust
+rust/**/*.exe
+rust/**/*.pdb
+rust/**/*.lock
+rust/**/target
