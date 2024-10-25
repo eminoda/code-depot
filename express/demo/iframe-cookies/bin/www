@@ -1,0 +1,59 @@
+'use strict'
+const http = require('http')
+const fs = require('fs')
+const https = require('https');
+const app = require('../app')
+
+/**
+ * Create HTTP server.
+ */
+// const server = http.createServer(app)
+
+const options = {
+  key: fs.readFileSync('./certs/certs.key'), // 私钥
+  cert: fs.readFileSync('./certs/certs.cer') // 证书
+};
+
+// 启动 HTTPS 服务器
+const server = https.createServer(options, app);
+server.listen(3000, () => {
+  console.log(`Server is running on https://localhost:${server.address().port}`);
+});
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+// server.listen(3000)
+server.on('error', onError)
+server.on('listening', onListening)
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error
+  }
+
+  const bind = 'Port ' + 3000
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges')
+      process.exit(1)
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use')
+      process.exit(1)
+    default:
+      throw error
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  console.log(`iframe-cookies 服务已启动`)
+}

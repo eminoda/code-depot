@@ -1,0 +1,20 @@
+{
+  "name": "app",
+  "version": "",
+  "description": "",
+  "main": "bin/www",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=dev nodemon ./bin/www"
+  },
+  "author": "eminoda",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.17.1",
+    "moment": "2.29.1",
+    "fs-extra": "10.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "7.0.3",
+    "nodemon": "2.0.12"
+  }
+}
