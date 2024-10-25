@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Hello Extensions",
+  "description": "Hello Extensions of the world!",
+  "version": "1.0",
+  "action": {
+    "default_title": "Hello Title",
+    "default_popup2": "hello.html",
+    "default_icon": {
+      "16": "logo.png",
+      "32": "logo.png",
+      "48": "logo.png",
+      "128": "logo.png"
+    }
+  },
+  "content_scripts": [{ "js": ["script/content.js"], "matches": ["<all_urls>"] }],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["activeTab", "scripting", "storage", "alarms"]
+}
