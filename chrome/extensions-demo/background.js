@@ -5,6 +5,11 @@ const webstore = "https://developer.chrome.com/docs/webstore";
 
 chrome.action.onClicked.addListener(async (tab) => {
   console.log("onClicked", tab);
+  chrome.action.setTitle({
+    tabId: tab.id,
+    title: `You are on tab: ${tab.id}`,
+  });
+
   // 设置标签文案
   if (tab.url.startsWith(extensions) || tab.url.startsWith(webstore)) {
     const prevState = await chrome.action.getBadgeText({ tabId: tab.id });
