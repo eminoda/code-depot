@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "bmk-x-demo",
+  "description": "测试DEMO",
+  "version": "1.0.0",
+  "action": {
+    "default_title": "bmk-x标题",
+    "default_popup2": "hello.html",
+    "default_icon": {
+      "16": "icon/logo.png",
+      "32": "icon/logo.png",
+      "48": "icon/logo.png",
+      "128": "icon/logo.png"
+    }
+  },
+  "content_scripts": [{ "js": ["popup.js"], "matches": ["<all_urls>"] }],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": []
+}
