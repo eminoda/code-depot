@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const user = {
+        name: "John",
+        age: 30,
+      };
+      const value = user.name;
+
+      // 扩展对象属性 setter/getter
+      Object.defineProperty(user, "name", {
+        enumerable: true,
+        configurable: true,
+        set: (newVal) => {
+          console.log("setter", value, newVal);
+        },
+        get: () => {
+          console.log("getter");
+          return value;
+        },
+      });
+      console.log(user.name);
+      user.name = "Mike";
+    </script>
+  </body>
+</html>

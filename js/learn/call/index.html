@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function People() {
+        this.name = "people";
+        this.say = function (...args) {
+          console.log("say hello by", this.name, "args", args);
+        };
+      }
+
+      function User() {
+        this.name = "user";
+      }
+
+      const people = new People();
+
+      const user = new User();
+
+      // 借用 perple 的方法，调用者还是 user
+      people.say.call(user, "args1");
+    </script>
+  </body>
+</html>
