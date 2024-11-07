@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "action": {
     "default_title": "bmk-x标题",
-    "default_popup2": "hello.html",
+    "default_popup": "index.html",
     "default_icon": {
       "16": "icon/logo.png",
       "32": "icon/logo.png",
@@ -17,5 +17,11 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": []
+  "web_accessible_resources": [
+    {
+      "resources": ["/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "permissions": ["webNavigation", "storage", "tabs", "activeTab"]
 }
