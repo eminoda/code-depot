@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class MyPromise {
+        constructor(executor) {
+          this.status = "PENEDING";
+          this.value = undefined;
+          this.reason = undefined;
+          this.onFulfilledCallbacks = [];
+          this.onRejectedCallbacks = [];
+
+          const resolve = (value) => {
+            if (this.status === "PENEDING") {
+              this.status = "FULFILLED";
+              this.value = value;
+              this.onFulfilledCallbacks.forEach((callback) => callback(value));
+            }
+          };
+
+          const reject = (reason) => {
+            if (this.status === "PENEDING") {
+              this.status = "REJECTED";
+              this.reason = reason;
+              this.onRejectedCallbacks.forEach((callback) => callback(reason));
+            }
+          };
+          try {
+            executor(resolve, reject);
+          } catch (error) {
+            reject(error);
+          }
+        }
+        then(onFulfilled, onRejected) {
+          if (this.status === "FULFILLED") {
+            onFulfilled && onFulfilled(this.value);
+          }
+          if (this.status === "REJECTED") {
+            onRejected && onRejected(this.reason);
+          }
+          if (this.status === "PENEDING") {
+            onFulfilled && this.onFulfilledCallbacks.push(onFulfilled);
+            onRejected && this.onRejectedCallbacks.push(onRejected);
+          }
+        }
+      }
+      const myPromise = new MyPromise((resolve, reject) => {
+        setTimeout(() => {
+          console.log("异步结束");
+          resolve("成功");
+        }, 1000);
+      }).then((data) => {
+        console.log(data);
+      });
+    </script>
+  </body>
+</html>

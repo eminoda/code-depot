@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const timeDemo1 = () => {
+        for (var i = 0; i < 5; i++) {
+          setTimeout(function () {
+            console.log(i); // 5次 5
+          }, 1000 * i);
+        }
+      };
+      const timeDemo2 = () => {
+        for (var i = 0; i < 5; i++) {
+          ((i) => {
+            setTimeout(function () {
+              console.log(i); // 01234
+            }, 1000 * i);
+          })(i);
+        }
+      };
+      //   timeDemo1();
+      //   timeDemo2();
+      const timePromise1 = () => {
+        setTimeout(function () {
+          console.log(5);
+        }, 0);
+        new Promise((resolve) => {
+          console.log(1);
+          for (var i = 0; i < 10000; i++) {
+            i == 9999 && resolve();
+          }
+          console.log(2);
+        }).then(function () {
+          console.log(4);
+        });
+        console.log(3);
+      };
+
+      timePromise1();
+    </script>
+  </body>
+</html>
