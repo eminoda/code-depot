@@ -1,0 +1,2 @@
+host and app: https://github.com/module-federation/module-federation-examples/blob/master/advanced-api/dynamic-remotes/app1/src/App.js
+module federation: https://stackblitz.com/github/webpack/webpack.js.org/tree/main/examples/module-federation?file=package.json,app1%2Fpackage.json,app1%2Fwebpack.config.js,app1%2Fsrc%2FApp.js&terminal=start&terminal=
