@@ -12,7 +12,7 @@ module.exports = defineConfig({
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: "remote_component_a",
+        name: "remote_component_a_vue2",
         filename: "remoteEntry.js",
         exposes: {
           "./App": "./src/App",
