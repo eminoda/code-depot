@@ -3,24 +3,23 @@
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
     <!-- <RemoteApp /> -->
-    <div ref="remoteRef"></div>
-    <ComponentA />
+    <!-- <ComponentA /> -->
+    <ComponentB />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-import ReactDOM from "react-dom/client";
-import { createElement } from "react";
+import ReactComponent from "@/components/ReactComponent.vue";
 
 export default {
   name: "HomeView",
   components: {
     HelloWorld,
-    ComponentA: () => import("ComponentA/App"),
+    // ComponentA: () => import("ComponentA/App"),
+    ComponentB: ReactComponent,
   },
-  mounted() {
-  },
+  mounted() {},
 };
 </script>

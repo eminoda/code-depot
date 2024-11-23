@@ -5,7 +5,18 @@
       <router-link to="/about">About</router-link>
     </nav>
     <router-view/> -->
-    <h2>Component A</h2>
+
+    <div
+      :style="{
+        margin: '10px',
+        padding: '10px',
+        textAlign: 'center',
+        backgroundColor: 'greenyellow',
+      }"
+    >
+      <h1>App1</h1>
+    </div>
+
     <div @click="add">Count: {{ count }}</div>
   </div>
 </template>
