@@ -19,6 +19,13 @@ export default defineConfig({
           entryGlobalName: "react_vite_remote",
           shareScope: "default",
         },
+        StoryBookRemote: {
+          type: "module",
+          name: "StoryBookRemote",
+          entry: "http://localhost:3005/remoteEntry.js",
+          entryGlobalName: "storyboot_remote",
+          shareScope: "default",
+        },
       },
       shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),

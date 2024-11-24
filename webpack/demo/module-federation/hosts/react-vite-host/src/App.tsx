@@ -3,12 +3,14 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import ReactViteRemote from "ReactViteRemote/App";
+import { Title } from "StoryBookRemote/Title";
+// import Title from "ReactViteRemote/Title";
 function App() {
   const [count, setCount] = useState(0);
-
   return (
     <>
       <ReactViteRemote />
+      <Title />
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
