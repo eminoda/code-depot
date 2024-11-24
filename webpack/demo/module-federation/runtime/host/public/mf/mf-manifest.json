@@ -1,0 +1,72 @@
+{
+  "id": "rslib_provider",
+  "name": "rslib_provider",
+  "metaData": {
+    "name": "rslib_provider",
+    "type": "app",
+    "buildInfo": {
+      "buildVersion": "0.0.0",
+      "buildName": "lib"
+    },
+    "remoteEntry": {
+      "name": "rslib_provider.js",
+      "path": "",
+      "type": "global"
+    },
+    "types": {
+      "path": "",
+      "name": "",
+      "zip": "@mf-types.zip",
+      "api": "@mf-types.d.ts"
+    },
+    "globalName": "rslib_provider",
+    "pluginVersion": "0.7.6",
+    "publicPath": "mf/",
+    "prefetchInterface": false
+  },
+  "shared": [
+    {
+      "id": "rslib_provider:react",
+      "name": "react",
+      "version": "18.3.1",
+      "singleton": true,
+      "requiredVersion": "^18.3.1",
+      "assets": {
+        "js": {
+          "async": [],
+          "sync": [
+            "366.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      }
+    }
+  ],
+  "remotes": [],
+  "exposes": [
+    {
+      "id": "rslib_provider:.",
+      "name": ".",
+      "assets": {
+        "js": {
+          "sync": [
+            "__federation_expose_default_export.js"
+          ],
+          "async": [
+            "366.js"
+          ]
+        },
+        "css": {
+          "sync": [
+            "__federation_expose_default_export.css"
+          ],
+          "async": []
+        }
+      },
+      "path": "."
+    }
+  ]
+}
