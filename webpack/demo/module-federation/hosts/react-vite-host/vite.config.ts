@@ -12,18 +12,25 @@ export default defineConfig({
       //   "Vue3ViteRemote": "vue3_vite_remote@http://localhost:3003/remoteEntry.js",
       // },
       remotes: {
-        ReactViteRemote: {
+        // ReactViteRemote: {
+        //   type: "module",
+        //   name: "ReactViteRemote",
+        //   entry: "http://localhost:3004/remoteEntry.js",
+        //   entryGlobalName: "react_vite_remote",
+        //   shareScope: "default",
+        // },
+        // StoryBookRemote: {
+        //   type: "module",
+        //   name: "StoryBookRemote",
+        //   entry: "http://localhost:3005/remoteEntry.js",
+        //   entryGlobalName: "storyboot_remote",
+        //   shareScope: "default",
+        // },
+        RspackRemote: {
           type: "module",
-          name: "ReactViteRemote",
-          entry: "http://localhost:3004/remoteEntry.js",
+          name: "RspackRemote",
+          entry: "http://localhost:2000/mf-manifest.json",
           entryGlobalName: "react_vite_remote",
-          shareScope: "default",
-        },
-        StoryBookRemote: {
-          type: "module",
-          name: "StoryBookRemote",
-          entry: "http://localhost:3005/remoteEntry.js",
-          entryGlobalName: "storyboot_remote",
           shareScope: "default",
         },
       },

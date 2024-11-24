@@ -2,15 +2,17 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import ReactViteRemote from "ReactViteRemote/App";
-import { Title } from "StoryBookRemote/Title";
-// import Title from "ReactViteRemote/Title";
+// import ReactViteRemote from "ReactViteRemote/App";
+// import { Title } from "StoryBookRemote/Title";
+import RspackRemote from "RspackRemote/App";
 function App() {
   const [count, setCount] = useState(0);
   return (
     <>
-      <ReactViteRemote />
-      <Title />
+      {/* <ReactViteRemote />
+      <Title /> */}
+
+      <RspackRemote />
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
