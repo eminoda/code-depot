@@ -7,3 +7,19 @@ vue-react: https://github.com/esplito/mfe-react-vue-module-federation-example/tr
 
 
 [bootstrap] https://stackoverflow.com/questions/71738820/webpack-module-federation-error-cannot-read-properties-of-undefined-reading-c
+
+https://module-federation.io/zh/guide/start/quick-start.html
+
+https://github.com/module-federation/vite/tree/main/examples/vite-vite/vite-remote
+https://github.com/gioboa/vue-microfrontend-demo/blob/main/host/src/App.vue
+
+
+
+## 目录结构
+
+
+- remotes
+  - vue2-webpack
+  - react-webpack
+  - vue3-vite
+  - react-vite
