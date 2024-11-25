@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       amis:
-        specifier: 6.9.0-rc.10
-        version: 6.9.0-rc.10(@types/react@18.3.12)(amis-core@6.9.0-rc.10(@types/react@18.3.12)(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(amis-ui@6.9.0-rc.10(@types/react@18.3.12)(amis-core@6.9.0-rc.10(@types/react@18.3.12)(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(office-viewer@0.3.14(echarts@5.5.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 6.9.0
+        version: 6.9.0(@types/react@18.3.12)(amis-core@6.9.0-rc.10(@types/react@18.3.12)(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(amis-ui@6.9.0-rc.10(@types/react@18.3.12)(amis-core@6.9.0-rc.10(@types/react@18.3.12)(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(office-viewer@0.3.14(echarts@5.5.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       axios:
         specifier: ^1.7.7
         version: 1.7.7
@@ -1237,8 +1237,8 @@ packages:
       react: '>=16.8.6'
       react-dom: '>=16.8.6'
 
-  amis@6.9.0-rc.10:
-    resolution: {integrity: sha512-wylY2Cp5xvdE73cynBmOyzl6W4t1/1v7x3lcyr8Z51y6g/rjgm/rvTrhZQpLgSpIU2kI3tLS0klI8OnDiSw5jQ==}
+  amis@6.9.0:
+    resolution: {integrity: sha512-UxHj4E6CbYCrIHVq5jDzcL0V2cgBq+SApGBY+MMuEk1+YVVZ85Mgdh3d/IjY77yqJvIRtIvIADsjnqbp/W3wfw==}
     peerDependencies:
       amis-core: '*'
       amis-ui: '*'
@@ -4804,7 +4804,7 @@ snapshots:
       - react-native
       - supports-color
 
-  amis@6.9.0-rc.10(@types/react@18.3.12)(amis-core@6.9.0-rc.10(@types/react@18.3.12)(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(amis-ui@6.9.0-rc.10(@types/react@18.3.12)(amis-core@6.9.0-rc.10(@types/react@18.3.12)(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(office-viewer@0.3.14(echarts@5.5.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  amis@6.9.0(@types/react@18.3.12)(amis-core@6.9.0-rc.10(@types/react@18.3.12)(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(amis-ui@6.9.0-rc.10(@types/react@18.3.12)(amis-core@6.9.0-rc.10(@types/react@18.3.12)(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(office-viewer@0.3.14(echarts@5.5.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       amis-core: 6.9.0-rc.10(@types/react@18.3.12)(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1)
       amis-ui: 6.9.0-rc.10(@types/react@18.3.12)(amis-core@6.9.0-rc.10(@types/react@18.3.12)(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(amis-formula@6.9.0-rc.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
