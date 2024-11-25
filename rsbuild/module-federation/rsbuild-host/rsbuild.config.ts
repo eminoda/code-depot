@@ -28,6 +28,7 @@ export default defineConfig({
             // remote_one: "remote_one@http://localhost:2001/mf-manifest.json",
             // remote_two: "remote_two@http://localhost:2002/mf-manifest.json",
             remote_sb: "remote_two@http://localhost:2008/mf-manifest.json",
+            // remote_storybook: "remote_storybook@http://localhost:2000/mf/mf-manifest.json",
           },
           shared: {
             react: {
@@ -40,7 +41,7 @@ export default defineConfig({
               singleton: true,
             },
           },
-          runtimePlugins: ["./src/error-runtime-plugin.ts"],
+          // runtimePlugins: ["./src/error-runtime-plugin.ts"],
         }),
       ],
     },

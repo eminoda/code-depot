@@ -17,9 +17,10 @@ export default defineConfig({
         new ModuleFederationPlugin({
           name: "remote_sb",
           exposes: {
-            "./Title": "./src/components/Title.tsx",
-            "./List": "./src/components/List.tsx",
-            // "./Title.stories": "./src/components/Title.stories.ts",
+            // "./Title": "./src/components/Title.tsx",
+            // "./List": "./src/components/List.tsx",
+            
+            ".": "./src/components/index.ts",
           },
           shared: {
             react: {

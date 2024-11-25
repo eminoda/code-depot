@@ -4,7 +4,12 @@ import React, { Suspense, useEffect } from "react";
 // import { createApp } from "vue";
 // import RemoteTwo from "remote_two/App";
 
-import { List } from "remote_sb/List";
+// import { Title } from "remote_sb/Title";
+import { Title, Name } from "remote_sb";
+
+// const { Button } = React.lazy(() => import("remote_storybook/Button"));
+// import { Button } from "remote_storybook/Button";
+
 const App = () => {
   useEffect(() => {
     // createApp(RemoteTwo).mount("#abc");
@@ -16,7 +21,10 @@ const App = () => {
       <div>
         <Suspense fallback={<div>Loading remote_one error</div>}>
           {/* <RemoteOneApp /> */}
-          <List name={"abc"} />
+          {/* <List name={"abc"} /> */}
+          <Title name="title2" />
+          <Name name="title2" />
+          {/* <Button primary size="large" label="test" /> */}
         </Suspense>
       </div>
     </div>
