@@ -1,12 +1,13 @@
 import "./App.css";
 import React, { Suspense, useEffect } from "react";
-const RemoteOneApp = React.lazy(() => import("remote_one/App"));
-import { createApp } from "vue";
-import RemoteTwo from "remote_two/App";
+// const RemoteOneApp = React.lazy(() => import("remote_one/App"));
+// import { createApp } from "vue";
+// import RemoteTwo from "remote_two/App";
 
+import { List } from "remote_sb/List";
 const App = () => {
   useEffect(() => {
-    createApp(RemoteTwo).mount("#abc");
+    // createApp(RemoteTwo).mount("#abc");
   }, []);
   return (
     <div className="content">
@@ -14,7 +15,8 @@ const App = () => {
       <div id="abc"></div>
       <div>
         <Suspense fallback={<div>Loading remote_one error</div>}>
-          <RemoteOneApp />
+          {/* <RemoteOneApp /> */}
+          <List name={"abc"} />
         </Suspense>
       </div>
     </div>
