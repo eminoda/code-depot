@@ -1,0 +1,26 @@
+{
+  "name": "rsbuild-host",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "rsbuild build",
+    "check": "biome check --write",
+    "dev": "rsbuild dev --open",
+    "format": "biome format --write",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vue": "^3.5.12"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.3",
+    "@module-federation/enhanced": "^0.7.6",
+    "@rsbuild/core": "^1.0.19",
+    "@rsbuild/plugin-react": "^1.0.6",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "typescript": "^5.6.3"
+  }
+}
