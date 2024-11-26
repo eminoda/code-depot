@@ -13,7 +13,7 @@ https://module-federation.io/zh/guide/start/quick-start.html
 https://github.com/module-federation/vite/tree/main/examples/vite-vite/vite-remote
 https://github.com/gioboa/vue-microfrontend-demo/blob/main/host/src/App.vue
 
-
+https://github.com/module-federation/core/issues/2672
 
 ## 目录结构
 
