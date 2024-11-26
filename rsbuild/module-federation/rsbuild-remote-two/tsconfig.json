@@ -20,7 +20,5 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "files": ["./src/App.vue", "./src/env.d.ts"],
-  "include": ["src/env.d.ts", "src/**/*", "src/**/*.vue"],
-  "extends": "@vue/tsconfig/tsconfig.dom.json"
+  "include": ["src"]
 }
