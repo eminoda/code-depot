@@ -4,7 +4,7 @@ import React, { Suspense, useEffect } from "react";
 const RemoteOneApp = React.lazy(() => import("remote_one/App"));
 const RemoteTwoApp = React.lazy(() => import("./LoadVueComponent"));
 
-import Button from "remote_storybook/Button";
+import { List } from "remote_storybook";
 
 const App = () => {
   return (
@@ -14,10 +14,11 @@ const App = () => {
       <div>
         {/* <Suspense fallback={<div>Loading remote_one error</div>}>{<RemoteOneApp />}</Suspense> */}
         {/* <Suspense fallback={<div>Loading remote_two error</div>}>{<RemoteTwoApp />}</Suspense> */}
-        <Suspense fallback={<div>Loading remote_storybook error</div>}>
-          {/* <Title name="abc" /> */}
+        <Suspense fallback={<div>Loading remote_sb error</div>}>{<List />}</Suspense>
+        {/* <Suspense fallback={<div>Loading remote_storybook error</div>}>
+          <Title name="abc" />
           <Button label="abc"/>
-        </Suspense>
+        </Suspense> */}
       </div>
     </div>
   );
