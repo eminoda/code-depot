@@ -15,10 +15,6 @@ export default defineConfig({
   plugins: [pluginVue()],
   tools: {
     rspack: {
-      resolve: {
-        // 与内置的 resolve.extensions 合并
-        extensions: [".vue"],
-      },
       plugins: [
         new ModuleFederationPlugin({
           name: "remote_two",
@@ -31,11 +27,11 @@ export default defineConfig({
               singleton: true,
             },
           },
-          // dts: {
-          //   generateTypes: {
-          //     compilerInstance: "vue-tsc",
-          //   },
-          // },
+          dts: {
+            generateTypes: {
+              compilerInstance: "vue-tsc",
+            },
+          },
         }),
       ],
     },
