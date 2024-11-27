@@ -6,12 +6,14 @@ const RemoteTwoApp = React.lazy(() => import("./LoadVueComponent"));
 
 const List = React.lazy(() => {
   return new Promise((resolve) => {
-    setTimeout(() => {
-      const List = import("remote_storybook").then((module) => ({
-        default: module.List,
-      }));
-      resolve(List);
-    }, 5 * 1000);
+    const List = import("remote_storybook").then((module) => ({
+      default: module.List,
+    }));
+    console.log(List);
+    List.then((data) => {
+      console.log(data, 123);
+    });
+    resolve(List);
   });
 });
 

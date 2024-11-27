@@ -27,8 +27,8 @@ export default defineConfig({
             ".": "./src/components/index.ts",
           },
           shared: {
-            react: { eager: true, singleton: true, requiredVersion: deps.react },
-            "react-dom": { eager: true, singleton: true, requiredVersion: deps["react-dom"] },
+            react: { eager: false, singleton: true, requiredVersion: deps.react },
+            "react-dom": { eager: false, singleton: true, requiredVersion: deps["react-dom"] },
           },
         }),
       ],
