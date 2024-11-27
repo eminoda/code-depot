@@ -4,7 +4,39 @@ import "amis/lib/themes/cxd.css";
 import "amis/lib/helper.css";
 import "amis/sdk/iconfont.css";
 
-export const List = () => {
+export interface ListProps {
+  columns: {
+    name: string;
+    label: string;
+    buttons?: {
+      label: string;
+      type: string;
+      level: string;
+      actionType?: string;
+      className?: string;
+      disabledOn?: string;
+      dialog?: {
+        title?: string;
+        body: {
+          type: string;
+          body: {
+            type: string;
+            name: string;
+            label: string;
+            body?: {
+              type: string;
+              label: string;
+              displayMode: string;
+              color: string;
+            };
+          }[];
+        };
+      }[];
+    }[];
+  }[];
+}
+
+export const List = ({ columns }: ListProps) => {
   return (
     <div>
       <h3>Remote Storybook</h3>
@@ -19,89 +51,7 @@ export const List = () => {
               type: "crud",
               api: "/amis/api/mock2/sample",
               syncLocation: false,
-              columns: [
-                {
-                  name: "id",
-                  label: "ID",
-                },
-                {
-                  name: "engine",
-                  label: "Rendering engine",
-                },
-                {
-                  name: "browser",
-                  label: "Browser",
-                },
-                {
-                  name: "platform",
-                  label: "Platform(s)",
-                },
-                {
-                  name: "version",
-                  label: "Engine version",
-                },
-                {
-                  name: "grade",
-                  label: "CSS grade",
-                },
-                {
-                  type: "operation",
-                  label: "操作",
-                  buttons: [
-                    {
-                      label: "详情",
-                      type: "button",
-                      level: "link",
-                      actionType: "dialog",
-                      dialog: {
-                        title: "查看详情",
-                        body: {
-                          type: "form",
-                          body: [
-                            {
-                              type: "input-text",
-                              name: "engine",
-                              label: "Engine",
-                            },
-                            {
-                              type: "input-text",
-                              name: "browser",
-                              label: "Browser",
-                            },
-                            {
-                              type: "input-text",
-                              name: "platform",
-                              label: "platform",
-                            },
-                            {
-                              type: "input-text",
-                              name: "version",
-                              label: "version",
-                            },
-                            {
-                              type: "control",
-                              label: "grade",
-                              body: {
-                                type: "tag",
-                                label: "${grade}",
-                                displayMode: "normal",
-                                color: "active",
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    },
-                    {
-                      label: "删除",
-                      type: "button",
-                      level: "link",
-                      className: "text-danger",
-                      disabledOn: "this.grade === 'A'",
-                    },
-                  ],
-                },
-              ],
+              columns,
             },
           },
           {},

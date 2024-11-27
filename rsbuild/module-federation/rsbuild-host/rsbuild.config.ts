@@ -27,7 +27,7 @@ export default defineConfig({
           remotes: {
             remote_one: "remote_one@http://localhost:2001/mf-manifest.json",
             remote_two: "remote_two@http://localhost:2002/mf-manifest.json",
-            remote_storybook: "remote_storybook@http://localhost:6006/mf-manifest.json",
+            remote_storybook: "remote_storybook@http://localhost:2003/mf-manifest.json",
           },
           shared: {
             react: {

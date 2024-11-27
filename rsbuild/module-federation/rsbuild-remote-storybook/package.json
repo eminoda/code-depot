@@ -5,10 +5,10 @@
   "scripts": {
     "build": "rsbuild build",
     "check": "biome check --write",
-    "dev": "rsbuild dev",
+    "dev2": "rsbuild dev",
     "format": "biome format --write",
     "preview": "rsbuild preview",
-    "sb": "storybook dev -p 6006",
+    "sb": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build"
   },
   "dependencies": {

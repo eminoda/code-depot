@@ -8,8 +8,6 @@ const config: StorybookConfig = {
     options: {},
   },
   rsbuildFinal(config, { configType }) {
-    config.output ??= {}
-    config.output.assetPrefix = "http://localhost:2003/abc"
     return config;
   },
 };
