@@ -1,7 +1,6 @@
 import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
-import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
-import { dependencies as deps } from "./package.json";
+import { pluginTailwindCSS } from "rsbuild-plugin-tailwindcss";
 
 export default defineConfig({
   html: { title: "rsbuild-remote-storybook" },
@@ -16,5 +15,10 @@ export default defineConfig({
     // It is necessary to configure assetPrefix, and in the production build, you need to configure output.assetPrefix
     assetPrefix: "http://localhost:2003",
   },
-  plugins: [pluginReact()],
+  plugins: [
+    pluginTailwindCSS({
+      config: "./tailwind.config.js",
+    }),
+    pluginReact(),
+  ],
 });

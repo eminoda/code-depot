@@ -1,4 +1,5 @@
 import { StorybookConfig } from "storybook-react-rsbuild";
+import { pluginTailwindCSS } from "rsbuild-plugin-tailwindcss";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -12,6 +13,7 @@ const config: StorybookConfig = {
     },
   },
   rsbuildFinal(config, { configType }) {
+    config.plugins?.push(pluginTailwindCSS());
     return config;
   },
 };
