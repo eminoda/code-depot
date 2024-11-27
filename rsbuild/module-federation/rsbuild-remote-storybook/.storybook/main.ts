@@ -5,7 +5,11 @@ const config: StorybookConfig = {
   addons: ["@storybook/addon-onboarding", "@storybook/addon-essentials", "@chromatic-com/storybook", "@storybook/addon-interactions"],
   framework: {
     name: "storybook-react-rsbuild",
-    options: {},
+    options: {
+      builder: {
+        rsbuildConfigPath: "./rsbuild.sb.config.ts",
+      },
+    },
   },
   rsbuildFinal(config, { configType }) {
     return config;
