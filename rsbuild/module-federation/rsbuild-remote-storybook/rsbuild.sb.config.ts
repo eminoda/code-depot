@@ -15,6 +15,13 @@ export default defineConfig({
     // It is necessary to configure assetPrefix, and in the production build, you need to configure output.assetPrefix
     assetPrefix: "http://localhost:2003",
   },
+  tools: {
+    postcss: {
+      postcssOptions: {
+        config: true,
+      },
+    },
+  },
   plugins: [
     pluginTailwindCSS({
       config: "./tailwind.config.js",
