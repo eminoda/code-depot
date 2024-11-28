@@ -34,9 +34,9 @@ const meta = {
       type: "string",
       control: {
         type: "select",
-        labels: { xs: "极小", sm: "小", md: "中等", lg: "大" },
+        labels: { xs: "极小", sm: "小", md: "中等", lg: "大", full: "占满" },
       },
-      options: ["xs", "sm", "md", "lg"],
+      options: ["xs", "sm", "md", "lg", "full"],
       description: "大小",
     },
     layout: {

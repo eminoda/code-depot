@@ -1,12 +1,13 @@
 import { render as renderAmis } from "../amis";
 
 export interface InputTextProps {
+  type: "input-text" | "input-password";
   label: string;
   name: string;
-  size?: "xs" | "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg" | "full";
   layout?: "horizontal" | "vertical" | "inline";
   value?: string;
-  onInput: (data: { value: string; name: string }) => void;
+  onInput?: (data: { value: string; name: string }) => void;
 }
 
 export const InputText = ({ label, size = "md", name = "name", layout, value = "", ...props }: InputTextProps) => {
@@ -24,7 +25,7 @@ export const InputText = ({ label, size = "md", name = "name", layout, value = "
             {
               actionType: "custom",
               script: `
-              context.props.onInput(event.data);
+              context.props.onInput&&context.props.onInput(event.data);
               event.stopPropagation();
               
             `,

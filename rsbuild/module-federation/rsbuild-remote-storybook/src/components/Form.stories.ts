@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 
-import { Button } from "./Button";
+import { Form } from "./Form";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Demo/Button",
-  component: Button,
+  title: "Demo/Form",
+  component: Form,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
   parameters: {
@@ -15,53 +15,44 @@ const meta = {
   },
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    label: {
+    api: {
       control: "text",
-      description: "名称",
+      description: "api",
     },
     size: {
       type: "string",
       control: {
         type: "select",
-        labels: { xs: "极小", sm: "小", md: "中等", lg: "大" },
+        labels: { xs: "极小", sm: "小", md: "中等", lg: "大", full: "占满" },
       },
       table: {
-        defaultValue: { summary: "md" },
+        defaultValue: { summary: "full" },
       },
-      options: ["xs", "sm", "md", "lg"],
+      options: ["xs", "sm", "md", "lg", "full"],
       description: "大小",
     },
-    level: {
-      type: "string",
+    items: {
       control: {
-        type: "select",
-        labels: {
-          link: "链接",
-          primary: "主要",
-          secondary: "次要",
-          info: "信息",
-          success: "成功",
-          warning: "警告",
-          danger: "危险",
-          light: "浅色",
-          dark: "深色",
-          default: "默认",
-        },
-      },
-      options: ["link", "primary", "secondary", "info", "success", "warning", "danger", "light", "dark", "default"],
-      description: "基础样式",
-      table: {
-        defaultValue: { summary: "info" },
+        type: "object",
       },
     },
-    onClick: {
-      type: "function",
-      description: "点击事件",
+    preview: {
+      show: {
+        control: {
+          type: "boolean",
+        },
+      },
+      api: {
+        control: {
+          type: "string",
+        },
+      },
+      description: `{show: boolean, api: string}`
     },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: {},
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Form>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -69,11 +60,23 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   args: {
-    label: "确定",
-    size: "md",
-    level: "info",
-    onClick: (...args) => {
-      console.log(args);
+    api: "/amis/api/mock2/form/saveForm",
+    size: "full",
+    preview: {
+      show: false,
+      api: "/amis/api/mock2/form/initData",
     },
+    items: [
+      {
+        type: "input-text",
+        name: "name",
+        label: "姓名：",
+      },
+      {
+        type: "input-password",
+        name: "password",
+        label: "密码",
+      },
+    ],
   },
 };

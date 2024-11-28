@@ -3,7 +3,7 @@ import type { Preview } from "@storybook/react";
 import "amis/lib/themes/cxd.css";
 import "amis/lib/helper.css";
 import "amis/sdk/iconfont.css";
-
+import "./global.css";
 const preview: Preview = {
   parameters: {
     controls: {
