@@ -1,7 +1,10 @@
 import "./App.css";
 import { useEffect } from "react";
+import runtime from "runtime";
+
 const App = () => {
   useEffect(() => {
+    console.log(runtime)
     const Runtime = runtime.default;
 
     const columns = [

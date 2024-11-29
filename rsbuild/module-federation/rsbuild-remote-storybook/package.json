@@ -9,11 +9,14 @@
     "format": "biome format --write",
     "preview": "rsbuild preview",
     "sb": "storybook dev -p 6006 --no-open",
-    "build-storybook": "storybook build"
+    "build-sb": "storybook build",
+    "build:analyze": "cross-env BUNDLE_ANALYZE=true rsbuild build"
   },
   "dependencies": {
     "amis": "6.9.0-rc.10",
     "axios": "^1.7.8",
+    "mobx": "^6.13.5",
+    "mobx-react-lite": "^4.0.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -33,6 +36,7 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "autoprefixer": "^10.4.20",
+    "cross-env": "^7.0.3",
     "postcss": "^8.4.49",
     "rsbuild-plugin-tailwindcss": "^0.0.2",
     "storybook": "8.4.5",

@@ -2,10 +2,9 @@ import { lazy, useEffect } from "react";
 import { createApp } from "vue";
 import { loadRemote } from "@module-federation/enhanced/runtime";
 
-
-const LoadVueComponent = (remoteApp: string) => {
+const LoadVueComponent = () => {
   useEffect(() => {
-    // ts-ignore
+    // @ts-ignore
     const RemoteTwoApp = lazy(() => loadRemote("remote_two/App"));
     createApp(RemoteTwoApp).mount("#vueRef");
   });

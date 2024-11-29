@@ -1,5 +1,4 @@
 import { render as renderAmis } from "../amis";
-import { ButtonSchema } from "amis";
 
 import { InputTextProps } from "./InputText";
 
@@ -17,7 +16,8 @@ export interface FormProps {
   };
 }
 
-export const Form = ({ size = "full", title, preview, api, mode = "normal", items, ...props }: FormProps) => {
+export const Form = ({ size = "full", title, preview, api, mode = "normal", items }: FormProps) => {
+  console.log('bbb')
   return renderAmis({
     type: "page",
     body: {
@@ -28,9 +28,7 @@ export const Form = ({ size = "full", title, preview, api, mode = "normal", item
       static: preview?.show,
       initApi: preview?.api ? preview?.api : "",
       body: items.map((item) => {
-        return {
-          ...item,
-        };
+        return { size, ...item };
       }),
     },
   });

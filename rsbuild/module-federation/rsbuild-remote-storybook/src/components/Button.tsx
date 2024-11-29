@@ -9,6 +9,7 @@ export interface ButtonProps {
 }
 
 export const Button = ({ label = "确认", size = "md", level = "primary", ...props }: ButtonProps) => {
+  console.log('aaa')
   return renderAmis({
     type: "button",
     label,

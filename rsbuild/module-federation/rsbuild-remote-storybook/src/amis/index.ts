@@ -1,5 +1,5 @@
-import { render as renderAmis, Schema } from "amis";
 import type { RenderOptions } from "amis";
+import { render as renderAmis, Schema } from "amis";
 import axios from "axios";
 
 interface RootRenderProps {

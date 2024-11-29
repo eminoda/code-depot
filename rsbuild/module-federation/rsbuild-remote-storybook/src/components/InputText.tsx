@@ -11,6 +11,7 @@ export interface InputTextProps {
 }
 
 export const InputText = ({ label, size = "md", name = "name", layout, value = "", ...props }: InputTextProps) => {
+  console.log('ccc') 
   return renderAmis(
     {
       type: "input-text",

@@ -17,7 +17,11 @@
     /* type checking */
     "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "paths": {
+      "*": ["./@mf-types/*"]
+    }
   },
-  "include": ["src"]
+  "files": ["./src/runtime.ts"],
+  "exclude": ["**/*.test.ts", "**/*.spec.ts"]
 }
