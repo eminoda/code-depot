@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 
+import { makeAutoObservable, configure } from "mobx";
 import { Button } from "./Button";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -66,14 +67,23 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+configure({ isolateGlobalState: true });
+const store = makeAutoObservable({
+  count: 0,
+  increase() {
+    this.count += 1;
+  },
+});
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   args: {
+    store,
     label: "确定",
     size: "md",
     level: "info",
     onClick: (...args) => {
       console.log(args);
+      store.increase();
     },
   },
 };

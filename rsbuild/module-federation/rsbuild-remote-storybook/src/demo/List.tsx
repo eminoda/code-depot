@@ -60,3 +60,6 @@ export const List = ({ columns }: ListProps) => {
     </div>
   );
 };
+// export default createBridgeComponent({
+//   rootComponent: List,
+// });

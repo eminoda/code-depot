@@ -8,9 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@module-federation/bridge-react':
+        specifier: ^0.8.0
+        version: 0.8.0(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.28.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@module-federation/enhanced':
         specifier: ^0.7.7
         version: 0.7.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+      '@module-federation/rsbuild-plugin':
+        specifier: ^0.8.0
+        version: 0.8.0(@module-federation/enhanced@0.7.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(@rsbuild/core@1.1.6)
       axios:
         specifier: ^1.7.8
         version: 1.7.8
@@ -69,6 +75,10 @@ packages:
     resolution: {integrity: sha512-DWMCZH9WA4Maitz2q21SRKHo9QXZxkDsbNZoVD62gusNtNBBqDg9i7uOhASfTfIGNzW+O+r7+jAlM8dwphcJKQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+
+  '@babel/runtime@7.26.0':
+    resolution: {integrity: sha512-FDSOghenHTiToteC/QRlv2q3DhPZ/oOXTBoirfWNx1Cx3TMVcGWQtMMmQcSvb/JjpNeGzx8Pq/b4fKEJuWm1sw==}
+    engines: {node: '>=6.9.0'}
 
   '@babel/types@7.26.0':
     resolution: {integrity: sha512-Z/yiTPj+lDVnF7lWeKCIJzaIkI0vYO87dMpZ4bg4TDrFe4XXLFWL1TbXU27gBP3QccxV9mZICCrnjnYlJjXHOA==}
@@ -134,6 +144,12 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
+  '@loadable/component@5.16.4':
+    resolution: {integrity: sha512-fJWxx9b5WHX90QKmizo9B+es2so8DnBthI1mbflwCoOyvzEwxiZ/SVDCTtXEnHG72/kGBdzr297SSIekYtzSOQ==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      react: ^16.3.0 || ^17.0.0 || ^18.0.0
+
   '@microsoft/api-extractor-model@7.30.0':
     resolution: {integrity: sha512-26/LJZBrsWDKAkOWRiQbdVgcfd1F3nyJnAiJzsAgpouPk7LtOIj7PK9aJtBaw/pUXrkotEg27RrT+Jm/q0bbug==}
 
@@ -149,6 +165,16 @@ packages:
 
   '@module-federation/bridge-react-webpack-plugin@0.7.7':
     resolution: {integrity: sha512-5E+pAF8Niw+svROrD0x2F/QlhGb2/fRupN6xN2yvcKofMSdvY9/2txKKWSw0E51HFlKslb9MWLenayOfJtT+VA==}
+
+  '@module-federation/bridge-react@0.8.0':
+    resolution: {integrity: sha512-1/fmRthy+pDQ2BMYCspNwhU/bnPKKRpS29qxPEUjNfZ+Bv6BwD66j+UlgdGgvFe8WGrt3pIgaw5rVs/d0fxMDw==}
+    peerDependencies:
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+      react-router-dom: ^4 || ^5 || ^6
+
+  '@module-federation/bridge-shared@0.8.0':
+    resolution: {integrity: sha512-yKyl6PCJ9UZ0DzuVmtSH8O+qiFhJvGr2ka2fey5+2mTffT+HkEy2VnwITYzdJJKWuyUPd5tK1OonNtZLsMPCcQ==}
 
   '@module-federation/data-prefetch@0.7.7':
     resolution: {integrity: sha512-SDiXE4LtXujR3A0bM9gN+ChpyZmAVkmic8bTSbs+o6a+WKtIkxcBrwPaFTkijlvSkcda310R6YGBqSbajKQ90w==}
@@ -188,6 +214,13 @@ packages:
   '@module-federation/manifest@0.7.7':
     resolution: {integrity: sha512-+NBk0y6t27GT2rfltGQ9CZMzyZ8+mJU8QfQ/Ih/N6l8avbt49IXL5ZuRNiFge4YK2J3hF2ptu74ZICe46d4fgQ==}
 
+  '@module-federation/rsbuild-plugin@0.8.0':
+    resolution: {integrity: sha512-/CbaSRrpNtt6c5S3TuaQQ3CiUY7QfvaU0J33CyWkv8h0xKfYN6A0aMoxQvYi3z5qyTPth2V49YnlRUlQnaecPA==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      '@module-federation/enhanced': 0.8.0
+      '@rsbuild/core': 1.x
+
   '@module-federation/rspack@0.7.7':
     resolution: {integrity: sha512-VDp8sWwlf2ByhMM1Ab8yG+6chBsYGghZJpqQvbikpsEHXdnk1W+YnRBdMulimeAQLupyZn2QsS8VuWqj860UlQ==}
     peerDependencies:
@@ -217,6 +250,9 @@ packages:
   '@module-federation/sdk@0.7.7':
     resolution: {integrity: sha512-UMiw+WvgNwc4gw3X0aST7uP9qnfPaOoynY922Vl+JB30NT8MM8jAp/tAoyYARFbB5MNyZF0UicE8dDT2yYHgcw==}
 
+  '@module-federation/sdk@0.8.0':
+    resolution: {integrity: sha512-V2cNGO//sWCyHTaQ0iTcoslolqVgdBIBOkZVLyk9AkZ4B3CO49pe/TmIIaVs9jVg3GO+ZmmazBFKRkqdn2PdRg==}
+
   '@module-federation/third-party-dts-extractor@0.7.7':
     resolution: {integrity: sha512-5hCJVOy0I1UVexHBaYxObaT88vLG/pgua0i3IZL9thKUqugJAGR8HfvgGpd1LKUBbue41MAhysHSQjHp7HQukQ==}
 
@@ -225,6 +261,10 @@ packages:
 
   '@module-federation/webpack-bundler-runtime@0.7.7':
     resolution: {integrity: sha512-zqc41cCRUqwGwjAHoNPZUefEVnx/3xwzHrOSqlff7mwTmXcFh5Ua/AqJcwAPYF4bYOVvj87aQn8k71CgpbVb/g==}
+
+  '@remix-run/router@1.21.0':
+    resolution: {integrity: sha512-xfSkCAchbdG5PnbrKqFWwia4Bi61nH+wm8wLEqfHDyp7Y3dZzgqS2itV8i4gAq9pC2HsTpwyBC6Ds8VHZ96JlA==}
+    engines: {node: '>=14.0.0'}
 
   '@rsbuild/core@1.1.6':
     resolution: {integrity: sha512-u9Elj+xfgIPRD8rEXioE6xBJOdEGt0Pw1iJiGm/gU28FmH3QmOEFq2Jvo70RsOISNOy18kEM9y0RsqVgtVrpNw==}
@@ -631,6 +671,9 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
+  hoist-non-react-statics@3.3.2:
+    resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
+
   homedir-polyfill@1.0.3:
     resolution: {integrity: sha512-eSmmWE5bZTK2Nou4g0AI3zZ9rswp7GRKoKXS1BLUkvPviOqs4YTN1djQIqrXy9k5gEtdLPy86JjRwsNM9tnDcA==}
     engines: {node: '>=0.10.0'}
@@ -829,13 +872,37 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
+  react-error-boundary@4.1.2:
+    resolution: {integrity: sha512-GQDxZ5Jd+Aq/qUxbCm1UtzmL/s++V7zKgE8yMktJiCQXCCFZnMZh9ng+6/Ne6PjNSXH0L9CjeOEREfRnq6Duag==}
+    peerDependencies:
+      react: '>=16.13.1'
+
+  react-is@16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+
   react-refresh@0.14.2:
     resolution: {integrity: sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==}
     engines: {node: '>=0.10.0'}
 
+  react-router-dom@6.28.0:
+    resolution: {integrity: sha512-kQ7Unsl5YdyOltsPGl31zOjLrDv+m2VcIEcIHqYYD3Lp0UppLjrzcfJqDJwXxFw3TH/yvapbnUvPlAj7Kx5nbg==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+
+  react-router@6.28.0:
+    resolution: {integrity: sha512-HrYdIFqdrnhDw0PqG/AKjAqEqM7AvxCz0DQ4h2W8k6nqmc5uRBYDag0SBxx9iYz5G8gnuNVLzUe13wl9eAsXXg==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8'
+
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
     engines: {node: '>=0.10.0'}
+
+  regenerator-runtime@0.14.1:
+    resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
 
   require-from-string@2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
@@ -1023,6 +1090,10 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.0
 
+  '@babel/runtime@7.26.0':
+    dependencies:
+      regenerator-runtime: 0.14.1
+
   '@babel/types@7.26.0':
     dependencies:
       '@babel/helper-string-parser': 7.25.9
@@ -1065,6 +1136,13 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
+  '@loadable/component@5.16.4(react@18.3.1)':
+    dependencies:
+      '@babel/runtime': 7.26.0
+      hoist-non-react-statics: 3.3.2
+      react: 18.3.1
+      react-is: 16.13.1
+
   '@microsoft/api-extractor-model@7.30.0':
     dependencies:
       '@microsoft/tsdoc': 0.15.1
@@ -1105,6 +1183,18 @@ snapshots:
       '@module-federation/sdk': 0.7.7
       '@types/semver': 7.5.8
       semver: 7.6.3
+
+  '@module-federation/bridge-react@0.8.0(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.28.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@loadable/component': 5.16.4(react@18.3.1)
+      '@module-federation/bridge-shared': 0.8.0
+      '@module-federation/sdk': 0.8.0
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-error-boundary: 4.1.2(react@18.3.1)
+      react-router-dom: 6.28.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+
+  '@module-federation/bridge-shared@0.8.0': {}
 
   '@module-federation/data-prefetch@0.7.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -1184,6 +1274,12 @@ snapshots:
       - utf-8-validate
       - vue-tsc
 
+  '@module-federation/rsbuild-plugin@0.8.0(@module-federation/enhanced@0.7.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(@rsbuild/core@1.1.6)':
+    dependencies:
+      '@module-federation/enhanced': 0.7.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+      '@module-federation/sdk': 0.8.0
+      '@rsbuild/core': 1.1.6
+
   '@module-federation/rspack@0.7.7(typescript@5.7.2)':
     dependencies:
       '@module-federation/bridge-react-webpack-plugin': 0.7.7
@@ -1225,6 +1321,10 @@ snapshots:
     dependencies:
       isomorphic-rslog: 0.0.6
 
+  '@module-federation/sdk@0.8.0':
+    dependencies:
+      isomorphic-rslog: 0.0.6
+
   '@module-federation/third-party-dts-extractor@0.7.7':
     dependencies:
       find-pkg: 2.0.0
@@ -1240,6 +1340,8 @@ snapshots:
     dependencies:
       '@module-federation/runtime': 0.7.7
       '@module-federation/sdk': 0.7.7
+
+  '@remix-run/router@1.21.0': {}
 
   '@rsbuild/core@1.1.6':
     dependencies:
@@ -1630,6 +1732,10 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
+  hoist-non-react-statics@3.3.2:
+    dependencies:
+      react-is: 16.13.1
+
   homedir-polyfill@1.0.3:
     dependencies:
       parse-passwd: 1.0.0
@@ -1826,11 +1932,32 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
+  react-error-boundary@4.1.2(react@18.3.1):
+    dependencies:
+      '@babel/runtime': 7.26.0
+      react: 18.3.1
+
+  react-is@16.13.1: {}
+
   react-refresh@0.14.2: {}
+
+  react-router-dom@6.28.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@remix-run/router': 1.21.0
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-router: 6.28.0(react@18.3.1)
+
+  react-router@6.28.0(react@18.3.1):
+    dependencies:
+      '@remix-run/router': 1.21.0
+      react: 18.3.1
 
   react@18.3.1:
     dependencies:
       loose-envify: 1.4.0
+
+  regenerator-runtime@0.14.1: {}
 
   require-from-string@2.0.2: {}
 

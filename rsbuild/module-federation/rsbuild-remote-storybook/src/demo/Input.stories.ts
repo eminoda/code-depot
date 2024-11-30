@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 
-import { InputText } from "./InputText";
+import { Input } from "./Input";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Demo/InputText",
-  component: InputText,
+  title: "Demo/Input",
+  component: Input,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
@@ -29,6 +29,15 @@ const meta = {
     value: {
       control: "text",
       description: "初始化值",
+    },
+    type: {
+      type: "string",
+      control: {
+        type: "select",
+        labels: { "input-text": "文本框", "input-password": "密码框", "input-date": "日期" },
+      },
+      options: ["input-text", "input-password", "input-date"],
+      description: "形式",
     },
     size: {
       type: "string",
@@ -58,7 +67,7 @@ const meta = {
       fn();
     },
   },
-} satisfies Meta<typeof InputText>;
+} satisfies Meta<typeof Input>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -69,6 +78,9 @@ export const Default: Story = {
     type: "input-text",
     label: "名称",
     name: "name",
+    // onInput: (value) => {
+    //   console.log(value);
+    // },
     onInput: (value) => {
       console.log(value);
     },

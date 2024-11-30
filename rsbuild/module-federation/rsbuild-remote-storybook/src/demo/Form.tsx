@@ -1,6 +1,8 @@
 import { render as renderAmis } from "../amis";
 
-import { InputTextProps } from "./InputText";
+import { InputTextProps, InputText } from "./Input";
+
+import { Renderer, Form as AForm } from "amis";
 
 type FormItemProps = InputTextProps;
 
@@ -17,7 +19,6 @@ export interface FormProps {
 }
 
 export const Form = ({ size = "full", title, preview, api, mode = "normal", items }: FormProps) => {
-  console.log('bbb')
   return renderAmis({
     type: "page",
     body: {

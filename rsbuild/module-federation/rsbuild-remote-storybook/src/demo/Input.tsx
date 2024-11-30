@@ -1,7 +1,7 @@
 import { render as renderAmis } from "../amis";
 
-export interface InputTextProps {
-  type: "input-text" | "input-password";
+export interface SelectProps {
+  type: "input-text" | "input-password" | "input-date";
   label: string;
   name: string;
   size?: "xs" | "sm" | "md" | "lg" | "full";
@@ -10,11 +10,10 @@ export interface InputTextProps {
   onInput?: (data: { value: string; name: string }) => void;
 }
 
-export const InputText = ({ label, size = "md", name = "name", layout, value = "", ...props }: InputTextProps) => {
-  console.log('ccc') 
+export const Input = ({ type = "input-text", label, size = "md", name = "name", layout, value = "", ...props }: SelectProps) => {
   return renderAmis(
     {
-      type: "input-text",
+      type,
       label,
       size,
       name,
@@ -26,6 +25,7 @@ export const InputText = ({ label, size = "md", name = "name", layout, value = "
             {
               actionType: "custom",
               script: `
+              console.log(context.props);
               context.props.onInput&&context.props.onInput(event.data);
               event.stopPropagation();
               

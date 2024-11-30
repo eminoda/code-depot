@@ -10,7 +10,9 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
+    "@module-federation/bridge-react": "^0.8.0",
     "@module-federation/enhanced": "^0.7.7",
+    "@module-federation/rsbuild-plugin": "^0.8.0",
     "axios": "^1.7.8",
     "mobx": "^6.13.5",
     "mobx-react-lite": "^4.0.7",

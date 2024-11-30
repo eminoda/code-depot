@@ -6,7 +6,7 @@ import { dependencies as deps } from "./package.json";
 export default defineConfig({
   source: {
     entry: {
-      index: "./src/components/index.ts",
+      // index: "./src/components/index.ts",
       // index: "./src/index.ts",
     },
   },
@@ -18,9 +18,14 @@ export default defineConfig({
     // It is necessary to configure assetPrefix, and in the production build, you need to configure output.assetPrefix
     assetPrefix: "http://localhost:2003",
   },
+  output: {
+    // It is necessary to configure assetPrefix, and in the production build, you need to configure output.assetPrefix
+    assetPrefix: "http://localhost:8001",
+  },
+  plugins: [pluginReact()],
   performance: {
     chunkSplit: {
-      strategy: "split-by-module",
+      strategy: "all-in-one",
     },
     bundleAnalyze: {
       analyzerMode: "static",
@@ -29,12 +34,6 @@ export default defineConfig({
       reportFilename: `report-web.html`,
     },
   },
-
-  output: {
-    // It is necessary to configure assetPrefix, and in the production build, you need to configure output.assetPrefix
-    assetPrefix: "http://localhost:8001",
-  },
-  plugins: [pluginReact()],
   tools: {
     rspack: {
       // externals: {
@@ -42,21 +41,29 @@ export default defineConfig({
       //   xlsx: "xlsx",
       // },
       // externals: {
+      //   // amis: "amis",
+      // },
+      // externals: {
       //   react: "react",
       //   "react-dom": "react-dom",
-      //   "axios": "axios",
+      //   axios: "axios",
       // },
       plugins: [
         new ModuleFederationPlugin({
           name: "remote_storybook",
           exposes: {
-            // ".": "./src/stories/index.tsx",
             ".": "./src/components/index.ts",
+            "./Button": "./src/components/Button",
+            // "./Button": "./src/components/Button.tsx",
+            // "./List": "./src/components/List.tsx",
+            // "./Form": "./src/components/Form.tsx",
+            // "./InputText": "./src/components/InputText.tsx",
           },
           shared: {
-            react: { eager: false, singleton: true, requiredVersion: deps.react },
-            "react-dom": { eager: false, singleton: true, requiredVersion: deps["react-dom"] },
-            axios: { eager: false, singleton: true, requiredVersion: deps["axios"] },
+            react: { singleton: true, requiredVersion: deps.react },
+            "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
+            axios: { singleton: true, requiredVersion: deps["axios"] },
+            // amis: { singleton: true, requiredVersion: deps["amis"] },
           },
           // shared: ["react", "react-dom", "axios"],
         }),

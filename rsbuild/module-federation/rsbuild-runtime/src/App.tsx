@@ -22,11 +22,11 @@ const runtime = new Runtime({
 // @ts-ignore
 // const RemoteOneApp = lazy(() => runtime.loadRemote("remote_one/App"));
 
-const StoryBookLoader = runtime.loadRemote("remote_storybook");
+// const StoryBookLoader = runtime.loadRemote("remote_storybook");
 
-const Button = runtime.loadComponent(StoryBookLoader, "Button");
-const InputText = runtime.loadComponent(StoryBookLoader, "InputText");
-const Form = runtime.loadComponent(StoryBookLoader, "Form");
+const Button = runtime.loadComponent("remote_storybook/Button");
+// const InputText = runtime.loadComponent("remote_storybook/InputText");
+// const Form = runtime.loadComponent("remote_storybook/Form");
 
 // const Button = lazy(() => {
 //   return new Promise((resolve) => {
@@ -43,7 +43,7 @@ const Demo = () => {
       <div>
         <Button label="确定" level="info" onClick={() => {}} size="md" />
       </div>
-      <div>
+      {/* <div>
         <InputText label="姓名" />
       </div>
       <div>
@@ -67,7 +67,7 @@ const Demo = () => {
           }}
           size="full"
         />
-      </div>
+      </div> */}
     </div>
   );
 };
