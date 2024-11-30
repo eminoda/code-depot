@@ -15,13 +15,6 @@ const meta = {
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    name: {
-      control: "text",
-      description: "字段",
-      table: {
-        defaultValue: { summary: "name" },
-      },
-    },
     tabs: {
       type: "string",
       control: {

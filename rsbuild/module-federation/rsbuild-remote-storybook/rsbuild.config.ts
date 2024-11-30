@@ -54,8 +54,8 @@ export default defineConfig({
           exposes: {
             ".": "./src/components/index.ts",
             "./Button": "./src/components/Button",
-            // "./Button": "./src/components/Button.tsx",
-            // "./List": "./src/components/List.tsx",
+            "./List": "./src/components/List",
+            "./Tabs": "./src/components/Tabs",
             // "./Form": "./src/components/Form.tsx",
             // "./InputText": "./src/components/InputText.tsx",
           },
