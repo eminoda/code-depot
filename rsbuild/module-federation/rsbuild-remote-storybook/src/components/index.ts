@@ -7,11 +7,10 @@ import List from "./List";
 import Tabs from "./Tabs";
 // import { List } from "./List";
 // import { InputText } from "./InputText";
-// import { Form } from "./Form";
+import Form from "./Form";
 
 // export { Button } from "./Button";
 // export { InputText } from "./InputText";
-// export { Form } from "./Form";
 
-export default { Button, List, Tabs };
+export default { Button, List, Tabs, Form };
 // export default { List, Button, InputText, Form };

@@ -27,6 +27,9 @@ const runtime = new Runtime({
 const Button = runtime.loadComponent("remote_storybook/Button");
 const List = runtime.loadComponent("remote_storybook/List");
 const Tabs = runtime.loadComponent("remote_storybook/Tabs");
+const Form = runtime.loadComponent("remote_storybook/Form");
+const Controller = runtime.loadComponent("remote_storybook/Controller");
+const InputBox = runtime.loadComponent("remote_storybook/InputBox");
 // const Form = runtime.loadComponent("remote_storybook/Form");
 
 // const Button = lazy(() => {
@@ -42,6 +45,57 @@ const Demo = () => {
     <div id="demo">
       {/* <RemoteOneApp /> */}
       <div>
+        <Form
+          value={{ username: "123" }}
+          onSubmit={(args) => {
+            console.log("submit", args);
+          }}
+        >
+          {({ control, onSubmit, trigger }) => {
+            return (
+              <>
+                {/* <Controller
+                  name="username"
+                  label="username"
+                  mode="horizontal"
+                  control={control}
+                  isRequired
+                  rules={{
+                    required: true,
+                    maxLength: 5,
+                    minLength: 3,
+                  }}
+                  render={({ field, fieldState }) => {
+                    console.log(field, fieldState);
+                    return (
+                      <InputBox
+                        mode="inline"
+                        placeholder="username"
+                        {...field}
+                        errortext={fieldState.error}
+                        onChange={(value: string) => {
+                          field.onChange(value);
+                          trigger(field.name);
+                        }}
+                      />
+                    );
+                  }}
+                /> */}
+                <Controller
+                  name="submit"
+                  mode="horizontal"
+                  render={() => {
+                    return (
+                      <Button onClick={onSubmit} level="primary">
+                        提交
+                      </Button>
+                    );
+                  }}
+                />
+              </>
+            );
+          }}
+        </Form>
         <Button label="确定" level="info" onClick={() => {}} size="md" />
         <List
           columns={[

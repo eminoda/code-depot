@@ -6,6 +6,9 @@ import ReactDOM from "react-dom";
 
 import axios from "axios";
 import { FallbackErrorComp, FallbackComp } from "./support";
+
+import * as reactHookForm from 'react-hook-form';
+
 class Runtime {
   private el: string;
   constructor({
@@ -45,6 +48,11 @@ class Runtime {
         version: "18.3.1",
         scope: "default",
         lib: () => ReactDOM,
+      },
+      "react-hook-form": {
+        version: "7.53.2",
+        scope: "default",
+        lib: () => reactHookForm,
       },
     };
     init({ name: "runtime", remotes, shared });

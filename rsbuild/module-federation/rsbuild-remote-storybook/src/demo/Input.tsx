@@ -1,20 +1,23 @@
 import { render as renderAmis } from "../amis";
 
 export interface SelectProps {
-  type: "input-text" | "input-password" | "input-date";
+  type?: "input-text" | "input-password" | "input-date";
   label: string;
   name: string;
   size?: "xs" | "sm" | "md" | "lg" | "full";
+  placeholder: string;
   layout?: "horizontal" | "vertical" | "inline";
   value?: string;
   onInput?: (data: { value: string; name: string }) => void;
 }
 
-export const Input = ({ type = "input-text", label, size = "md", name = "name", layout, value = "", ...props }: SelectProps) => {
+export const Input = ({ type = "input-text", placeholder = "请输入", label, size = "md", name = "name", layout, value = "", ...props }: SelectProps) => {
+  console.log(props);
   return renderAmis(
     {
       type,
       label,
+      placeholder,
       size,
       name,
       value,
@@ -34,6 +37,7 @@ export const Input = ({ type = "input-text", label, size = "md", name = "name", 
           ],
         },
       },
+      ...props,
     },
     { onInput: props.onInput }
   );

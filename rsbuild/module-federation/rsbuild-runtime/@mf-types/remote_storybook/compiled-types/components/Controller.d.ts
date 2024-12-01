@@ -9,7 +9,7 @@ declare const _default: () => {
         moduleName: string;
         dom: HTMLElement;
     }): Promise<void>;
-    rawComponent: import("react").ComponentType<import("../demo/List").ListProps>;
-    __BRIDGE_FN__: (_args: import("../demo/List").ListProps) => void;
+    rawComponent: import("react").ComponentType<import("amis-ui/lib/components/FormField").ControllerProps>;
+    __BRIDGE_FN__: (_args: import("amis-ui/lib/components/FormField").ControllerProps) => void;
 };
 export default _default;

@@ -18,6 +18,7 @@
     "mobx-react-lite": "^4.0.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.2",
     "vue": "^3.5.12"
   },
   "devDependencies": {
