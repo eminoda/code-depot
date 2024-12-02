@@ -1,6 +1,40 @@
 import React, { lazy, ReactElement, useEffect } from "react";
 import Runtime from "./runtime.ts";
+import "amis/lib/themes/cxd.css";
+import "amis/lib/helper.css";
+import "amis/sdk/iconfont.css";
+import axios from "axios";
 
+import ReactDOM from "react-dom";
+
+const shared = {
+  // version < requireVersion
+  // [ Federation Runtime ] Warn Version 1.6.8 from runtime of shared singleton module axios does not satisfy the requirement of runtime which needs ^1.7.8)
+  axios: {
+    version: "1.6.8",
+    scope: "default",
+    lib: () => axios,
+  },
+  /**
+   * react singleon
+   * [ Federation Runtime ] Warn Version 18.0.0 from runtime of shared singleton module react does not satisfy the requirement of remote_storybook which needs ^18.3.0)
+   * react.development.js:209 Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+   * 1. You might have mismatching versions of React and the renderer (such as React DOM)
+   * 2. You might be breaking the Rules of Hooks
+   * 3. You might have more than one copy of React in the same app
+   * See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.
+   */
+  react: {
+    version: "18.3.1",
+    scope: "default",
+    lib: () => React,
+  },
+  "react-dom": {
+    version: "18.3.1",
+    scope: "default",
+    lib: () => ReactDOM,
+  },
+};
 const runtime = new Runtime({
   el: "#demoRef",
   remotes: [
@@ -18,29 +52,18 @@ const runtime = new Runtime({
       entry: "http://127.0.0.1:2003/mf-manifest.json",
     },
   ],
+  shared,
 });
 // @ts-ignore
 // const RemoteOneApp = lazy(() => runtime.loadRemote("remote_one/App"));
 
 // const StoryBookLoader = runtime.loadRemote("remote_storybook");
 
-
-const Button = runtime.loadComponent("remote_storybook/Button");
 const Input = runtime.loadComponent("remote_storybook/Input");
-const List = runtime.loadComponent("remote_storybook/List");
-const Tabs = runtime.loadComponent("remote_storybook/Tabs");
-const Form = runtime.loadComponent("remote_storybook/Form");
-const Controller = runtime.loadComponent("remote_storybook/Controller");
-const InputBox = runtime.loadComponent("remote_storybook/InputBox");
-// const Form = runtime.loadComponent("remote_storybook/Form");
-
-// const Button = lazy(() => {
-//   return new Promise((resolve) => {
-//     StoryBookModule.then((module) => {
-//       resolve({ default: module.default.Button });
-//     });
-//   });
-// });
+const Button = runtime.loadComponent<React.ComponentType<import("../@mf-types/remote_storybook/compiled-types/demo/Button").ButtonProps>>("remote_storybook/Button");
+const List = runtime.loadComponent<React.ComponentType<import("../@mf-types/remote_storybook/compiled-types/demo/List").ListProps>>("remote_storybook/List");
+const Form = runtime.loadComponent<React.ComponentType<import("../@mf-types/remote_storybook/compiled-types/demo/Form").FormProps>>("remote_storybook/Form");
+const Tabs = runtime.loadComponent<React.ComponentType<import("../@mf-types/remote_storybook/compiled-types/demo/Tabs").TabsProps>>("remote_storybook/Tabs");
 
 const Demo = () => {
   return (
@@ -182,6 +205,7 @@ const Demo = () => {
         <h2>Tabs</h2>
         <hr />
         <Tabs
+          type="tabs"
           tabs={[
             { title: "选项1", tab: "1" },
             { title: "选项2", tab: "2" },

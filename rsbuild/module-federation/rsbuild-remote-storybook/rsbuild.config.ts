@@ -37,13 +37,6 @@ export default defineConfig({
   tools: {
     rspack: {
       // externals: {
-      //   echarts: "echarts",
-      //   xlsx: "xlsx",
-      // },
-      // externals: {
-      //   // amis: "amis",
-      // },
-      // externals: {
       //   react: "react",
       //   "react-dom": "react-dom",
       //   axios: "axios",
@@ -65,10 +58,9 @@ export default defineConfig({
             react: { singleton: true, requiredVersion: deps.react },
             "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
             axios: { singleton: true, requiredVersion: deps["axios"] },
-            "react-hook-form": { eager: true, singleton: true, requiredVersion: deps["react-hook-form"] },
-            // amis: { singleton: true, requiredVersion: deps["amis"] },
+            amis: { singleton: true, requiredVersion: deps["amis"] },
+            // "react-hook-form": { eager: true, singleton: true, requiredVersion: deps["react-hook-form"] },
           },
-          // shared: ["react", "react-dom", "axios"],
         }),
       ],
     },

@@ -4,6 +4,7 @@ import { pluginReact } from "@rsbuild/plugin-react";
 export default defineConfig({
   html: {
     template: "./static/index.html",
+    title: "hello",
   },
   tools: {
     rspack: {

@@ -25,6 +25,7 @@ export default defineConfig({
               singleton: true,
             },
             "react-dom": {
+              eager: true,
               singleton: true,
             },
           },

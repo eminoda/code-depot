@@ -1,4 +1,3 @@
-import React from "react";
 export const FallbackErrorComp = (info: any) => {
   return (
     <div>

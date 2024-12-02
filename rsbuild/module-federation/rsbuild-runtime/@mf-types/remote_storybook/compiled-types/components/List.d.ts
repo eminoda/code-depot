@@ -1,6 +1,3 @@
-import "amis/lib/themes/cxd.css";
-import "amis/lib/helper.css";
-import "amis/sdk/iconfont.css";
 declare const _default: () => {
     render(info: import("@module-federation/bridge-react").RenderFnParams & {
         [key: string]: unknown;

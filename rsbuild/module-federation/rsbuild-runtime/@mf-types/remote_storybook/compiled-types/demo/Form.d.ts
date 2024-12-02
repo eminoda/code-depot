@@ -1,4 +1,4 @@
-import { InputProps } from "../Input.ts";
+import { InputProps } from "./Input.ts";
 export interface FormProps {
     title: string;
     preview?: {

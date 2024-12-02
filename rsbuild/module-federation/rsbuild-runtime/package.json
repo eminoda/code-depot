@@ -13,6 +13,7 @@
     "@module-federation/bridge-react": "^0.8.0",
     "@module-federation/enhanced": "^0.7.7",
     "@module-federation/rsbuild-plugin": "^0.8.0",
+    "amis": "6.9.0-rc.10",
     "axios": "^1.7.8",
     "mobx": "^6.13.5",
     "mobx-react-lite": "^4.0.7",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.3",
     "@microsoft/api-extractor": "^7.48.0",
+    "@module-federation/native-federation-typescript": "^0.6.0",
     "@rsbuild/core": "^1.1.4",
     "@rsbuild/plugin-react": "^1.0.7",
     "@types/react": "^18.3.12",

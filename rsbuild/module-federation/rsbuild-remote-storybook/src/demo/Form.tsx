@@ -6,8 +6,8 @@
 
 // import { Button, InputTable, Form as AForm, Radios, Controller, InputBox } from "amis-ui";
 
-import { InputProps } from "../Input.ts";
-import { render as renderAmis } from "../../amis";
+import { InputProps } from "./Input.ts";
+import { render as renderAmis } from "../amis";
 
 export interface FormProps {
   title: string;

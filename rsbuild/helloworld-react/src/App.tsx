@@ -1,118 +1,52 @@
 import "./App.css";
-import { useEffect } from "react";
 import runtime from "runtime";
 
+import React from "react";
+import ReactDOM from "react-dom";
+import axios from "axios";
+
+const runtimeIns = new runtime({
+  el: ".content",
+  remotes: [
+    {
+      name: "remote_one",
+      entry: "http://localhost:2001/mf-manifest.json",
+    },
+    // {
+    //   name: "remote_storybook",
+    //   entry: "http://localhost:2003/mf-manifest.json",
+    // },
+  ],
+  shared: {
+    axios: {
+      version: "1.6.8",
+      scope: "default",
+      // lib: () => axios,
+    },
+    react: {
+      version: "18.3.1",
+      scope: "default",
+      // lib: () => React,
+    },
+    "react-dom": {
+      version: "18.3.1",
+      scope: "default",
+      // lib: () => ReactDOM,
+    },
+  },
+});
+
+const RemoteOneApp = runtimeIns.loadComponent("remote_one/App");
+// const Button = runtimeIns.loadComponent("remote_storybook/Button");
+
+// console.log(Button);
 const App = () => {
-  useEffect(() => {
-    console.log(runtime)
-    const Runtime = runtime.default;
-
-    const columns = [
-      {
-        name: "id",
-        label: "I123D",
-      },
-      {
-        name: "engine",
-        label: "Rendering engine",
-      },
-      {
-        name: "browser",
-        label: "Browser",
-      },
-      {
-        name: "platform",
-        label: "Platform(s)",
-      },
-      {
-        name: "version",
-        label: "Engine version",
-      },
-      {
-        name: "grade",
-        label: "CSS grade",
-      },
-      {
-        type: "operation",
-        label: "操作",
-        buttons: [
-          {
-            label: "详情",
-            type: "button",
-            level: "link",
-            actionType: "dialog",
-            dialog: {
-              title: "查看详情",
-              body: {
-                type: "form",
-                body: [
-                  {
-                    type: "input-text",
-                    name: "engine",
-                    label: "Engine",
-                  },
-                  {
-                    type: "input-text",
-                    name: "browser",
-                    label: "Browser",
-                  },
-                  {
-                    type: "input-text",
-                    name: "platform",
-                    label: "platform",
-                  },
-                  {
-                    type: "input-text",
-                    name: "version",
-                    label: "version",
-                  },
-                  {
-                    type: "control",
-                    label: "grade",
-                    body: {
-                      type: "tag",
-                      label: "${grade}",
-                      displayMode: "normal",
-                      color: "active",
-                    },
-                  },
-                ],
-              },
-            },
-          },
-          {
-            label: "删除",
-            type: "button",
-            level: "link",
-            className: "text-danger",
-            disabledOn: "this.grade === 'A'",
-          },
-        ],
-      },
-    ];
-
-    new Runtime({
-      el: ".content",
-      remotes: [
-        {
-          name: "remote_one",
-          entry: "http://localhost:2001/mf-manifest.json",
-        },
-        {
-          name: "remote_two",
-          entry: "http://localhost:2002/mf-manifest.json",
-        },
-        {
-          name: "remote_storybook",
-          entry: "http://localhost:2003/mf-manifest.json",
-        },
-      ],
-    }).loadRemote("remote_storybook", "List", { columns });
-  }, []);
   return (
     <div className="content">
       <h1>Rsbuild with React</h1>
       <p>Start building amazing things with Rsbuild.</p>
+      <RemoteOneApp />
+      {/* <Button label="确定" level="info" onClick={() => {}} size="md" /> */}
     </div>
   );
 };
