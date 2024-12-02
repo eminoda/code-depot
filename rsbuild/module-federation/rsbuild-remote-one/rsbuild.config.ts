@@ -1,9 +1,18 @@
 import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
+import path from "path";
 
 export default defineConfig({
   html: { title: "rsbuild-remote-one" },
+  source: {
+    entry: {
+      index: "./src/export-app.ts",
+    },
+    alias: {
+      "react-router-dom$": "@module-federation/bridge-react/dist/router-v6.es.js",
+    },
+  },
   server: {
     port: 2001,
   },
@@ -18,14 +27,13 @@ export default defineConfig({
         new ModuleFederationPlugin({
           name: "remote_one",
           exposes: {
-            "./App": "./src/App",
+            "./App": "./src/export-app",
           },
           shared: {
             react: {
               singleton: true,
             },
             "react-dom": {
-              eager: true,
               singleton: true,
             },
           },

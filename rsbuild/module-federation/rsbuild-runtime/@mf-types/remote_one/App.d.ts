@@ -1,2 +1,2 @@
-export * from './compiled-types/App';
-export { default } from './compiled-types/App';
+export * from './compiled-types/export-app';
+export { default } from './compiled-types/export-app';

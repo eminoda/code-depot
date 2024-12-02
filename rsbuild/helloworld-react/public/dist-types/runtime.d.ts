@@ -8,12 +8,14 @@ declare class Runtime {
         }[];
         shared?: {
             [key: string]: {
+                scope?: string;
                 version?: string;
                 requiredVersion?: string;
                 lib?: () => void;
             };
         };
     });
+    lazyLoadRemote(component: string): Promise<unknown>;
     loadComponent<T>(component: string): T;
 }
 export default Runtime;

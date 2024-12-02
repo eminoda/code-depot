@@ -22,6 +22,7 @@ class Runtime {
     }[];
     shared?: {
       [key: string]: {
+        scope?: string;
         version?: string;
         requiredVersion?: string;
         lib?: () => void;
@@ -32,6 +33,14 @@ class Runtime {
     init({ name: "runtime", remotes, shared });
   }
 
+  lazyLoadRemote(component: string) {
+    return new Promise((resolve) => {
+      loadRemote(component).then((module) => {
+        // @ts-ignore
+        resolve(module);
+      });
+    });
+  }
   // loadRemote(remoteModule: string, json: any) {
   //   const asyncComponent = lazy(
   //     () =>

@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@module-federation/bridge-react": "^0.8.0",
-    "@module-federation/enhanced": "^0.7.7",
+    "@module-federation/enhanced": "^0.8.0",
     "@module-federation/rsbuild-plugin": "^0.8.0",
     "amis": "6.9.0-rc.10",
     "axios": "^1.7.8",

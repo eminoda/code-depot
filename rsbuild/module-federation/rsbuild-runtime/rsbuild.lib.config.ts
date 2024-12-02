@@ -1,6 +1,6 @@
 import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
-import { pluginDts } from "rsbuild-plugin-dts";
+// import { pluginDts } from "rsbuild-plugin-dts";
 
 export default defineConfig({
   source: {
@@ -15,9 +15,9 @@ export default defineConfig({
   },
   plugins: [
     pluginReact(),
-    pluginDts({
-      distPath: "./dist/dist-types",
-    }),
+    // pluginDts({
+    //   distPath: "./dist/dist-types",
+    // }),
   ],
   tools: {
     rspack: {

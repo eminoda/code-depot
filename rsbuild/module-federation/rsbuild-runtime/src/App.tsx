@@ -4,17 +4,18 @@ import "amis/lib/themes/cxd.css";
 import "amis/lib/helper.css";
 import "amis/sdk/iconfont.css";
 import axios from "axios";
+import { init, loadRemote } from "@module-federation/enhanced/runtime";
 
 import ReactDOM from "react-dom";
 
 const shared = {
   // version < requireVersion
   // [ Federation Runtime ] Warn Version 1.6.8 from runtime of shared singleton module axios does not satisfy the requirement of runtime which needs ^1.7.8)
-  axios: {
-    version: "1.6.8",
-    scope: "default",
-    lib: () => axios,
-  },
+  // axios: {
+  //   version: "1.6.8",
+  //   scope: "default",
+  //   lib: () => axios,
+  // },
   /**
    * react singleon
    * [ Federation Runtime ] Warn Version 18.0.0 from runtime of shared singleton module react does not satisfy the requirement of remote_storybook which needs ^18.3.0)
@@ -38,39 +39,38 @@ const shared = {
 const runtime = new Runtime({
   el: "#demoRef",
   remotes: [
-    // {
-    //   name: "remote_one",
-    //   entry: "http://localhost:2001/mf-manifest.json",
-    // },
+    {
+      name: "remote_one",
+      entry: "http://localhost:2001/mf-manifest.json",
+    },
     // {
     //   name: "remote_two",
     //   entry: "http://localhost:2002/mf-manifest.json",
     // },
-    {
-      name: "remote_storybook",
-      // entry: "http://127.0.0.1:2003/mf-manifest.json",
-      entry: "http://127.0.0.1:2003/mf-manifest.json",
-    },
+    // {
+    //   name: "remote_storybook",
+    //   entry: "http://127.0.0.1:2003/mf-manifest.json",
+    // },
   ],
-  shared,
+  shared: {},
 });
+
 // @ts-ignore
-// const RemoteOneApp = lazy(() => runtime.loadRemote("remote_one/App"));
+// const RemoteOneApp = lazy(() => runtime.lazyLoadRemote("remote_one/App"));
+const RemoteOneApp = runtime.loadComponent("remote_one/App");
 
-// const StoryBookLoader = runtime.loadRemote("remote_storybook");
-
-const Input = runtime.loadComponent("remote_storybook/Input");
-const Button = runtime.loadComponent<React.ComponentType<import("../@mf-types/remote_storybook/compiled-types/demo/Button").ButtonProps>>("remote_storybook/Button");
-const List = runtime.loadComponent<React.ComponentType<import("../@mf-types/remote_storybook/compiled-types/demo/List").ListProps>>("remote_storybook/List");
-const Form = runtime.loadComponent<React.ComponentType<import("../@mf-types/remote_storybook/compiled-types/demo/Form").FormProps>>("remote_storybook/Form");
-const Tabs = runtime.loadComponent<React.ComponentType<import("../@mf-types/remote_storybook/compiled-types/demo/Tabs").TabsProps>>("remote_storybook/Tabs");
+// const Input = runtime.loadComponent("remote_storybook/Input");
+// const Button = runtime.loadComponent<React.ComponentType<import("../@mf-types/remote_storybook/compiled-types/demo/Button").ButtonProps>>("remote_storybook/Button");
+// const List = runtime.loadComponent<React.ComponentType<import("../@mf-types/remote_storybook/compiled-types/demo/List").ListProps>>("remote_storybook/List");
+// const Form = runtime.loadComponent<React.ComponentType<import("../@mf-types/remote_storybook/compiled-types/demo/Form").FormProps>>("remote_storybook/Form");
+// const Tabs = runtime.loadComponent<React.ComponentType<import("../@mf-types/remote_storybook/compiled-types/demo/Tabs").TabsProps>>("remote_storybook/Tabs");
 
 const Demo = () => {
   return (
     <div id="demo">
-      {/* <RemoteOneApp /> */}
+      <RemoteOneApp />
 
-      <div>
+      {/* <div>
         <h2>Form</h2>
         <hr />
         <Form
@@ -211,7 +211,7 @@ const Demo = () => {
             { title: "选项2", tab: "2" },
           ]}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
