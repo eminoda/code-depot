@@ -104,9 +104,9 @@ class Runtime {
   //   );
   // }
 
-  loadComponent(component: string) {
+  loadComponent<T>(component: string) {
     return createRemoteComponent({
-      loader: () => loadRemote(component),
+      loader: () => loadRemote<T>(component),
       fallback: FallbackErrorComp,
       loading: FallbackComp,
     });

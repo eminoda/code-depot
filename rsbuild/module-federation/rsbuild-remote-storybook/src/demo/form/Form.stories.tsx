@@ -66,84 +66,35 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   args: {
-    value: { username: "12" },
-    onSubmit: (args) => {
-      console.log("submit", args);
-    },
-    children: ({ control, onSubmit, trigger }) => {
-      return (
-        <>
-          <Controller
-            name="username"
-            label="username"
-            mode="horizontal"
-            control={control}
-            isRequired
-            rules={{
-              required: true,
-              maxLength: 5,
-              minLength: 3,
-            }}
-            render={({ field, fieldState }) => {
-              console.log(field, fieldState);
-              return (
-                <InputBox
-                  mode="inline"
-                  placeholder="username"
-                  {...field}
-                  errortext={fieldState.error}
-                  onChange={(value: string) => {
-                    field.onChange(value);
-                    trigger(field.name);
-                  }}
-                />
-              );
-            }}
-          />
-          <Controller
-            name="jobs"
-            label="jobs"
-            mode="horizontal"
-            control={control}
-            isRequired
-            render={({ field, fieldState }) => {
-              return (
-                <Select
-                  {...field}
-                  mode="full"
-                  options={[
-                    {
-                      label: "A",
-                      value: "a",
-                    },
-                    {
-                      label: "B",
-                      value: "b",
-                    },
-                    {
-                      label: "C",
-                      value: "c",
-                    },
-                  ]}
-                  placeholder="请输入"
-                  errortext={fieldState.error}
-                />
-              );
-            }}
-          />
-          <Controller
-            name="submit"
-            mode="horizontal"
-            render={() => {
-              return (
-                <Button onClick={onSubmit} level="primary">
-                  提交
-                </Button>
-              );
-            }}
-          />
-        </>
-      );
-    },
+    title: "表单标题",
+    api: "/amis/api/mock2/form/saveForm",
+    items: [
+      {
+        type: "input-text",
+        name: "name",
+        label: "姓名：",
+      },
+      {
+        name: "email",
+        type: "input-email",
+        label: "邮箱：",
+      },
+      {
+        name: "mycustom",
+        asFormItem: true,
+        // @ts-ignore
+        children({ value, onChange, data }) {
+          return (
+            <div>
+              <p>这个是个自定义组件</p>
+              <p>当前值：{value}</p>
+              <a className="btn btn-default" onClick={() => onChange(Math.round(Math.random() * 10000))}>
+                随机修改
+              </a>
+            </div>
+          );
+        },
+      },
+    ],
   },
 };

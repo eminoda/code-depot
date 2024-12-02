@@ -52,9 +52,9 @@ export default defineConfig({
         new ModuleFederationPlugin({
           name: "remote_storybook",
           exposes: {
-            ".": "./src/components/index.ts",
             "./Button": "./src/components/Button",
             "./List": "./src/components/List",
+            "./Input": "./src/components/Input",
             "./Tabs": "./src/components/Tabs",
             "./Form": "./src/components/Form.ts",
             "./Controller": "./src/components/Controller.ts",

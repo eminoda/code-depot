@@ -24,7 +24,9 @@ const runtime = new Runtime({
 
 // const StoryBookLoader = runtime.loadRemote("remote_storybook");
 
+
 const Button = runtime.loadComponent("remote_storybook/Button");
+const Input = runtime.loadComponent("remote_storybook/Input");
 const List = runtime.loadComponent("remote_storybook/List");
 const Tabs = runtime.loadComponent("remote_storybook/Tabs");
 const Form = runtime.loadComponent("remote_storybook/Form");
@@ -44,59 +46,52 @@ const Demo = () => {
   return (
     <div id="demo">
       {/* <RemoteOneApp /> */}
+
       <div>
+        <h2>Form</h2>
+        <hr />
         <Form
-          value={{ username: "123" }}
-          onSubmit={(args) => {
-            console.log("submit", args);
-          }}
-        >
-          {({ control, onSubmit, trigger }) => {
-            return (
-              <>
-                {/* <Controller
-                  name="username"
-                  label="username"
-                  mode="horizontal"
-                  control={control}
-                  isRequired
-                  rules={{
-                    required: true,
-                    maxLength: 5,
-                    minLength: 3,
-                  }}
-                  render={({ field, fieldState }) => {
-                    console.log(field, fieldState);
-                    return (
-                      <InputBox
-                        mode="inline"
-                        placeholder="username"
-                        {...field}
-                        errortext={fieldState.error}
-                        onChange={(value: string) => {
-                          field.onChange(value);
-                          trigger(field.name);
-                        }}
-                      />
-                    );
-                  }}
-                /> */}
-                <Controller
-                  name="submit"
-                  mode="horizontal"
-                  render={() => {
-                    return (
-                      <Button onClick={onSubmit} level="primary">
-                        提交
-                      </Button>
-                    );
-                  }}
-                />
-              </>
-            );
-          }}
-        </Form>
+          title="表单标题"
+          api="/amis/api/mock2/form/saveForm"
+          items={[
+            {
+              type: "input-text",
+              name: "name",
+              label: "姓名：",
+            },
+            {
+              name: "email",
+              type: "input-email",
+              label: "邮箱：",
+            },
+            {
+              name: "mycustom",
+              asFormItem: true,
+              children({ value, onChange, data }) {
+                return (
+                  <div>
+                    <p>这个是个自定义组件</p>
+                    <p>当前值：{value}</p>
+                    <a className="btn btn-default" onClick={() => onChange(Math.round(Math.random() * 10000))}>
+                      随机修改
+                    </a>
+                  </div>
+                );
+              },
+            },
+          ]}
+        />
+      </div>
+
+      <div>
+        <h2>Button</h2>
+        <hr />
         <Button label="确定" level="info" onClick={() => {}} size="md" />
+      </div>
+
+      <div>
+        <h2>List</h2>
+        <hr />
         <List
           columns={[
             {
@@ -182,6 +177,10 @@ const Demo = () => {
             },
           ]}
         />
+      </div>
+      <div>
+        <h2>Tabs</h2>
+        <hr />
         <Tabs
           tabs={[
             { title: "选项1", tab: "1" },
@@ -189,31 +188,6 @@ const Demo = () => {
           ]}
         />
       </div>
-      {/* <div>
-        <InputText label="姓名" />
-      </div>
-      <div>
-        <Form
-          api="/amis/api/mock2/form/saveForm"
-          items={[
-            {
-              label: "姓名：",
-              name: "name",
-              type: "input-text",
-            },
-            {
-              label: "密码",
-              name: "password",
-              type: "input-password",
-            },
-          ]}
-          preview={{
-            api: "/amis/api/mock2/form/initData",
-            show: false,
-          }}
-          size="full"
-        />
-      </div> */}
     </div>
   );
 };

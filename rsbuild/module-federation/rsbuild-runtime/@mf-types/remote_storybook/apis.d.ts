@@ -1,3 +1,3 @@
 
-    export type RemoteKeys = 'remote_storybook';
-    type PackageType<T> = T extends 'remote_storybook' ? typeof import('remote_storybook') :any;
+    export type RemoteKeys = 'remote_storybook/Button' | 'remote_storybook/List' | 'remote_storybook/Input' | 'remote_storybook/Tabs' | 'remote_storybook/Form' | 'remote_storybook/Controller' | 'remote_storybook/InputBox';
+    type PackageType<T> = T extends 'remote_storybook/InputBox' ? typeof import('remote_storybook/InputBox') :T extends 'remote_storybook/Controller' ? typeof import('remote_storybook/Controller') :T extends 'remote_storybook/Form' ? typeof import('remote_storybook/Form') :T extends 'remote_storybook/Tabs' ? typeof import('remote_storybook/Tabs') :T extends 'remote_storybook/Input' ? typeof import('remote_storybook/Input') :T extends 'remote_storybook/List' ? typeof import('remote_storybook/List') :T extends 'remote_storybook/Button' ? typeof import('remote_storybook/Button') :any;

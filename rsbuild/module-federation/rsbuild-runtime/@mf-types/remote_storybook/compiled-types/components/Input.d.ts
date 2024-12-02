@@ -9,7 +9,7 @@ declare const _default: () => {
         moduleName: string;
         dom: HTMLElement;
     }): Promise<void>;
-    rawComponent: import("react").ComponentType<import("../demo/form/Form.tsx").FormProps>;
-    __BRIDGE_FN__: (_args: import("../demo/form/Form.tsx").FormProps) => void;
+    rawComponent: import("react").ComponentType<import("../demo/Input.tsx").InputProps>;
+    __BRIDGE_FN__: (_args: import("../demo/Input.tsx").InputProps) => void;
 };
 export default _default;
