@@ -19,6 +19,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "files": ["./src/runtime.ts"],
+  "include": ["src"],
   "exclude": ["**/*.test.ts", "**/*.spec.ts"]
 }

@@ -9,9 +9,9 @@ export default defineConfig({
     entry: {
       index: "./src/export-app.ts",
     },
-    alias: {
-      "react-router-dom$": "@module-federation/bridge-react/dist/router-v6.es.js",
-    },
+    // alias: {
+    //   "react-router-dom$": "@module-federation/bridge-react/dist/router-v6.es.js",
+    // },
   },
   server: {
     port: 2001,
@@ -19,6 +19,10 @@ export default defineConfig({
   dev: {
     // It is necessary to configure assetPrefix, and in the production build, you need to configure output.assetPrefix
     assetPrefix: "http://localhost:2001",
+  },
+  output: {
+    // It is necessary to configure assetPrefix, and in the production build, you need to configure output.assetPrefix
+    assetPrefix: "http://localhost:3000/remote_one",
   },
   plugins: [pluginReact()],
   tools: {
@@ -33,7 +37,7 @@ export default defineConfig({
             react: {
               singleton: true,
             },
-            "react-dom": {
+            "react-dom/client": {
               singleton: true,
             },
           },

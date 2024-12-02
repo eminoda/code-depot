@@ -5,13 +5,16 @@ import { pluginReact } from "@rsbuild/plugin-react";
 export default defineConfig({
   source: {
     entry: {
-      runtime: "./src/runtime.ts",
+      sdk: "./src/runtime-entry.ts",
     },
   },
   performance: {
     chunkSplit: {
       strategy: "all-in-one",
     },
+  },
+  output: {
+    assetPrefix: "/runtime/",
   },
   plugins: [
     pluginReact(),
@@ -22,10 +25,9 @@ export default defineConfig({
   tools: {
     rspack: {
       output: {
-        library: "runtime",
-        libraryTarget: "umd",
-        filename: "runtime.js",
-        globalObject: "this",
+        clean: true,
+        filename: "[name].bundle.js",
+        library: 'RuntimeLib',
       },
     },
   },

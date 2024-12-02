@@ -9,7 +9,7 @@ export default defineConfig({
   tools: {
     rspack: {
       externals: {
-        runtime: "runtime",
+        "RuntimeLib": "RuntimeLib",
       },
     },
   },
