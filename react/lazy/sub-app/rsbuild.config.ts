@@ -14,7 +14,8 @@ export default defineConfig({
   tools: {
     rspack: {
       externals: {
-        SubApp: "SubApp",
+        // react: "React",
+        // "react-dom": "ReactDOM",
       },
       output: {
         path: path.resolve("../main-app/public/subapp/"),

@@ -7,4 +7,12 @@ export default defineConfig({
     title: "hello",
   },
   plugins: [pluginReact()],
+  tools: {
+    rspack: {
+      externals: {
+        // react: "React",
+        // "react-dom": "ReactDOM",
+      },
+    },
+  },
 });

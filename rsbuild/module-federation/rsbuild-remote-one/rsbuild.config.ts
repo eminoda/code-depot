@@ -1,6 +1,7 @@
 import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
-import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
+import { pluginModuleFederation } from "@module-federation/rsbuild-plugin";
+// import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 import path from "path";
 
 export default defineConfig({
@@ -24,24 +25,36 @@ export default defineConfig({
     // It is necessary to configure assetPrefix, and in the production build, you need to configure output.assetPrefix
     assetPrefix: "http://localhost:3000/remote_one",
   },
-  plugins: [pluginReact()],
+  plugins: [
+    pluginReact(),
+    pluginModuleFederation({
+      name: "remote_one",
+      exposes: {
+        "./App": "./src/export-app",
+        // "./App": "./src/App.tsx",
+      },
+      shared: ["react", "react-dom"],
+    }),
+  ],
   tools: {
     rspack: {
       plugins: [
-        new ModuleFederationPlugin({
-          name: "remote_one",
-          exposes: {
-            "./App": "./src/export-app",
-          },
-          shared: {
-            react: {
-              singleton: true,
-            },
-            "react-dom/client": {
-              singleton: true,
-            },
-          },
-        }),
+        // new ModuleFederationPlugin({
+        //   name: "remote_one",
+        //   exposes: {
+        //     "./App": "./src/export-app",
+        //     // "./App": "./src/App.tsx",
+        //   },
+        //   shared: ["react", "react-dom"],
+        //   // shared: {
+        //   //   react: {
+        //   //     singleton: true,
+        //   //   },
+        //   //   "react-dom/client": {
+        //   //     singleton: true,
+        //   //   },
+        //   // },
+        // }),
       ],
     },
   },

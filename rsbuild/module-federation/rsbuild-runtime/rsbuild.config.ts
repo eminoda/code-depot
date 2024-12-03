@@ -14,12 +14,12 @@ export default defineConfig({
       // },
 
       plugins: [
-        new ModuleFederationPlugin({
-          name: "host",
-          remotes: {
-            remote_storybook: "remote_storybook@http://127.0.0.1:2003/mf-manifest.json",
-          },
-        }),
+        // new ModuleFederationPlugin({
+        //   name: "host",
+        //   remotes: {
+        //     remote_storybook: "remote_storybook@http://127.0.0.1:2003/mf-manifest.json",
+        //   },
+        // }),
       ],
     },
   },
