@@ -13,7 +13,7 @@ export default defineConfig({
   },
   output: {
     // It is necessary to configure assetPrefix, and in the production build, you need to configure output.assetPrefix
-    assetPrefix: "http://localhost:2003",
+    assetPrefix: "http://localhost:3000/storybook/",
   },
   tools: {
     postcss: {

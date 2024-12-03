@@ -11,8 +11,8 @@ export default defineConfig({
     rspack: {
       externals: {
         RuntimeLib: "RuntimeLib",
-        // react: "React",
-        // "react-dom": "ReactDOM",
+        react: "React",
+        "react-dom": "ReactDOM",
         // "react-router-dom": "ReactRouterDOM",
       },
     },

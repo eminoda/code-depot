@@ -20,27 +20,27 @@ export default defineConfig({
   },
   output: {
     // It is necessary to configure assetPrefix, and in the production build, you need to configure output.assetPrefix
-    assetPrefix: "http://localhost:8001",
+    assetPrefix: "http://localhost:3000/storybook/",
   },
   plugins: [pluginReact()],
   performance: {
     chunkSplit: {
       strategy: "all-in-one",
     },
-    bundleAnalyze: {
-      analyzerMode: "static",
-      openAnalyzer: false,
-      // Distinguish by environment names, such as `web`, `node`, etc.
-      reportFilename: `report-web.html`,
-    },
+    // bundleAnalyze: {
+    //   analyzerMode: "static",
+    //   openAnalyzer: false,
+    //   // Distinguish by environment names, such as `web`, `node`, etc.
+    //   reportFilename: `report-web.html`,
+    // },
   },
   tools: {
     rspack: {
-      // externals: {
-      //   react: "react",
-      //   "react-dom": "react-dom",
-      //   axios: "axios",
-      // },
+      externals: {
+        react: "React",
+        "react-dom": "ReactDOM",
+        // axios: "axios",
+      },
       plugins: [
         new ModuleFederationPlugin({
           name: "remote_storybook",

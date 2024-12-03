@@ -9,7 +9,7 @@
       "buildName": "rsbuild-remote-one"
     },
     "remoteEntry": {
-      "name": "static/js/remote_one.9575110b.js",
+      "name": "static/js/remote_one.29b930f0.js",
       "path": "",
       "type": "global"
     },
@@ -20,37 +20,11 @@
       "api": "@mf-types.d.ts"
     },
     "globalName": "remote_one",
-    "pluginVersion": "0.7.6",
+    "pluginVersion": "0.8.0",
     "publicPath": "http://localhost:3000/remote_one/",
     "prefetchInterface": false
   },
-  "shared": [
-    {
-      "id": "remote_one:react",
-      "name": "react",
-      "version": "18.3.1",
-      "singleton": true,
-      "requiredVersion": "^18.3.1",
-      "assets": {
-        "js": {
-          "async": [],
-          "sync": [
-            "static/js/lib-react.5d521c04.js",
-            "static/js/lib-router.0fd5a001.js",
-            "static/js/972.6bbe6ca9.js",
-            "static/js/207.86dcabfa.js",
-            "static/js/index.e2ac8006.js"
-          ]
-        },
-        "css": {
-          "async": [],
-          "sync": [
-            "static/css/index.7912a339.css"
-          ]
-        }
-      }
-    }
-  ],
+  "shared": [],
   "remotes": [],
   "exposes": [
     {
@@ -59,10 +33,9 @@
       "assets": {
         "js": {
           "sync": [
-            "static/js/lib-react.5d521c04.js",
-            "static/js/lib-router.0fd5a001.js",
-            "static/js/207.86dcabfa.js",
-            "static/js/async/__federation_expose_App.0f97667f.js"
+            "static/js/837.db2271a5.js",
+            "static/js/885.b1329878.js",
+            "static/js/async/__federation_expose_App.ec1c9576.js"
           ],
           "async": []
         },

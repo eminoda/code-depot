@@ -1,4 +1,4 @@
-import Runtime from "./sdk.ts";
+import Runtime from "./sdk.tsx";
 import "amis/lib/themes/cxd.css";
 import "amis/lib/helper.css";
 import "amis/sdk/iconfont.css";
@@ -6,23 +6,24 @@ import "amis/sdk/iconfont.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import axios from "axios";
+import * as amis from "amis";
 
-const runtime = new Runtime({
+const info = {
   el: "#demoRef",
   remotes: [
     {
       name: "remote_one",
-      // entry: "http://localhost:2001/mf-manifest.json",
-      entry: "http://localhost:3000/remote_one/mf-manifest.json",
+      entry: "http://localhost:2001/mf-manifest.json",
+      // entry: "http://localhost:3000/remote_one/mf-manifest.json",
     },
     // {
     //   name: "remote_two",
     //   entry: "http://localhost:2002/mf-manifest.json",
     // },
-    // {
-    //   name: "remote_storybook",
-    //   entry: "http://127.0.0.1:2003/mf-manifest.json",
-    // },
+    {
+      name: "remote_storybook",
+      entry: "http://127.0.0.1:2003/mf-manifest.json",
+    },
   ],
   shared: {
     axios: {
@@ -40,8 +41,17 @@ const runtime = new Runtime({
       scope: "default",
       lib: () => ReactDOM,
     },
+    amis: {
+      version: "6.9.0-rc.10",
+      scope: "default",
+      lib: () => amis,
+    },
   },
-});
+};
+// const runtime = new Runtime(info);
+// runtime.init(info);
+
+const runtime = new Runtime(info);
 
 // @ts-ignore
 // const RemoteOneApp = lazy(() => runtime.lazyLoadRemote("remote_one/App"));
@@ -56,8 +66,8 @@ const Button = runtime.loadComponent<React.ComponentType<import("../@mf-types/re
 const Demo = () => {
   return (
     <div id="demo">
-      <RemoteOneApp />
-      {/* <Button label="确定" level="info" onClick={() => {}} size="md" /> */}
+      <RemoteOneApp />1
+      <Button label="确定" level="info" onClick={() => {}} size="md" />
 
       {/* <div>
         <h2>Form</h2>

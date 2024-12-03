@@ -3,16 +3,19 @@ import { pluginReact } from "@rsbuild/plugin-react";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 
 export default defineConfig({
+  html: {
+    template: "./static/index.html",
+    title: "runtime",
+  },
   plugins: [pluginReact()],
   tools: {
     rspack: {
-      // externals: {
-      //   react: "react",
-      //   "react-dom": "react-dom",
-      //   amis: "amis",
-      //   axios: "axios",
-      // },
-
+      externals: {
+        react: "React",
+        "react-dom": "ReactDOM",
+        // amis: "amis",
+        // axios: "axios",
+      },
       plugins: [
         // new ModuleFederationPlugin({
         //   name: "host",

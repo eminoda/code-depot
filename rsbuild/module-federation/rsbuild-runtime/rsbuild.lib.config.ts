@@ -32,9 +32,9 @@ export default defineConfig({
     rspack: {
       // externalsType: "commonjs",
       externals: {
-        // react: "React",
-        // "react-dom": "ReactDOM",
-        // "react-router-dom": "ReactRouterDOM",
+        react: "React",
+        "react-dom": "ReactDOM",
+        "react-router-dom": "ReactRouterDOM",
       },
       output: {
         path: path.resolve("../../helloworld-react/public/runtime/"),

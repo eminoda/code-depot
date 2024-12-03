@@ -9,5 +9,7 @@ export const FallbackErrorComp = (info: any) => {
   // );
   return info?.error.message;
 };
-{/* <div data-test-id="loading">loading...</div> */}
-export const FallbackComp = ()=>'loading';
+{
+  /* <div data-test-id="loading">loading...</div> */
+}
+export const FallbackComp = 'loading';
