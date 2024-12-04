@@ -19,7 +19,7 @@ const options = {
     {
       name: "remote_storybook",
       // entry: "http://localhost:2003/mf-manifest.json",
-      entry: "http://localhost:3000/storybook/mf-manifest.json",
+      entry: "http://localhost:3000/remote_storybook/mf-manifest.json",
     },
   ],
   shared: {
@@ -80,9 +80,9 @@ const runtimeIns = new RuntimeLib(options);
 // };
 // console.log("ready createRemoteComponent");
 // const RemoteOneApp = runtimeIns.createRemoteComponent(info);
-const RemoteOneApp = runtimeIns.loadComponent("remote_one/App");;
-const Button = runtimeIns.loadComponent("remote_storybook/Button");;
-
+const RemoteOneApp = runtimeIns.loadComponent("remote_one/App");
+const Button = runtimeIns.loadComponent("remote_storybook/Button");
+const List = runtimeIns.loadComponent("remote_storybook/List");
 
 // const Button = createRemoteComponent({
 //   loader: () => runtimeIns.loadRemote("remote_storybook/Button"),
@@ -120,6 +120,91 @@ const App = () => {
       <p>Start building amazing things with Rsbuild.</p>
       <RemoteOneApp />
       <Button label="确定" level="info" onClick={() => {}} size="md" />
+      <List
+        columns={[
+          {
+            name: "id",
+            label: "ID",
+          },
+          {
+            name: "engine",
+            label: "Rendering engine",
+          },
+          {
+            name: "browser",
+            label: "Browser",
+          },
+          {
+            name: "platform",
+            label: "Platform(s)",
+          },
+          {
+            name: "version",
+            label: "Engine version",
+          },
+          {
+            name: "grade",
+            label: "CSS grade",
+          },
+          {
+            type: "operation",
+            label: "操作",
+            buttons: [
+              {
+                label: "详情",
+                type: "button",
+                level: "link",
+                actionType: "dialog",
+                dialog: {
+                  title: "查看详情",
+                  body: {
+                    type: "form",
+                    body: [
+                      {
+                        type: "input-text",
+                        name: "engine",
+                        label: "Engine",
+                      },
+                      {
+                        type: "input-text",
+                        name: "browser",
+                        label: "Browser",
+                      },
+                      {
+                        type: "input-text",
+                        name: "platform",
+                        label: "platform",
+                      },
+                      {
+                        type: "input-text",
+                        name: "version",
+                        label: "version",
+                      },
+                      {
+                        type: "control",
+                        label: "grade",
+                        body: {
+                          type: "tag",
+                          label: "${grade}",
+                          displayMode: "normal",
+                          color: "active",
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                label: "删除",
+                type: "button",
+                level: "link",
+                className: "text-danger",
+                disabledOn: "this.grade === 'A'",
+              },
+            ],
+          },
+        ]}
+      />
     </div>
   );
 };
