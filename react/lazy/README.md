@@ -1,0 +1,1 @@
+子应用打包 bundle.js，父应用通过 script 加载
