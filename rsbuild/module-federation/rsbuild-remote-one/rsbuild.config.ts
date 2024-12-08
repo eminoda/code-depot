@@ -42,6 +42,9 @@ export default defineConfig({
         react: "React",
         "react-dom": "ReactDOM",
       },
+      output: {
+        path: path.resolve("../../helloworld-react/public/remote_one/"),
+      },
       plugins: [
         // new ModuleFederationPlugin({
         //   name: "remote_one",

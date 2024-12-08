@@ -9,7 +9,7 @@
       "buildName": "rsbuild-remote-one"
     },
     "remoteEntry": {
-      "name": "static/js/remote_one.29b930f0.js",
+      "name": "static/js/remote_one.f1d38273.js",
       "path": "",
       "type": "global"
     },
@@ -33,9 +33,8 @@
       "assets": {
         "js": {
           "sync": [
-            "static/js/837.db2271a5.js",
-            "static/js/885.b1329878.js",
-            "static/js/async/__federation_expose_App.ec1c9576.js"
+            "static/js/925.743d53a5.js",
+            "static/js/async/__federation_expose_App.0d2544e9.js"
           ],
           "async": []
         },

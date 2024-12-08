@@ -2,7 +2,7 @@ import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 import { dependencies as deps } from "./package.json";
-
+import path from "path";
 export default defineConfig({
   source: {
     entry: {
@@ -20,7 +20,7 @@ export default defineConfig({
   },
   output: {
     // It is necessary to configure assetPrefix, and in the production build, you need to configure output.assetPrefix
-    assetPrefix: "http://localhost:3000/storybook/",
+    assetPrefix: "http://localhost:3000/remote_storybook/",
   },
   plugins: [pluginReact()],
   performance: {
@@ -36,6 +36,9 @@ export default defineConfig({
   },
   tools: {
     rspack: {
+      output: {
+        path: path.resolve("../../helloworld-react/public/remote_storybook/"),
+      },
       externals: {
         react: "React",
         "react-dom": "ReactDOM",
