@@ -17,16 +17,17 @@ export default defineConfig({
     // It is necessary to configure assetPrefix, and in the production build, you need to configure output.assetPrefix
     assetPrefix: "http://localhost:2000/mf_remote_one",
     distPath: {
-      root: path.resolve("../mf-host/public/mf_remote_one"),
+      root: path.resolve("../mf-bridge-host/public/mf_remote_one"),
     },
-    cleanDistPath: path.resolve("../mf-host/public/mf_remote_one"),
+    cleanDistPath: path.resolve("../mf-bridge-host/public/mf_remote_one"),
   },
   plugins: [
     pluginReact(),
     pluginModuleFederation({
       name: "mf_remote_one",
       exposes: {
-        "./App": "./src/App.tsx",
+        // "./App": "./src/App.tsx",
+        "./App": "./src/export-app.tsx",
       },
       // shared: ["react", "react-dom"],
       shared: [

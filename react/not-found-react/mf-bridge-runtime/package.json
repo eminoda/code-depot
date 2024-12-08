@@ -1,5 +1,5 @@
 {
-  "name": "mf-remote-one",
+  "name": "mf-runtime",
   "private": true,
   "version": "1.0.0",
   "scripts": {
@@ -9,17 +9,18 @@
     "format": "biome format --write",
     "preview": "rsbuild preview"
   },
+  "dependencies": {
+    "@module-federation/bridge-react": "^0.8.1",
+    "@module-federation/enhanced": "^0.8.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
   "devDependencies": {
     "@biomejs/biome": "^1.9.3",
-    "@module-federation/rsbuild-plugin": "^0.8.1",
     "@rsbuild/core": "^1.1.8",
     "@rsbuild/plugin-react": "^1.0.7",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "typescript": "^5.7.2"
-  },
-  "dependencies": {
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
   }
 }

@@ -1,0 +1,39 @@
+{
+  "name": "sb-rs-react",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "rsbuild build",
+    "check": "biome check --write",
+    "dev": "rsbuild dev",
+    "format": "biome format --write",
+    "preview": "rsbuild preview",
+    "sb": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "amis": "6.9.0",
+    "axios": "^1.7.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.3",
+    "@chromatic-com/storybook": "3.2.2",
+    "@module-federation/enhanced": "^0.7.6",
+    "@rsbuild/core": "^1.0.19",
+    "@rsbuild/plugin-react": "^1.0.6",
+    "@storybook/addon-essentials": "8.4.5",
+    "@storybook/addon-interactions": "8.4.5",
+    "@storybook/addon-onboarding": "8.4.5",
+    "@storybook/blocks": "8.4.5",
+    "@storybook/react": "8.4.5",
+    "@storybook/react-vite": "8.4.5",
+    "@storybook/test": "8.4.5",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "storybook": "8.4.5",
+    "storybook-react-rsbuild": "^0.1.5",
+    "typescript": "^5.6.3"
+  }
+}

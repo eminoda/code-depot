@@ -1,6 +1,6 @@
 # 测试通过自制 runtime
 
- module federation React 找不到
+ module federation React 找不：Cannot read properties of null (reading 'useRef'
 
 ## 步骤
 
@@ -72,4 +72,29 @@ singleton 为 true 时，会无视 host 版本，直接加载 remote requiredVer
     },
   },
 ```
+
+
+> [ Federation Runtime ] Warn Version 18.3.1 from mf_host of shared singleton module react does not satisfy the requirement of mf_remote_one which needs 19.0.0)
+
+host 实际提供 version: 18.3.1
+remote 限制 requiredVersion：19.0.0，自身 version：18.3.1，且为单例
+
+使用 host 共享模块，remote 不在加载。
+
+
+
+
+
+| host                           | remote                                                       | shared 加载情况 | 分析                                                                 |
+| ------------------------------ | ------------------------------------------------------------ | --------------- | -------------------------------------------------------------------- |
+| { version: 19.0.0 }            | { version: 18.3.1 }                                          | host + remote   | 版本不同，各用各的                                                   |
+| { version: 18.3.1 }            | { version: 18.3.1 }                                          | host + remote   | 版本相同，各用各的                                                   |
+| { version: 19.0.0,lib:()=>{} } | { version: 18.3.1 }                                          | 共用 host       | host 提供共享模块，remote 没有限制，随 host 版本                     |
+| { version: 19.0.0,lib:()=>{} } | { version: 18.3.1 }                                          | 共用 host       | host 提供共享模块，remote 没有限制，随 host 版本                     |
+| { version: 18.3.1,lib:()=>{} } | { version: 18.3.1 ,requiredVersion:19.0.0 }                  | host + remote   | host 提供共享模块，但和 remote 限制不匹配，各用各的                  |
+| { version: 19.0.0,lib:()=>{} } | { version: 18.3.1 ,requiredVersion:19.0.0 }                  | 共用 host       | host 提供共享模块，和 remote 匹配，随 host 版本                      |
+| { version: 19.0.1,lib:()=>{} } | { version: 18.3.1 ,requiredVersion:^19.0.0 }                 | 共用 host       | host 提供共享模块，和 remote 匹配，随 host 版本                      |
+| { version: 22.0.0,lib:()=>{} } | { version: 18.3.1 ,requiredVersion:^19.0.0 }                 | host + remote   | host 提供共享模块，但和 remote 限制不匹配，各用各的                  |
+| { version: 22.0.0,lib:()=>{} } | { version: 18.3.1 ,requiredVersion:^19.0.0,singletion:true } | 共用 host       | host 提供共享模块，虽然和 remote 限制不匹配，但随 host，给出 warning |
+| { version: 18.0.0,lib:()=>{} } | { version: 18.3.1 ,requiredVersion:^19.0.0,singletion:true } | 共用 host       | host 提供共享模块，虽然和 remote 限制不匹配，但随 host，给出 warning |
 
