@@ -16,12 +16,9 @@
 
     /* type checking */
     "strict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "typeRoots": ["node_modules/@types"],
-    "paths": {
-      "*": ["./public/dist-types/*"]
-    }
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "typeRoots": ["node_modules/@types"]
   },
   "include": ["src"]
 }

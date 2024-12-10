@@ -7,10 +7,10 @@ import type { Renderer, StoryContext, PartialStoryFn as StoryFunction } from "st
 import { init, loadRemote } from "@module-federation/enhanced/runtime";
 
 init({
-  name: "sb_host",
+  name: "host_storybook",
   remotes: [
     {
-      name: "mf_remote_one",
+      name: "remote_one",
       entry: "http://localhost:2001/mf-manifest.json",
     },
   ],
@@ -34,13 +34,15 @@ const preview: Preview = {
       console.log("context", context);
       return (
         <div>
-          <div>
-            <ul>
-              <li>ComponentId：{context.componentId}</li>
-              <li>Title:{context.title}</li>
-              <li>SchemaJSON：{JSON.stringify(context.args)}</li>
-            </ul>
-          </div>
+          {/* {context.title.indexOf("Example") === -1 && (
+            <div>
+              <ul>
+                <li>ComponentId：{context.componentId}</li>
+                <li>Title:{context.title}</li>
+                <li>SchemaJSON：{JSON.stringify(context.args)}</li>
+              </ul>
+            </div>
+          )} */}
           <Story />
           {/* <RemoteOneApp {...context.args} /> */}
         </div>
