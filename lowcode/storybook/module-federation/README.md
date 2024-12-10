@@ -14,3 +14,7 @@ pnpm create vite
 pnpm i ant-design-vue@4.x -S
 pnpm add @module-federation/vite --save
 ```
+
+```shell
+pnpm add @module-federation/enhanced --save
+```
