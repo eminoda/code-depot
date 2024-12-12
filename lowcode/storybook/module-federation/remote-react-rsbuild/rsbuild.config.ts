@@ -10,15 +10,15 @@ export default defineConfig({
     assetPrefix: "http://localhost:2001",
   },
   output: {
-    assetPrefix: "http://localhost:3000/remote_one",
+    assetPrefix: "http://localhost:3000/remote_react_rsbuild",
   },
   plugins: [
     pluginReact(),
     pluginModuleFederation({
-      name: "remote_one",
+      name: "remote_react_rsbuild",
       exposes: {
-        "./R1Button": "./src/components/R1Button.tsx",
-        "./R1Modal": "./src/components/R1Modal.tsx",
+        "./Button": "./src/components/Button.tsx",
+        "./Modal": "./src/components/Modal.tsx",
       },
       shared: {
         react: {

@@ -9,15 +9,15 @@ export interface R1ButtonProps {
   children?: string;
 }
 
-const R1ModalRemote = loadRemote("remote_one/R1Modal");
+const ModalRemote = loadRemote("remote_react_rsbuild/Modal");
 
-const _R1Modal = React.lazy(() => R1ModalRemote);
+const _Modal = React.lazy(() => ModalRemote);
 
 /** Primary UI component for user interaction */
-export const R1Modal = ({ ...props }: R1ButtonProps) => {
+export const Modal = ({ ...props }: R1ButtonProps) => {
   return (
-    <_R1Modal open={props.open} onOk={props.onOk} onCancel={props.onCancel}>
+    <_Modal open={props.open} onOk={props.onOk} onCancel={props.onCancel}>
       {props.children}
-    </_R1Modal>
+    </_Modal>
   );
 };

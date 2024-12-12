@@ -15,8 +15,20 @@ export default defineConfig({
     pluginModuleFederation({
       name: "host_storybook",
       remotes: {
-        remote_one: "remote_one@http://127.0.0.1:2001/mf-manifest.json",
+        remote_react_rsbuild: "remote_react_rsbuild@http://127.0.0.1:2001/mf-manifest.json",
       },
+      // shared: {
+      //   react: {
+      //     singleton: true,
+      //     requiredVersion: "^18.3.0",
+      //     version: "18.3.1",
+      //   },
+      //   "react-dom": {
+      //     singleton: true,
+      //     requiredVersion: "^18.3.0",
+      //     version: "18.3.1",
+      //   },
+      // },
     }),
   ],
   tools: {

@@ -10,7 +10,7 @@ init({
   name: "host_storybook",
   remotes: [
     {
-      name: "remote_one",
+      name: "remote_react_rsbuild",
       entry: "http://localhost:2001/mf-manifest.json",
     },
   ],

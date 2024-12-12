@@ -7,11 +7,11 @@ export interface R1ButtonProps {
   type?: "link" | "text" | "default" | "primary" | "dashed";
 }
 
-const R1ButtonRemote = loadRemote("remote_one/R1Button");
+const RemoteReactRsbuildButtonModel = loadRemote("remote_react_rsbuild/Button");
 
-const _R1Button = React.lazy(() => R1ButtonRemote);
+const RemoteReactRsbuildButton = React.lazy(() => RemoteReactRsbuildButtonModel);
 
 /** Primary UI component for user interaction */
-export const R1Button = ({ name = "Hello MF", ...props }: R1ButtonProps) => {
-  return <_R1Button name={name} {...props} />;
+export const Button = ({ name = "Hello MF", ...props }: R1ButtonProps) => {
+  return <RemoteReactRsbuildButton name={name} {...props} />;
 };

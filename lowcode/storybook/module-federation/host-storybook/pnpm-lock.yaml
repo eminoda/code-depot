@@ -30,6 +30,9 @@ importers:
       '@module-federation/enhanced':
         specifier: ^0.7.6
         version: 0.7.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)(webpack@5.96.1(esbuild@0.24.0))
+      '@module-federation/rsbuild-plugin':
+        specifier: ^0.8.2
+        version: 0.8.2(@module-federation/enhanced@0.7.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)(webpack@5.96.1(esbuild@0.24.0)))(@rsbuild/core@1.1.5)
       '@rsbuild/core':
         specifier: ^1.0.19
         version: 1.1.5
@@ -586,6 +589,13 @@ packages:
   '@module-federation/manifest@0.7.6':
     resolution: {integrity: sha512-xBrFwLjDMUjKRnp+P4X29ZNyhgXSsp+SfrBxVsKJpEESOHalDoNClbo6gXvZAvkBZyo9sY3SJhAwduDwNkg04w==}
 
+  '@module-federation/rsbuild-plugin@0.8.2':
+    resolution: {integrity: sha512-6WzWNcQWLU/WkPldufRw6p8yoeB1wuXwPDApjwUOHhjzPL9+MFjxMiudVzPH+mszsbaIgIYWhBgmCIqWOC1Hjw==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      '@module-federation/enhanced': 0.8.2
+      '@rsbuild/core': 1.x
+
   '@module-federation/rspack@0.7.6':
     resolution: {integrity: sha512-alfX85C+2AQLXGrtpa08ImwhHIGwFIkJ/6i/XhxpYL5iFu0mC0xRIJPJUw0tiBWdFpP4p+Ykij3hP3FqfvaiKg==}
     peerDependencies:
@@ -614,6 +624,9 @@ packages:
 
   '@module-federation/sdk@0.7.6':
     resolution: {integrity: sha512-MFE+RtsHnutZOCp2eKpa3A/yzZ8tOPmjX7QRdVnB2qqR9JA2SH3ZP5+cYq76tzFQZvU1BCWAQVNMvqGOW2yVZQ==}
+
+  '@module-federation/sdk@0.8.2':
+    resolution: {integrity: sha512-MgVoflK9j7+Kmecnpjxb2GyjsESwFDs7oD4B21iv7VzS09YS6lXsEeiLJggVhUA2j1iuC25tSBpY/MwybYLbPg==}
 
   '@module-federation/third-party-dts-extractor@0.7.6':
     resolution: {integrity: sha512-JME76/rgr41AKXG6kUTQXdQJiMCypN3qHOgPv4VuIag10UdLo/0gdeN6PYronvYmvPOQMfYev80GcEwl4l531A==}
@@ -3988,6 +4001,12 @@ snapshots:
       - utf-8-validate
       - vue-tsc
 
+  '@module-federation/rsbuild-plugin@0.8.2(@module-federation/enhanced@0.7.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)(webpack@5.96.1(esbuild@0.24.0)))(@rsbuild/core@1.1.5)':
+    dependencies:
+      '@module-federation/enhanced': 0.7.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)(webpack@5.96.1(esbuild@0.24.0))
+      '@module-federation/sdk': 0.8.2
+      '@rsbuild/core': 1.1.5
+
   '@module-federation/rspack@0.7.6(typescript@5.7.2)':
     dependencies:
       '@module-federation/bridge-react-webpack-plugin': 0.7.6
@@ -4026,6 +4045,10 @@ snapshots:
   '@module-federation/sdk@0.5.1': {}
 
   '@module-federation/sdk@0.7.6':
+    dependencies:
+      isomorphic-rslog: 0.0.6
+
+  '@module-federation/sdk@0.8.2':
     dependencies:
       isomorphic-rslog: 0.0.6
 
