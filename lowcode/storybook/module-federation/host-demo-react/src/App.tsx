@@ -1,10 +1,10 @@
 import "./App.css";
 import React from "react";
 import ReactDOM from "react-dom";
+import Runtime from "runtime";
+// import { init, loadRemote } from "@module-federation/enhanced/runtime";
 
-import { init, loadRemote } from "@module-federation/enhanced/runtime";
-
-init({
+const options = {
   name: "host_storybook",
   remotes: [
     {
@@ -24,9 +24,12 @@ init({
       // shareConfig: { singleton: true, requiredVersion: "18.5" },
     },
   },
-});
+};
 
-const RemoteReactRsbuildButtonModel = loadRemote("remote_react_rsbuild/Button");
+// init(options);
+
+const runtime = new Runtime(options);
+const RemoteReactRsbuildButtonModel = runtime.loadRemote("remote_react_rsbuild/Button");
 
 const RemoteReactRsbuildButton = React.lazy(() => RemoteReactRsbuildButtonModel);
 

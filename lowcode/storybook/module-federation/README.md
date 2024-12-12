@@ -21,3 +21,11 @@ pnpm add @module-federation/vite --save
 # runtime
 pnpm add @module-federation/enhanced --save
 ```
+
+```shell
+# rslib
+pnpm create rslib@latest
+
+
+
+```
