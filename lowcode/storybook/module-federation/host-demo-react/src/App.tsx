@@ -11,6 +11,10 @@ const options = {
       name: "remote_react_rsbuild",
       entry: "http://localhost:2001/mf-manifest.json",
     },
+    {
+      name: "remote_react_vite",
+      entry: "http://localhost:2002/mf-manifest.json",
+    },
   ],
   shared: {
     react: {
@@ -33,11 +37,16 @@ const RemoteReactRsbuildButtonModel = runtime.loadRemote("remote_react_rsbuild/B
 
 const RemoteReactRsbuildButton = React.lazy(() => RemoteReactRsbuildButtonModel);
 
+const RemoteReactViteButtonModel = runtime.loadRemote("remote_react_vite/Button");
+
+const RemoteReactViteButton = React.lazy(() => RemoteReactViteButtonModel);
+
 const App = () => {
   return (
     <div className="content">
       <h1>Rsbuild with React</h1>
-      <RemoteReactRsbuildButton type="primary" name="弹框" />
+      <RemoteReactRsbuildButton type="primary" name="弹框1" />
+      <RemoteReactViteButton type="primary" name="弹框2" />
     </div>
   );
 };

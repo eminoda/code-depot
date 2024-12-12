@@ -29,3 +29,6 @@ pnpm create rslib@latest
 
 
 ```
+
+
+https://github.com/vitejs/vite/issues/12876
