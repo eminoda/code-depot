@@ -1,6 +1,6 @@
 import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
-
+import path from "path";
 export default defineConfig({
   server: {
     port: 2000,

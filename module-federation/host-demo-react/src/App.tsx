@@ -11,10 +11,10 @@ const options = {
       name: "remote_react_rsbuild",
       entry: "http://localhost:2001/mf-manifest.json",
     },
-    {
-      name: "remote_react_vite",
-      entry: "http://localhost:2002/mf-manifest.json",
-    },
+    // {
+    //   name: "remote_react_vite",
+    //   entry: "http://localhost:2002/mf-manifest.json",
+    // },
   ],
   shared: {
     react: {
@@ -33,13 +33,21 @@ const options = {
 // init(options);
 
 const runtime = new Runtime(options);
-const RemoteReactRsbuildButtonModel = runtime.loadRemote("remote_react_rsbuild/Button");
+console.log(runtime);
 
-const RemoteReactRsbuildButton = React.lazy(() => RemoteReactRsbuildButtonModel);
+// mf runtime 加载组件
+// const RemoteReactRsbuildButtonModel = runtime.loadRemote("remote_react_rsbuild/Button");
+// const RemoteReactRsbuildButton = React.lazy(() => RemoteReactRsbuildButtonModel);
 
-const RemoteReactViteButtonModel = runtime.loadRemote("remote_react_vite/Button");
+// const RemoteReactViteButtonModel = runtime.loadRemote("remote_react_vite/Button");
+// const RemoteReactViteButton = React.lazy(() => RemoteReactViteButtonModel);
 
-const RemoteReactViteButton = React.lazy(() => RemoteReactViteButtonModel);
+// mf bridge runtime 加载组件
+const RemoteReactRsbuildButton = runtime.createRemoteComponent({
+  loader: () => runtime.loadRemote("remote_react_rsbuild/Button"),
+  fallback: (info: any) => <div>{info?.error.message}</div>,
+  loading: <div>loading...</div>,
+});
 
 const App = () => {
   return (
@@ -47,8 +55,8 @@ const App = () => {
       <h1>host-demo-react</h1>
       <p>remote-react-rsbuild</p>
       <RemoteReactRsbuildButton type="primary" name="弹框1" />
-      <p>remote-react-vite</p>
-      <RemoteReactViteButton type="primary" name="弹框2" />
+      {/* <p>remote-react-vite</p>
+      <RemoteReactViteButton type="primary" name="弹框2" /> */}
     </div>
   );
 };

@@ -53,6 +53,7 @@ pnpm add @module-federation/vite --save
 pnpm create rslib@latest
 # runtime
 pnpm add @module-federation/enhanced --save
+pnpm add @module-federation/bridge-react@latest
 ```
 
 ### 踩坑记录
@@ -60,3 +61,7 @@ pnpm add @module-federation/enhanced --save
 #### host 加载 vite
 
 https://github.com/vitejs/vite/issues/12876
+
+#### rslib 打包不存在依赖库
+
+https://lib.rsbuild.dev/guide/advanced/third-party-deps#default-handling-of-third-party-dependencies
