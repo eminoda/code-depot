@@ -5,14 +5,14 @@ import { federation } from "@module-federation/vite";
 // https://vite.dev/config/
 export default defineConfig({
   server: {
-    origin: "http://localhost:2002",
-    port: 2002,
+    origin: "http://localhost:3001",
+    port: 3001,
   },
-  base: "http://localhost:2002",
+  base: "http://localhost:3001",
   plugins: [
     vue(),
     federation({
-      name: "remote_two",
+      name: "remote_vue_vite",
       manifest: true,
       // remotes: {
       //   esm_remote: {
@@ -23,7 +23,7 @@ export default defineConfig({
       //   var_remote: "var_remote@https://[...]/remoteEntry.js",
       // },
       exposes: {
-        "./R2Button": "./src/components/R2Button.vue",
+        "./Button": "./src/components/Button.vue",
       },
       // shared: {
       //   react: {

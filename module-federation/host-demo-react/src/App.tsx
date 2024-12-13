@@ -44,8 +44,10 @@ const RemoteReactViteButton = React.lazy(() => RemoteReactViteButtonModel);
 const App = () => {
   return (
     <div className="content">
-      <h1>Rsbuild with React</h1>
+      <h1>host-demo-react</h1>
+      <p>remote-react-rsbuild</p>
       <RemoteReactRsbuildButton type="primary" name="弹框1" />
+      <p>remote-react-vite</p>
       <RemoteReactViteButton type="primary" name="弹框2" />
     </div>
   );

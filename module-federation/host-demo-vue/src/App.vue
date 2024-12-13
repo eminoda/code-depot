@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
 import { init, loadRemote } from "@module-federation/enhanced/runtime";
 import { defineAsyncComponent } from "vue";
 
 const options = {
-  name: "host_storybook",
+  name: "host_vue",
   remotes: [
     {
-      name: "remote_two",
-      entry: "http://localhost:2002/mf-manifest.json",
+      name: "remote_vue_vite",
+      entry: "http://localhost:3001/mf-manifest.json",
     },
   ],
   shared: {
@@ -27,7 +26,7 @@ const options = {
 
 init(options);
 
-const RemoteReactRsbuildButton = defineAsyncComponent(() => loadRemote("remote_two/R2Button"));
+const RemoteReactRsbuildButton = defineAsyncComponent(() => loadRemote("remote_vue_vite/Button"));
 </script>
 
 <template>
@@ -39,8 +38,9 @@ const RemoteReactRsbuildButton = defineAsyncComponent(() => loadRemote("remote_t
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <RemoteReactRsbuildButton />
-  <HelloWorld msg="Vite + Vue" />
+  <h1>host_vue</h1>
+  <h2>remote_vue_vite</h2>
+  <RemoteReactRsbuildButton type="primary" name="hello" />
 </template>
 
 <style scoped>
