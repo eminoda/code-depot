@@ -13,6 +13,10 @@ init({
       name: "remote_react_rsbuild",
       entry: "http://localhost:2001/mf-manifest.json",
     },
+    {
+      name: "remote_react_vite",
+      entry: "http://localhost:2002/mf-manifest.json",
+    },
   ],
   shared: {
     react: {

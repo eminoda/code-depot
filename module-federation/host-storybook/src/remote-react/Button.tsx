@@ -7,7 +7,7 @@ export interface R1ButtonProps {
   type?: "link" | "text" | "default" | "primary" | "dashed";
 }
 
-const RemoteReactRsbuildButtonModel = loadRemote("remote_react_rsbuild/Button");
+const RemoteReactRsbuildButtonModel = loadRemote("remote_react_vite/Button");
 
 const RemoteReactRsbuildButton = React.lazy(() => RemoteReactRsbuildButtonModel);
 

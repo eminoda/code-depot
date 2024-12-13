@@ -9,6 +9,20 @@
   - [x] remote-vue-vite: 3001
 - [x] host-storybook:6006
   - [x] remote-react-rsbuild: 2001
+  - [x] remote-react-vite: 2002
+
+### TODO LIST
+
+- [ ] remote + sb host
+  - [x] 基于 rsbuild、vite 的 remote 可被集成
+  - [ ] preview 获取配置
+  - [ ] sb addon
+- [ ] vue2react
+- [ ] runtime
+  - [ ] runtime bridge 问题
+- [ ] demo 演示
+  - [ ] 集成 runtime
+  - [ ] 集成 runtime + bridge
 
 ### 构建脚本
 
@@ -40,5 +54,9 @@ pnpm create rslib@latest
 # runtime
 pnpm add @module-federation/enhanced --save
 ```
+
+### 踩坑记录
+
+#### host 加载 vite
 
 https://github.com/vitejs/vite/issues/12876
