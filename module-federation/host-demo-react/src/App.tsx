@@ -1,9 +1,11 @@
 import "./App.css";
-import React from "react";
+import React, { version } from "react";
 import ReactDOM from "react-dom";
 import Runtime from "@runtime";
 import { init, loadRemote } from "@module-federation/enhanced/runtime";
 import { createRemoteComponent } from "@module-federation/bridge-react";
+import * as antd from "antd";
+import axios from "axios";
 
 const options = {
   name: "host_storybook",
@@ -18,6 +20,10 @@ const options = {
     // },
   ],
   shared: {
+    axios: {
+      version: "1.7.9",
+      lib: () => axios,
+    },
     react: {
       version: "18.3.1",
       lib: () => React,
@@ -27,6 +33,10 @@ const options = {
       version: "18.3.1",
       lib: () => ReactDOM,
       // shareConfig: { singleton: true, requiredVersion: "18.5" },
+    },
+    antd: {
+      version: "5.22.4",
+      lib: () => antd,
     },
   },
 };

@@ -31,6 +31,16 @@ export default defineConfig({
           requiredVersion: "^18.3.0",
           version: "18.3.1",
         },
+        "antd": {
+          singleton: true,
+          requiredVersion: "^5.22.4",
+          version: "5.22.4",
+        },
+        "axios": {
+          singleton: true,
+          requiredVersion: "^1.7.9",
+          version: "1.7.9",
+        },
       },
     }),
   ],
