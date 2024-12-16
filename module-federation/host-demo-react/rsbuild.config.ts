@@ -1,5 +1,8 @@
 import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
+import { pluginVue } from "@rsbuild/plugin-vue";
+import { pluginVueJsx } from "@rsbuild/plugin-vue-jsx";
+
 export default defineConfig({
   server: {
     port: 2000,
@@ -20,5 +23,5 @@ export default defineConfig({
       // "react-dom": "ReactDOM",
     },
   },
-  plugins: [pluginReact()],
+  plugins: [pluginVueJsx(), pluginVue(), pluginReact()],
 });

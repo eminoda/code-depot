@@ -12,11 +12,15 @@
   "dependencies": {
     "@module-federation/bridge-react": "0.8.3",
     "@module-federation/enhanced": "^0.8.2",
+    "@rsbuild/plugin-vue": "^1.0.5",
+    "@rsbuild/plugin-vue-jsx": "^1.0.1",
     "antd": "^5.22.4",
     "axios": "^1.7.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "6"
+    "react-router-dom": "6",
+    "veaury": "^2.6.1",
+    "vue": "^3.5.13"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.3",

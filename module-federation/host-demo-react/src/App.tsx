@@ -6,6 +6,9 @@ import { init, loadRemote } from "@module-federation/enhanced/runtime";
 import { createRemoteComponent } from "@module-federation/bridge-react";
 import * as antd from "antd";
 import axios from "axios";
+import Hello from "./Hello.vue";
+import { applyVueInReact } from "veaury";
+const BasicWithNormal = applyVueInReact(Hello);
 
 const options = {
   name: "host_storybook",
@@ -67,6 +70,7 @@ const App = () => {
     <div className="content">
       <h1>host-demo-react</h1>
       <p>remote-react-rsbuild</p>
+      <BasicWithNormal />
       <RemoteReactRsbuildButton type="primary" name="弹框1" />
       {/* <p>remote-react-vite</p>
       <RemoteReactViteButton type="primary" name="弹框2" /> */}
