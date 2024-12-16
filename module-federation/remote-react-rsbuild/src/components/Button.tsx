@@ -6,7 +6,7 @@ const _Button: React.FC<{ type: "link" | "text" | "default" | "primary" | "dashe
   return <Button type={props.type}>{props.name}</Button>;
 };
 
-// export default Button;
+// export default _Button;
 
 export default createBridgeComponent({
   rootComponent: _Button,

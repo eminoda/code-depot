@@ -1,5 +1,6 @@
 // export { Button } from './Button';
-
+import React from "react";
+import ReactDOM from "react-dom";
 import { init, loadRemote } from "@module-federation/enhanced/runtime";
 import { createRemoteComponent } from "@module-federation/bridge-react";
 import { ReactNode, ComponentType } from "react";
@@ -37,6 +38,13 @@ class Runtime {
   }
   createRemoteComponent(info: { loader: () => Promise<unknown>; loading: ReactNode; fallback: ComponentType<{ error: any; resetErrorBoundary: (...args: any[]) => void }>; export?: undefined }) {
     return createRemoteComponent(info);
+  }
+  createRemoteComponent2(name: string) {
+    return createRemoteComponent({
+      loader: () => loadRemote(name),
+      loading: <div>Loading...</div>,
+      fallback: (info: any) => <div>{info?.error.message}</div>,
+    });
   }
 }
 

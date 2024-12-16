@@ -12,12 +12,16 @@ export default defineConfig({
       format: 'umd',
       umdName: 'Runtime',
       bundle: true,
-      dts: true,
+      dts: false,
       // format: 'esm',
     },
   ],
   output: {
-    target: 'web',
+    target: "web",
+    distPath: {
+      root: "../host-demo-react/public",
+    },
+    cleanDistPath: true,
   },
   plugins: [pluginReact()],
 });

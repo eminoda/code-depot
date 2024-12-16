@@ -7,16 +7,26 @@ settings:
 importers:
 
   .:
-    devDependencies:
-      '@biomejs/biome':
-        specifier: ^1.9.3
-        version: 1.9.4
+    dependencies:
       '@module-federation/bridge-react':
         specifier: ^0.8.3
         version: 0.8.3(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.28.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@module-federation/enhanced':
         specifier: ^0.8.3
         version: 0.8.3(@rspack/core@1.1.6(@swc/helpers@0.5.15))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+      react:
+        specifier: 18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: 18.3.1
+        version: 18.3.1(react@18.3.1)
+      react-router-dom:
+        specifier: ^6.28.0
+        version: 6.28.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+    devDependencies:
+      '@biomejs/biome':
+        specifier: ^1.9.3
+        version: 1.9.4
       '@rsbuild/plugin-react':
         specifier: ^1.0.7
         version: 1.1.0(@rsbuild/core@1.1.9)
@@ -26,12 +36,6 @@ importers:
       '@types/react':
         specifier: ^18.3.12
         version: 18.3.16
-      react:
-        specifier: 18.3.1
-        version: 18.3.1
-      react-dom:
-        specifier: 18.3.1
-        version: 18.3.1(react@18.3.1)
       typescript:
         specifier: ^5.6.3
         version: 5.7.2

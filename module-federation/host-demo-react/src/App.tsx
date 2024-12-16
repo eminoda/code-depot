@@ -1,8 +1,9 @@
 import "./App.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import Runtime from "runtime";
-// import { init, loadRemote } from "@module-federation/enhanced/runtime";
+import Runtime from "@runtime";
+import { init, loadRemote } from "@module-federation/enhanced/runtime";
+import { createRemoteComponent } from "@module-federation/bridge-react";
 
 const options = {
   name: "host_storybook",
@@ -30,12 +31,12 @@ const options = {
   },
 };
 
-// init(options);
-
 const runtime = new Runtime(options);
 console.log(runtime);
 
 // mf runtime 加载组件
+// init(options);
+// const RemoteReactRsbuildButtonModel = loadRemote("remote_react_rsbuild/Button");
 // const RemoteReactRsbuildButtonModel = runtime.loadRemote("remote_react_rsbuild/Button");
 // const RemoteReactRsbuildButton = React.lazy(() => RemoteReactRsbuildButtonModel);
 
@@ -43,11 +44,13 @@ console.log(runtime);
 // const RemoteReactViteButton = React.lazy(() => RemoteReactViteButtonModel);
 
 // mf bridge runtime 加载组件
-const RemoteReactRsbuildButton = runtime.createRemoteComponent({
-  loader: () => runtime.loadRemote("remote_react_rsbuild/Button"),
-  fallback: (info: any) => <div>{info?.error.message}</div>,
-  loading: <div>loading...</div>,
-});
+// init(options);
+// const RemoteReactRsbuildButton = runtime.createRemoteComponent({
+//   loader: () => runtime.loadRemote("remote_react_rsbuild/Button"),
+//   fallback: (info: any) => <div>{info?.error.message}</div>,
+//   loading: <div>loading...</div>,
+// });
+const RemoteReactRsbuildButton = runtime.createRemoteComponent2("remote_react_rsbuild/Button");
 
 const App = () => {
   return (

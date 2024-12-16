@@ -32,7 +32,8 @@
   },
   "private": true,
   "dependencies": {
+    "@module-federation/bridge-react": "^0.8.3",
     "@module-federation/enhanced": "^0.8.3",
-    "@module-federation/bridge-react": "^0.8.3"
+    "react-router-dom": "^6.28.0"
   }
 }
