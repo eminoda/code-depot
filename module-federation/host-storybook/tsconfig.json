@@ -20,8 +20,9 @@
     "noUnusedParameters": false,
     "typeRoots": ["node_modules/@types"],
     "paths": {
+      "@runtime": ["./.storybook/runtime-lib/index.js"],
       "*": ["./public/dist-types/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src","./storybook/runtime-lib/*.d.ts"]
 }

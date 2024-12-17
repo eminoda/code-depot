@@ -19,7 +19,6 @@ const config: StorybookConfig = {
         config.tools.htmlPlugin.template = path.resolve(__dirname, "template/preview.ejs");
       }
     }
-    console.log(config, configType);
     return config;
   },
 };

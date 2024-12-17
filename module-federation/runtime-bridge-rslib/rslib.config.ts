@@ -21,6 +21,7 @@ export default defineConfig({
     // },
     {
       format: "esm",
+      dts: true,
       autoExternal: {
         dependencies: false,
       },

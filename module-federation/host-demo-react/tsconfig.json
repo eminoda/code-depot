@@ -18,9 +18,12 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "baseUrl": "./",
+    "allowJs": true,
     "paths": {
+      "@runtime": ["./public/runtime-lib/index.js"],
       "*": ["public/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "public/runtime-lib/*.d.ts"]
 }

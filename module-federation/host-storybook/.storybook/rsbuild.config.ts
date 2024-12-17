@@ -10,6 +10,11 @@ export default defineConfig({
     // It is necessary to configure assetPrefix, and in the production build, you need to configure output.assetPrefix
     assetPrefix: "http://localhost:3333",
   },
+  resolve: {
+    alias: {
+      "@runtime": "./runtime-lib/index.js",
+    },
+  },
   plugins: [
     pluginReact(),
     pluginModuleFederation({

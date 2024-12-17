@@ -6,17 +6,17 @@ import { useEffect, useGlobals } from "storybook/internal/preview-api";
 import type { Renderer, StoryContext, PartialStoryFn as StoryFunction } from "storybook/internal/types";
 import { init, loadRemote } from "@module-federation/enhanced/runtime";
 
-init({
+const options = {
   name: "host_storybook",
   remotes: [
     {
       name: "remote_react_rsbuild",
       entry: "http://localhost:2001/mf-manifest.json",
     },
-    {
-      name: "remote_react_vite",
-      entry: "http://localhost:2002/mf-manifest.json",
-    },
+    // {
+    //   name: "remote_react_vite",
+    //   entry: "http://localhost:2002/mf-manifest.json",
+    // },
   ],
   shared: {
     react: {
@@ -30,11 +30,13 @@ init({
       // shareConfig: { singleton: true, requiredVersion: "18.5" },
     },
   },
-});
+};
+// init(options);
 
 const preview: Preview = {
   decorators: [
     (Story, context) => {
+      context.hello = 1;
       console.log("context", context);
       return (
         <div>

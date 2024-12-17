@@ -9,7 +9,7 @@ export default defineConfig({
   },
   html: {
     template: "./static/index.html",
-    title: "hello",
+    title: "React Host App",
   },
   resolve: {
     alias: {
