@@ -8,6 +8,8 @@ import * as antd from "antd";
 import axios from "axios";
 import Hello from "./Hello.vue";
 import { applyVueInReact } from "veaury";
+import { defineAsyncComponent } from "vue";
+
 const BasicWithNormal = applyVueInReact(Hello);
 
 const options = {
@@ -17,9 +19,13 @@ const options = {
       name: "remote_react_rsbuild",
       entry: "http://localhost:2001/mf-manifest.json",
     },
+    {
+      name: "remote_react_vite",
+      entry: "http://localhost:2002/mf-manifest.json",
+    },
     // {
-    //   name: "remote_react_vite",
-    //   entry: "http://localhost:2002/mf-manifest.json",
+    //   name: "remote_vue_vite",
+    //   entry: "http://localhost:3001/mf-manifest.json",
     // },
   ],
   shared: {
@@ -64,16 +70,22 @@ console.log(runtime);
 //   loading: <div>loading...</div>,
 // });
 const RemoteReactRsbuildButton = runtime.createRemoteComponent2("remote_react_rsbuild/Button");
+const RemoteReactViteButton = runtime.createRemoteComponent2("remote_react_vite/Button");
+// const RemoteReactViteButtonModel = runtime.loadRemote("remote_react_vite/Button");
+// const RemoteReactViteButton = React.lazy(() => RemoteReactViteButtonModel);
 
 const App = () => {
   return (
     <div className="content">
       <h1>host-demo-react</h1>
       <p>remote-react-rsbuild</p>
-      <BasicWithNormal />
       <RemoteReactRsbuildButton type="primary" name="弹框1" />
-      {/* <p>remote-react-vite</p>
-      <RemoteReactViteButton type="primary" name="弹框2" /> */}
+      <p>remote-react-vite</p>
+      <div>
+        <RemoteReactViteButton type="primary" name="弹框2" />
+      </div>
+
+      {/* <BasicWithNormal /> */}
     </div>
   );
 };

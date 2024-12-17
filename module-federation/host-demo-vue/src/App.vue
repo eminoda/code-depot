@@ -38,8 +38,8 @@ const RemoteReactRsbuildButton = defineAsyncComponent(() => loadRemote("remote_v
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <h1>host_vue</h1>
-  <h2>remote_vue_vite</h2>
+  <h1>Vue Host</h1>
+  <h2>Remote Vue By Vite</h2>
   <RemoteReactRsbuildButton type="primary" name="hello" />
 </template>
 

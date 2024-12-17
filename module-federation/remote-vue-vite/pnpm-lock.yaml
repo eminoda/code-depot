@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@module-federation/bridge-vue3':
+        specifier: ^0.8.5
+        version: 0.8.5(vue-router@3.6.5(vue@3.5.13(typescript@5.6.3)))(vue@3.5.13(typescript@5.6.3))
       '@module-federation/vite':
         specifier: ^1.1.9
         version: 1.1.9(rollup@4.28.1)
@@ -222,14 +225,32 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
+  '@module-federation/bridge-shared@0.8.5':
+    resolution: {integrity: sha512-AE4kAO7GUu+09xa3ped0oPQvz+WStAektWQLKpkYud6BBlkUcWa8b+7nkiJg6u7BaXaXdWYsOK7IsMsBL9WNOw==}
+
+  '@module-federation/bridge-vue3@0.8.5':
+    resolution: {integrity: sha512-5sUfH+jjqCMQt9HciG3Q7vwwlD0FkrNOTMPslZOlqY20yX/+c+aidd0zEvi8PGRPeGe/pKcL3HcMmaQZyS6/QA==}
+    peerDependencies:
+      vue: '=3'
+      vue-router: '=3'
+
   '@module-federation/error-codes@0.8.1':
     resolution: {integrity: sha512-Uq6c6WoA2cWSSGUwyVNy6g7sYlh2nDYsLIBPxsDJmF6oBe5FtD3QJcAawMKGV0TFb6HSWbJXVbNmpAeJMIIh+Q==}
+
+  '@module-federation/error-codes@0.8.5':
+    resolution: {integrity: sha512-vJ3SEx8DA94hnFxGfO3rsju6DWo9+uQJZikvKLq9NgR3Q6j/nIcmWEcr9rWQ8bE/BCT4NKn8ZPYc1UNWKpJx3Q==}
 
   '@module-federation/runtime@0.8.1':
     resolution: {integrity: sha512-aiQnczuEMDk1oyBN9JS3zbhg7zyXasCux/OntqEcXn+JgYat4e6rZ6c2qxI1YE1hYHsIGuiRsIRMKT9Om54bNg==}
 
+  '@module-federation/runtime@0.8.5':
+    resolution: {integrity: sha512-akG0nrjcWvV6ZOrH1vvXBMyVvhjkfMmy/w0C9XT3LTOaEopnvg8xV8en6XwsU3oWNm6mt6ZRLWxy0/pNCGkwJQ==}
+
   '@module-federation/sdk@0.8.1':
     resolution: {integrity: sha512-wFaD/gm83fJEeU90KwkRNxU9+tG0j/2HVRzLY2TLXXxvIo8IqvWZKqetexELaIV0KQmzHOoG5cZSefouActoYw==}
+
+  '@module-federation/sdk@0.8.5':
+    resolution: {integrity: sha512-aE0OeDpwBVHODnb90SY7he+Zt3Q6rAr67yLYbMAdwvV6DTfiQNt7iQkvZ4CUQPiChens+cnceQlJFZLFY5fQ5A==}
 
   '@module-federation/vite@1.1.9':
     resolution: {integrity: sha512-gUo/uV8ZlHTLJjgKy02lXb7zo9auqOIt5Ozw1ewP9vkMrNQVEm4ZxmZ7P+k8Rb9O2PjfdHOLRuHfNmXHmywzUw==}
@@ -613,6 +634,11 @@ packages:
   vscode-uri@3.0.8:
     resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
 
+  vue-router@3.6.5:
+    resolution: {integrity: sha512-VYXZQLtjuvKxxcshuRAwjHnciqZVoXAjTjcqBTz4rKc8qih9g9pI3hbDjmqXaHdgL3v8pV6P8Z335XvHzESxLQ==}
+    peerDependencies:
+      vue: ^2
+
   vue-tsc@2.1.10:
     resolution: {integrity: sha512-RBNSfaaRHcN5uqVqJSZh++Gy/YUzryuv9u1aFWhsammDJXNtUiJMNoJ747lZcQ68wUQFx6E73y4FY3D8E7FGMA==}
     hasBin: true
@@ -747,14 +773,35 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
+  '@module-federation/bridge-shared@0.8.5': {}
+
+  '@module-federation/bridge-vue3@0.8.5(vue-router@3.6.5(vue@3.5.13(typescript@5.6.3)))(vue@3.5.13(typescript@5.6.3))':
+    dependencies:
+      '@module-federation/bridge-shared': 0.8.5
+      '@module-federation/runtime': 0.8.5
+      '@module-federation/sdk': 0.8.5
+      vue: 3.5.13(typescript@5.6.3)
+      vue-router: 3.6.5(vue@3.5.13(typescript@5.6.3))
+
   '@module-federation/error-codes@0.8.1': {}
+
+  '@module-federation/error-codes@0.8.5': {}
 
   '@module-federation/runtime@0.8.1':
     dependencies:
       '@module-federation/error-codes': 0.8.1
       '@module-federation/sdk': 0.8.1
 
+  '@module-federation/runtime@0.8.5':
+    dependencies:
+      '@module-federation/error-codes': 0.8.5
+      '@module-federation/sdk': 0.8.5
+
   '@module-federation/sdk@0.8.1':
+    dependencies:
+      isomorphic-rslog: 0.0.6
+
+  '@module-federation/sdk@0.8.5':
     dependencies:
       isomorphic-rslog: 0.0.6
 
@@ -1116,6 +1163,10 @@ snapshots:
       fsevents: 2.3.3
 
   vscode-uri@3.0.8: {}
+
+  vue-router@3.6.5(vue@3.5.13(typescript@5.6.3)):
+    dependencies:
+      vue: 3.5.13(typescript@5.6.3)
 
   vue-tsc@2.1.10(typescript@5.6.3):
     dependencies:

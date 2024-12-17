@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@module-federation/bridge-vue3':
+        specifier: ^0.8.5
+        version: 0.8.5(vue-router@3.6.5(vue@3.5.13(typescript@5.6.3)))(vue@3.5.13(typescript@5.6.3))
       '@module-federation/enhanced':
         specifier: ^0.8.2
         version: 0.8.2(@rspack/core@1.1.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.6.3)(vue-tsc@2.1.10(typescript@5.6.3))
@@ -197,6 +200,15 @@ packages:
   '@module-federation/bridge-react-webpack-plugin@0.8.2':
     resolution: {integrity: sha512-DStxS8gsryTXzBGGuYhaiaoV64DYB+ohQBK85jVdXyH89y5np4Bpn3ka3E9BSpelPtoGBEhKcElcw05jD9gfQw==}
 
+  '@module-federation/bridge-shared@0.8.5':
+    resolution: {integrity: sha512-AE4kAO7GUu+09xa3ped0oPQvz+WStAektWQLKpkYud6BBlkUcWa8b+7nkiJg6u7BaXaXdWYsOK7IsMsBL9WNOw==}
+
+  '@module-federation/bridge-vue3@0.8.5':
+    resolution: {integrity: sha512-5sUfH+jjqCMQt9HciG3Q7vwwlD0FkrNOTMPslZOlqY20yX/+c+aidd0zEvi8PGRPeGe/pKcL3HcMmaQZyS6/QA==}
+    peerDependencies:
+      vue: '=3'
+      vue-router: '=3'
+
   '@module-federation/data-prefetch@0.8.2':
     resolution: {integrity: sha512-JThwDDvARN7tx0+5m4n5AkC1oQUEKq5dR9Y7EGvDfZdcd5fFrNplpxMJzy3CB4iB9Jzw4YzFrnLS/VNE9m7Tbw==}
     peerDependencies:
@@ -229,6 +241,9 @@ packages:
   '@module-federation/error-codes@0.8.2':
     resolution: {integrity: sha512-/f0skv5UfMgv4Mnc6pnjJI9X/ihZJjhOPtxmyowo2GJwo8zpVDP5UdsUWqlt3l6h3IPkLgZgZ24LQMqntUdHVw==}
 
+  '@module-federation/error-codes@0.8.5':
+    resolution: {integrity: sha512-vJ3SEx8DA94hnFxGfO3rsju6DWo9+uQJZikvKLq9NgR3Q6j/nIcmWEcr9rWQ8bE/BCT4NKn8ZPYc1UNWKpJx3Q==}
+
   '@module-federation/managers@0.8.2':
     resolution: {integrity: sha512-Fmz0aVVQSaSU5atMusiCfncI1jk/r32QwlNs8BPKsm7EJaguyndVnupBnnJ/uJzBJW/6uiJ+ke9EIbuqjzhuow==}
 
@@ -259,11 +274,17 @@ packages:
   '@module-federation/runtime@0.8.2':
     resolution: {integrity: sha512-XYrThp07eT+C/3e2mKpbemGFn48D2kQXI2Cljgkv0TztHaedTrMuk949kqAImBxw+UdN/vpHJEY6L9Gj/FpFGQ==}
 
+  '@module-federation/runtime@0.8.5':
+    resolution: {integrity: sha512-akG0nrjcWvV6ZOrH1vvXBMyVvhjkfMmy/w0C9XT3LTOaEopnvg8xV8en6XwsU3oWNm6mt6ZRLWxy0/pNCGkwJQ==}
+
   '@module-federation/sdk@0.5.1':
     resolution: {integrity: sha512-exvchtjNURJJkpqjQ3/opdbfeT2wPKvrbnGnyRkrwW5o3FH1LaST1tkiNviT6OXTexGaVc2DahbdniQHVtQ7pA==}
 
   '@module-federation/sdk@0.8.2':
     resolution: {integrity: sha512-MgVoflK9j7+Kmecnpjxb2GyjsESwFDs7oD4B21iv7VzS09YS6lXsEeiLJggVhUA2j1iuC25tSBpY/MwybYLbPg==}
+
+  '@module-federation/sdk@0.8.5':
+    resolution: {integrity: sha512-aE0OeDpwBVHODnb90SY7he+Zt3Q6rAr67yLYbMAdwvV6DTfiQNt7iQkvZ4CUQPiChens+cnceQlJFZLFY5fQ5A==}
 
   '@module-federation/third-party-dts-extractor@0.8.2':
     resolution: {integrity: sha512-TPLMaTVTxlpW7R+nsik+urPKHL2z6WJeCBRzkURwPtUjtnmFPGqJh25g0D48x6BEXinpna4W62gY7B3eKGnrkQ==}
@@ -1017,6 +1038,11 @@ packages:
   vscode-uri@3.0.8:
     resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
 
+  vue-router@3.6.5:
+    resolution: {integrity: sha512-VYXZQLtjuvKxxcshuRAwjHnciqZVoXAjTjcqBTz4rKc8qih9g9pI3hbDjmqXaHdgL3v8pV6P8Z335XvHzESxLQ==}
+    peerDependencies:
+      vue: ^2
+
   vue-tsc@2.1.10:
     resolution: {integrity: sha512-RBNSfaaRHcN5uqVqJSZh++Gy/YUzryuv9u1aFWhsammDJXNtUiJMNoJ747lZcQ68wUQFx6E73y4FY3D8E7FGMA==}
     hasBin: true
@@ -1146,6 +1172,16 @@ snapshots:
       '@types/semver': 7.5.8
       semver: 7.6.3
 
+  '@module-federation/bridge-shared@0.8.5': {}
+
+  '@module-federation/bridge-vue3@0.8.5(vue-router@3.6.5(vue@3.5.13(typescript@5.6.3)))(vue@3.5.13(typescript@5.6.3))':
+    dependencies:
+      '@module-federation/bridge-shared': 0.8.5
+      '@module-federation/runtime': 0.8.5
+      '@module-federation/sdk': 0.8.5
+      vue: 3.5.13(typescript@5.6.3)
+      vue-router: 3.6.5(vue@3.5.13(typescript@5.6.3))
+
   '@module-federation/data-prefetch@0.8.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@module-federation/runtime': 0.8.2
@@ -1207,6 +1243,8 @@ snapshots:
 
   '@module-federation/error-codes@0.8.2': {}
 
+  '@module-federation/error-codes@0.8.5': {}
+
   '@module-federation/managers@0.8.2':
     dependencies:
       '@module-federation/sdk': 0.8.2
@@ -1265,9 +1303,18 @@ snapshots:
       '@module-federation/error-codes': 0.8.2
       '@module-federation/sdk': 0.8.2
 
+  '@module-federation/runtime@0.8.5':
+    dependencies:
+      '@module-federation/error-codes': 0.8.5
+      '@module-federation/sdk': 0.8.5
+
   '@module-federation/sdk@0.5.1': {}
 
   '@module-federation/sdk@0.8.2':
+    dependencies:
+      isomorphic-rslog: 0.0.6
+
+  '@module-federation/sdk@0.8.5':
     dependencies:
       isomorphic-rslog: 0.0.6
 
@@ -1951,6 +1998,10 @@ snapshots:
       fsevents: 2.3.3
 
   vscode-uri@3.0.8: {}
+
+  vue-router@3.6.5(vue@3.5.13(typescript@5.6.3)):
+    dependencies:
+      vue: 3.5.13(typescript@5.6.3)
 
   vue-tsc@2.1.10(typescript@5.6.3):
     dependencies:
