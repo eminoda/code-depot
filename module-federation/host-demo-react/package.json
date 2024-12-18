@@ -15,6 +15,7 @@
     "@module-federation/enhanced": "^0.8.2",
     "@rsbuild/plugin-vue": "^1.0.5",
     "@rsbuild/plugin-vue-jsx": "^1.0.1",
+    "amis": "^6.10.0",
     "antd": "^5.22.4",
     "axios": "^1.7.9",
     "react": "^18.3.1",

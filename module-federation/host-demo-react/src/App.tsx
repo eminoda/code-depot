@@ -19,10 +19,10 @@ const options = {
       name: "remote_react_rsbuild",
       entry: "http://localhost:2001/mf-manifest.json",
     },
-    {
-      name: "remote_react_vite",
-      entry: "http://localhost:2002/mf-manifest.json",
-    },
+    // {
+    //   name: "remote_react_vite",
+    //   entry: "http://localhost:2002/mf-manifest.json",
+    // },
     // {
     //   name: "remote_vue_vite",
     //   entry: "http://localhost:3001/mf-manifest.json",
@@ -70,6 +70,8 @@ console.log(runtime);
 //   loading: <div>loading...</div>,
 // });
 const RemoteReactRsbuildButton = runtime.createRemoteComponent2("remote_react_rsbuild/Button");
+const RemoteReactRsbuildForm = runtime.createRemoteComponent2("remote_react_rsbuild/Form");
+const RemoteReactRsbuildTable = runtime.createRemoteComponent2("remote_react_rsbuild/Table");
 const RemoteReactViteButton = runtime.createRemoteComponent2("remote_react_vite/Button");
 // const RemoteReactViteButtonModel = runtime.loadRemote("remote_react_vite/Button");
 // const RemoteReactViteButton = React.lazy(() => RemoteReactViteButtonModel);
@@ -80,10 +82,16 @@ const App = () => {
       <h1>host-demo-react</h1>
       <p>remote-react-rsbuild</p>
       <RemoteReactRsbuildButton type="primary" name="弹框1" />
-      <p>remote-react-vite</p>
+      <div style={{ width: "600px" }}>
+        <RemoteReactRsbuildForm />
+      </div>
+      <div style={{ width: "1000px" }}>
+        <RemoteReactRsbuildTable />
+      </div>
+      {/* <p>remote-react-vite</p>
       <div>
         <RemoteReactViteButton type="primary" name="弹框2" />
-      </div>
+      </div> */}
 
       {/* <BasicWithNormal /> */}
     </div>

@@ -19,6 +19,8 @@ export default defineConfig({
       exposes: {
         "./Button": "./src/components/Button.tsx",
         "./Modal": "./src/components/Modal.tsx",
+        "./Form": "./src/components/Form.tsx",
+        "./Table": "./src/components/Table.tsx",
       },
       shared: {
         react: {

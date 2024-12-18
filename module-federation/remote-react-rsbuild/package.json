@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@module-federation/bridge-react": "^0.8.3",
+    "amis": "^6.10.0",
     "antd": "^5.22.4",
     "axios": "^1.7.9",
+    "punycode": "^2.3.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
