@@ -2,6 +2,37 @@ import React from "react";
 import { init, loadRemote } from "@module-federation/enhanced/runtime";
 import runtime from "../../.storybook/store";
 
+interface ButtonType {
+  label: string;
+  type: string;
+  level: string;
+  actionType: string;
+  dialog?: DialogType;
+  disabledOn?: string;
+  confirmText?: string;
+  api?: string;
+}
+
+interface DialogType {
+  title: string;
+  body: FormType;
+}
+
+interface FormType {
+  type: string;
+  api: string;
+  body: {
+    type: string;
+    name?: string;
+    label: string;
+    body?: {
+      type: string;
+      label: string;
+      displayMode?: string;
+      color?: string;
+    };
+  }[];
+}
 export interface TableProps {
   /** 表单标题 */
   title?: string;
@@ -10,16 +41,13 @@ export interface TableProps {
   /** 表单项 */
   columns: {
     /** 字段 */
-    name: string;
+    name?: string;
     /** 名称 */
     label: string;
     /** 操作栏 */
-    buttons: {
-      /** 字段 */
-      name: string;
-      /** 名称 */
-      label: string;
-    };
+    buttons?: ButtonType[];
+    /** 操作类型 */
+    type?: string;
   }[];
 }
 
