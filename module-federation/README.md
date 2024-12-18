@@ -15,14 +15,14 @@
 
 - [ ] remote + sb host
   - [x] 基于 rsbuild、vite 的 remote 可被集成
-  - [ ] preview 获取配置
+  - [x] preview 获取配置
   - [ ] sb addon
-- [ ] vue2react
-- [ ] runtime
-  - [ ] runtime bridge 问题
-- [ ] demo 演示
-  - [ ] 集成 runtime
-  - [ ] 集成 runtime + bridge
+- [x] vue2react
+- [x] runtime
+  - [x] runtime bridge 问题
+- [x] demo 演示
+  - [x] 集成 runtime
+  - [x] 集成 runtime + bridge
 
 ### 构建脚本
 
