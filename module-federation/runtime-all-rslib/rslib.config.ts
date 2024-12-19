@@ -5,8 +5,8 @@ export default defineConfig({
   source: {
     entry: {
       // index: ["./src/**"],
-      rruntime: "./src/rruntime.ts",
-      vruntime: "./src/vruntime.ts",
+      rruntime: "./src/rruntime",
+      vruntime: "./src/vruntime",
     },
   },
   lib: [

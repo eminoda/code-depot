@@ -9,6 +9,7 @@ import axios from "axios";
 import Hello from "./Hello.vue";
 import { applyVueInReact } from "veaury";
 import { defineAsyncComponent } from "vue";
+import RuntimeAll from "RuntimeAll";
 
 const BasicWithNormal = applyVueInReact(Hello);
 
@@ -49,7 +50,10 @@ const options = {
     },
   },
 };
-
+console.log(RuntimeAll);
+const runtimeall = new RuntimeAll(options);
+console.log(runtimeall)
+const Hello2 = runtimeall.loadRemoteComponent("remote_react_rsbuild/Button");
 const runtime = new Runtime(options);
 console.log(runtime);
 
@@ -81,7 +85,8 @@ const App = () => {
     <div className="content">
       <h1>host-demo-react</h1>
       <p>remote-react-rsbuild</p>
-      <RemoteReactRsbuildButton type="primary" name="弹框1" />
+      <Hello2 name="abc" />
+      {/* <RemoteReactRsbuildButton type="primary" name="弹框1" />
       <div style={{ width: "600px" }}>
         <RemoteReactRsbuildForm
           {...{
@@ -194,7 +199,7 @@ const App = () => {
             ],
           }}
         />
-      </div>
+      </div> */}
       {/* <p>remote-react-vite</p>
       <div>
         <RemoteReactViteButton type="primary" name="弹框2" />

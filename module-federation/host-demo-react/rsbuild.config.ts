@@ -21,6 +21,7 @@ export default defineConfig({
       // runtime: "Runtime",
       // react: "React",
       // "react-dom": "ReactDOM",
+      "RuntimeAll": "RuntimeAll",
     },
   },
   plugins: [pluginVueJsx(), pluginVue(), pluginReact()],
