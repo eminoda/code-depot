@@ -1,0 +1,41 @@
+{
+  "name": "runtime-vue-rslib",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rslib build",
+    "check": "biome check --write",
+    "dev": "rslib build --watch",
+    "format": "biome format --write"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.3",
+    "@module-federation/enhanced": "^0.8.5",
+    "@rsbuild/plugin-react": "^1.0.7",
+    "@rsbuild/plugin-vue": "^1.0.5",
+    "@rslib/core": "^0.1.5",
+    "@types/react": "^19.0.1",
+    "react": "^19.0.0",
+    "typescript": "^5.6.3",
+    "vue": "^3.5.13"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "private": true,
+  "dependencies": {
+    "veaury": "^2.6.1"
+  }
+}
