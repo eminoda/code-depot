@@ -1,29 +1,34 @@
 import { init, loadRemote } from "@module-federation/enhanced/runtime";
 import { h } from "vue";
-import { applyPureReactInVue } from "veaury";
-import Button from "./Button.tsx";
+import { defineAsyncComponent } from "vue";
+
+// import { applyPureReactInVue } from "veaury";
+// import Button from "./Button.tsx";
 
 class Runtime {
   constructor(options: RuntimeOptions) {
     init(options);
   }
   loadRemoteComponent(componentName: string) {
-    console.log(componentName);
-    return {
+    return defineAsyncComponent({
+      // suspensible: false,
+
       // @ts-ignore
-      loader: async () => {
-        // const mod = await loadRemote(componentName);
-        const mod = {
-          default: applyPureReactInVue(Button),
-        };
-        console.log(mod);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        return mod;
-      },
+      loader: () => loadRemote(componentName),
+      // new Promise(async (resolve) => {
+      //   setTimeout(() => {
+      //     console.log("rendering");
+      //     // @ts-ignore
+      //     resolve(h("span", {}, "123"));
+      //   }, 2000);
+      // }),
       loadingComponent: () => h("div", {}, "Loading..."),
-      delay: 100,
-    };
-    // return () => import("./Button.vue")
+      errorComponent: () => h("div", {}, "Error..."),
+      onError: (error: Error, retry: () => void, fail: () => void, attempts: number) => {
+        console.log(error, retry, fail, attempts);
+      },
+      delay: 0,
+    });
   }
 }
 export default Runtime;

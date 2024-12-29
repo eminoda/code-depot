@@ -11,6 +11,9 @@ export default defineConfig({
   },
   output: {
     assetPrefix: "http://localhost:3000/remote_react_rsbuild",
+    // externals: {
+    //   vue: "Vue",
+    // },
   },
   plugins: [
     pluginVue(),

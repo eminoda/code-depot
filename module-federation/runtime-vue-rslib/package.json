@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.3",
-    "@module-federation/enhanced": "^0.8.5",
     "@rsbuild/plugin-react": "^1.0.7",
     "@rsbuild/plugin-vue": "^1.0.5",
     "@rslib/core": "^0.1.5",
@@ -36,6 +35,7 @@
   },
   "private": true,
   "dependencies": {
-    "veaury": "^2.6.1"
+    "veaury": "^2.6.1",
+    "@module-federation/enhanced": "^0.8.5"
   }
 }

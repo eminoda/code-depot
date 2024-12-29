@@ -18,9 +18,13 @@ export default defineConfig({
   ],
   output: {
     target: "web",
+    distPath: {
+      root: "../host-demo-vue/public",
+    },
+    externals: {
+      vue: "Vue",
+    },
+    // cleanDistPath: true,
   },
-  plugins: [
-    pluginReact(),
-    pluginVue(),
-  ],
+  plugins: [pluginReact(), pluginVue()],
 });

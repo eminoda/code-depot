@@ -1,9 +1,13 @@
 <template>
+  <!-- <Suspense> -->
   <div class="content">
     <h1>Rsbuild with Vue</h1>
     <p>Start building amazing things with Rsbuild.</p>
-    <RemoteReactRsbuildButton name="button2" />
+    <!-- <Suspense> -->
+      <RemoteReactRsbuildButton name="I'm vue remote component" />
+    <!-- </Suspense> -->
   </div>
+  <!-- </Suspense> -->
 </template>
 
 <script setup lange="ts">
@@ -24,7 +28,7 @@ const options = {
     vue: {
       version: "3.5.13",
       lib: () => Vue,
-      // shareConfig: { singleton: true, requiredVersion: "18.5" },
+      shareConfig: { singleton: true, requiredVersion: "3.5.13" },
     },
   },
 };
@@ -33,7 +37,8 @@ const runtime = new RuntimeAll(options);
 
 init(options);
 
-const RemoteReactRsbuildButton = defineAsyncComponent(runtime.loadRemoteComponent("remote_vue_rsbuild/Button"));
+const RemoteReactRsbuildButton = runtime.loadRemoteComponent("remote_vue_rsbuild/Button");
+// const RemoteReactRsbuildButton = defineAsyncComponent(()=> loadRemote("remote_vue_rsbuild/Button"))
 console.log(RemoteReactRsbuildButton);
 </script>
 <style scoped>
