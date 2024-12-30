@@ -1,13 +1,14 @@
-/*! For license information please see rruntime.js.LICENSE.txt */
 (function(root, factory) {
-    if ('object' == typeof exports && 'object' == typeof module) module.exports = factory();
-    else if ('function' == typeof define && define.amd) define([], factory);
-    else if ('object' == typeof exports) exports["RuntimeBridgeReact"] = factory();
-    else root["RuntimeBridgeReact"] = factory();
-})(globalThis, ()=>(()=>{
+    if ('object' == typeof exports && 'object' == typeof module) module.exports = factory(require("Vue"));
+    else if ('function' == typeof define && define.amd) define([
+        "Vue"
+    ], factory);
+    else if ('object' == typeof exports) exports["RuntimeBridgeVue"] = factory(require("Vue"));
+    else root["RuntimeBridgeVue"] = factory(root["Vue"]);
+})(globalThis, (__WEBPACK_EXTERNAL_MODULE_vue__)=>(()=>{
         "use strict";
         var __webpack_modules__ = {
-            "./node_modules/.pnpm/@module-federation+error-codes@0.8.6/node_modules/@module-federation/error-codes/dist/index.cjs.js": function(__unused_webpack_module, exports1) {
+            "./node_modules/.pnpm/@module-federation+error-codes@0.8.5/node_modules/@module-federation/error-codes/dist/index.cjs.js": function(__unused_webpack_module, exports1) {
                 const RUNTIME_001 = 'RUNTIME-001';
                 const RUNTIME_002 = 'RUNTIME-002';
                 const RUNTIME_003 = 'RUNTIME-003';
@@ -67,8 +68,8 @@
                 exports1.runtimeDescMap = runtimeDescMap;
                 exports1.typeDescMap = typeDescMap;
             },
-            "./node_modules/.pnpm/@module-federation+runtime-tools@0.8.6/node_modules/@module-federation/runtime-tools/dist/runtime.cjs.js": function(__unused_webpack_module, exports1, __webpack_require__) {
-                var runtime = __webpack_require__("./node_modules/.pnpm/@module-federation+runtime@0.8.6/node_modules/@module-federation/runtime/dist/index.cjs.js");
+            "./node_modules/.pnpm/@module-federation+runtime-tools@0.8.5/node_modules/@module-federation/runtime-tools/dist/runtime.cjs.js": function(__unused_webpack_module, exports1, __webpack_require__) {
+                var runtime = __webpack_require__("./node_modules/.pnpm/@module-federation+runtime@0.8.5/node_modules/@module-federation/runtime/dist/index.cjs.js");
                 Object.keys(runtime).forEach(function(k) {
                     if ('default' !== k && !Object.prototype.hasOwnProperty.call(exports1, k)) Object.defineProperty(exports1, k, {
                         enumerable: true,
@@ -78,11 +79,11 @@
                     });
                 });
             },
-            "./node_modules/.pnpm/@module-federation+runtime@0.8.6/node_modules/@module-federation/runtime/dist/index.cjs.js": function(__unused_webpack_module, exports1, __webpack_require__) {
-                var polyfills = __webpack_require__("./node_modules/.pnpm/@module-federation+runtime@0.8.6/node_modules/@module-federation/runtime/dist/polyfills.cjs.js");
-                var sdk = __webpack_require__("./node_modules/.pnpm/@module-federation+sdk@0.8.6/node_modules/@module-federation/sdk/dist/index.cjs.js");
-                var share = __webpack_require__("./node_modules/.pnpm/@module-federation+runtime@0.8.6/node_modules/@module-federation/runtime/dist/share.cjs.js");
-                var errorCodes = __webpack_require__("./node_modules/.pnpm/@module-federation+error-codes@0.8.6/node_modules/@module-federation/error-codes/dist/index.cjs.js");
+            "./node_modules/.pnpm/@module-federation+runtime@0.8.5/node_modules/@module-federation/runtime/dist/index.cjs.js": function(__unused_webpack_module, exports1, __webpack_require__) {
+                var polyfills = __webpack_require__("./node_modules/.pnpm/@module-federation+runtime@0.8.5/node_modules/@module-federation/runtime/dist/polyfills.cjs.js");
+                var sdk = __webpack_require__("./node_modules/.pnpm/@module-federation+sdk@0.8.5/node_modules/@module-federation/sdk/dist/index.cjs.js");
+                var share = __webpack_require__("./node_modules/.pnpm/@module-federation+runtime@0.8.5/node_modules/@module-federation/runtime/dist/share.cjs.js");
+                var errorCodes = __webpack_require__("./node_modules/.pnpm/@module-federation+error-codes@0.8.5/node_modules/@module-federation/error-codes/dist/index.cjs.js");
                 function matchRemoteWithNameAndExpose(remotes, id) {
                     for (const remote of remotes){
                         const isNameMatched = id.startsWith(remote.name);
@@ -1755,7 +1756,7 @@
                             beforeInitContainer: new AsyncWaterfallHook('beforeInitContainer'),
                             initContainer: new AsyncWaterfallHook('initContainer')
                         });
-                        this.version = "0.8.6";
+                        this.version = "0.8.5";
                         this.moduleCache = new Map();
                         this.loaderHook = new PluginSystem({
                             getModuleInfo: new SyncHook(),
@@ -1867,7 +1868,7 @@
                 exports1.registerPlugins = registerPlugins;
                 exports1.registerRemotes = registerRemotes;
             },
-            "./node_modules/.pnpm/@module-federation+runtime@0.8.6/node_modules/@module-federation/runtime/dist/polyfills.cjs.js": function(__unused_webpack_module, exports1) {
+            "./node_modules/.pnpm/@module-federation+runtime@0.8.5/node_modules/@module-federation/runtime/dist/polyfills.cjs.js": function(__unused_webpack_module, exports1) {
                 function _extends() {
                     _extends = Object.assign || function(target) {
                         for(var i = 1; i < arguments.length; i++){
@@ -1892,9 +1893,9 @@
                 exports1._extends = _extends;
                 exports1._object_without_properties_loose = _object_without_properties_loose;
             },
-            "./node_modules/.pnpm/@module-federation+runtime@0.8.6/node_modules/@module-federation/runtime/dist/share.cjs.js": function(__unused_webpack_module, exports1, __webpack_require__) {
-                var polyfills = __webpack_require__("./node_modules/.pnpm/@module-federation+runtime@0.8.6/node_modules/@module-federation/runtime/dist/polyfills.cjs.js");
-                var sdk = __webpack_require__("./node_modules/.pnpm/@module-federation+sdk@0.8.6/node_modules/@module-federation/sdk/dist/index.cjs.js");
+            "./node_modules/.pnpm/@module-federation+runtime@0.8.5/node_modules/@module-federation/runtime/dist/share.cjs.js": function(__unused_webpack_module, exports1, __webpack_require__) {
+                var polyfills = __webpack_require__("./node_modules/.pnpm/@module-federation+runtime@0.8.5/node_modules/@module-federation/runtime/dist/polyfills.cjs.js");
+                var sdk = __webpack_require__("./node_modules/.pnpm/@module-federation+sdk@0.8.5/node_modules/@module-federation/sdk/dist/index.cjs.js");
                 function getBuilderId() {
                     return 'undefined' != typeof FEDERATION_BUILD_IDENTIFIER ? FEDERATION_BUILD_IDENTIFIER : '';
                 }
@@ -2046,7 +2047,7 @@
                 function setGlobalFederationConstructor(FederationConstructor, isDebug = sdk.isDebugMode()) {
                     if (isDebug) {
                         CurrentGlobal.__FEDERATION__.__DEBUG_CONSTRUCTOR__ = FederationConstructor;
-                        CurrentGlobal.__FEDERATION__.__DEBUG_CONSTRUCTOR_VERSION__ = "0.8.6";
+                        CurrentGlobal.__FEDERATION__.__DEBUG_CONSTRUCTOR_VERSION__ = "0.8.5";
                     }
                 }
                 function getInfoWithoutType(target, key) {
@@ -2544,9 +2545,9 @@
                 exports1.setPreloaded = setPreloaded;
                 exports1.warn = warn;
             },
-            "./node_modules/.pnpm/@module-federation+sdk@0.8.6/node_modules/@module-federation/sdk/dist/index.cjs.js": function(__unused_webpack_module, exports1, __webpack_require__) {
-                var isomorphicRslog = __webpack_require__("./node_modules/.pnpm/isomorphic-rslog@0.0.7/node_modules/isomorphic-rslog/dist/browser/index.cjs");
-                var polyfills = __webpack_require__("./node_modules/.pnpm/@module-federation+sdk@0.8.6/node_modules/@module-federation/sdk/dist/polyfills.cjs.js");
+            "./node_modules/.pnpm/@module-federation+sdk@0.8.5/node_modules/@module-federation/sdk/dist/index.cjs.js": function(__unused_webpack_module, exports1, __webpack_require__) {
+                var isomorphicRslog = __webpack_require__("./node_modules/.pnpm/isomorphic-rslog@0.0.6/node_modules/isomorphic-rslog/dist/browser/index.cjs");
+                var polyfills = __webpack_require__("./node_modules/.pnpm/@module-federation+sdk@0.8.5/node_modules/@module-federation/sdk/dist/polyfills.cjs.js");
                 const FederationModuleManifest = 'federation-manifest.json';
                 const MANIFEST_EXT = '.json';
                 const BROWSER_LOG_KEY = 'FEDERATION_DEBUG';
@@ -3177,7 +3178,7 @@
                 exports1.simpleJoinRemoteEntry = simpleJoinRemoteEntry;
                 exports1.warn = warn;
             },
-            "./node_modules/.pnpm/@module-federation+sdk@0.8.6/node_modules/@module-federation/sdk/dist/polyfills.cjs.js": function(__unused_webpack_module, exports1) {
+            "./node_modules/.pnpm/@module-federation+sdk@0.8.5/node_modules/@module-federation/sdk/dist/polyfills.cjs.js": function(__unused_webpack_module, exports1) {
                 function _extends() {
                     _extends = Object.assign || function(target) {
                         for(var i = 1; i < arguments.length; i++){
@@ -3190,380 +3191,10 @@
                 }
                 exports1._extends = _extends;
             },
-            "./node_modules/.pnpm/react@18.3.1/node_modules/react/cjs/react-jsx-runtime.production.min.js": function(__unused_webpack_module, exports1, __webpack_require__) {
-                var __webpack_unused_export__;
-                /**
- * @license React
- * react-jsx-runtime.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */ var f = __webpack_require__("./node_modules/.pnpm/react@18.3.1/node_modules/react/index.js"), k = Symbol.for("react.element"), l = Symbol.for("react.fragment"), m = Object.prototype.hasOwnProperty, n = f.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, p = {
-                    key: !0,
-                    ref: !0,
-                    __self: !0,
-                    __source: !0
-                };
-                function q(c, a, g) {
-                    var b, d = {}, e = null, h = null;
-                    void 0 !== g && (e = "" + g);
-                    void 0 !== a.key && (e = "" + a.key);
-                    void 0 !== a.ref && (h = a.ref);
-                    for(b in a)m.call(a, b) && !p.hasOwnProperty(b) && (d[b] = a[b]);
-                    if (c && c.defaultProps) for(b in a = c.defaultProps)void 0 === d[b] && (d[b] = a[b]);
-                    return {
-                        $$typeof: k,
-                        type: c,
-                        key: e,
-                        ref: h,
-                        props: d,
-                        _owner: n.current
-                    };
-                }
-                __webpack_unused_export__ = l;
-                exports1.jsx = q;
-                __webpack_unused_export__ = q;
+            vue: function(module1) {
+                module1.exports = __WEBPACK_EXTERNAL_MODULE_vue__;
             },
-            "./node_modules/.pnpm/react@18.3.1/node_modules/react/cjs/react.production.min.js": function(__unused_webpack_module, exports1) {
-                /**
- * @license React
- * react.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */ var l = Symbol.for("react.element"), n = Symbol.for("react.portal"), p = Symbol.for("react.fragment"), q = Symbol.for("react.strict_mode"), r = Symbol.for("react.profiler"), t = Symbol.for("react.provider"), u = Symbol.for("react.context"), v = Symbol.for("react.forward_ref"), w = Symbol.for("react.suspense"), x = Symbol.for("react.memo"), y = Symbol.for("react.lazy"), z = Symbol.iterator;
-                function A(a) {
-                    if (null === a || "object" != typeof a) return null;
-                    a = z && a[z] || a["@@iterator"];
-                    return "function" == typeof a ? a : null;
-                }
-                var B = {
-                    isMounted: function() {
-                        return !1;
-                    },
-                    enqueueForceUpdate: function() {},
-                    enqueueReplaceState: function() {},
-                    enqueueSetState: function() {}
-                }, C = Object.assign, D = {};
-                function E(a, b, e) {
-                    this.props = a;
-                    this.context = b;
-                    this.refs = D;
-                    this.updater = e || B;
-                }
-                E.prototype.isReactComponent = {};
-                E.prototype.setState = function(a, b) {
-                    if ("object" != typeof a && "function" != typeof a && null != a) throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");
-                    this.updater.enqueueSetState(this, a, b, "setState");
-                };
-                E.prototype.forceUpdate = function(a) {
-                    this.updater.enqueueForceUpdate(this, a, "forceUpdate");
-                };
-                function F() {}
-                F.prototype = E.prototype;
-                function G(a, b, e) {
-                    this.props = a;
-                    this.context = b;
-                    this.refs = D;
-                    this.updater = e || B;
-                }
-                var H = G.prototype = new F;
-                H.constructor = G;
-                C(H, E.prototype);
-                H.isPureReactComponent = !0;
-                var I = Array.isArray, J = Object.prototype.hasOwnProperty, K = {
-                    current: null
-                }, L = {
-                    key: !0,
-                    ref: !0,
-                    __self: !0,
-                    __source: !0
-                };
-                function M(a, b, e) {
-                    var d, c = {}, k = null, h = null;
-                    if (null != b) for(d in void 0 !== b.ref && (h = b.ref), void 0 !== b.key && (k = "" + b.key), b)J.call(b, d) && !L.hasOwnProperty(d) && (c[d] = b[d]);
-                    var g = arguments.length - 2;
-                    if (1 === g) c.children = e;
-                    else if (1 < g) {
-                        for(var f = Array(g), m = 0; m < g; m++)f[m] = arguments[m + 2];
-                        c.children = f;
-                    }
-                    if (a && a.defaultProps) for(d in g = a.defaultProps)void 0 === c[d] && (c[d] = g[d]);
-                    return {
-                        $$typeof: l,
-                        type: a,
-                        key: k,
-                        ref: h,
-                        props: c,
-                        _owner: K.current
-                    };
-                }
-                function N(a, b) {
-                    return {
-                        $$typeof: l,
-                        type: a.type,
-                        key: b,
-                        ref: a.ref,
-                        props: a.props,
-                        _owner: a._owner
-                    };
-                }
-                function O(a) {
-                    return "object" == typeof a && null !== a && a.$$typeof === l;
-                }
-                function escape(a) {
-                    var b = {
-                        "=": "=0",
-                        ":": "=2"
-                    };
-                    return "$" + a.replace(/[=:]/g, function(a) {
-                        return b[a];
-                    });
-                }
-                var P = /\/+/g;
-                function Q(a, b) {
-                    return "object" == typeof a && null !== a && null != a.key ? escape("" + a.key) : b.toString(36);
-                }
-                function R(a, b, e, d, c) {
-                    var k = typeof a;
-                    if ("undefined" === k || "boolean" === k) a = null;
-                    var h = !1;
-                    if (null === a) h = !0;
-                    else switch(k){
-                        case "string":
-                        case "number":
-                            h = !0;
-                            break;
-                        case "object":
-                            switch(a.$$typeof){
-                                case l:
-                                case n:
-                                    h = !0;
-                            }
-                    }
-                    if (h) return h = a, c = c(h), a = "" === d ? "." + Q(h, 0) : d, I(c) ? (e = "", null != a && (e = a.replace(P, "$&/") + "/"), R(c, b, e, "", function(a) {
-                        return a;
-                    })) : null != c && (O(c) && (c = N(c, e + (!c.key || h && h.key === c.key ? "" : ("" + c.key).replace(P, "$&/") + "/") + a)), b.push(c)), 1;
-                    h = 0;
-                    d = "" === d ? "." : d + ":";
-                    if (I(a)) for(var g = 0; g < a.length; g++){
-                        k = a[g];
-                        var f = d + Q(k, g);
-                        h += R(k, b, e, f, c);
-                    }
-                    else if (f = A(a), "function" == typeof f) for(a = f.call(a), g = 0; !(k = a.next()).done;)k = k.value, f = d + Q(k, g++), h += R(k, b, e, f, c);
-                    else if ("object" === k) throw b = String(a), Error("Objects are not valid as a React child (found: " + ("[object Object]" === b ? "object with keys {" + Object.keys(a).join(", ") + "}" : b) + "). If you meant to render a collection of children, use an array instead.");
-                    return h;
-                }
-                function S(a, b, e) {
-                    if (null == a) return a;
-                    var d = [], c = 0;
-                    R(a, d, "", "", function(a) {
-                        return b.call(e, a, c++);
-                    });
-                    return d;
-                }
-                function T(a) {
-                    if (-1 === a._status) {
-                        var b = a._result;
-                        b = b();
-                        b.then(function(b) {
-                            if (0 === a._status || -1 === a._status) a._status = 1, a._result = b;
-                        }, function(b) {
-                            if (0 === a._status || -1 === a._status) a._status = 2, a._result = b;
-                        });
-                        -1 === a._status && (a._status = 0, a._result = b);
-                    }
-                    if (1 === a._status) return a._result.default;
-                    throw a._result;
-                }
-                var U = {
-                    current: null
-                }, V = {
-                    transition: null
-                }, W = {
-                    ReactCurrentDispatcher: U,
-                    ReactCurrentBatchConfig: V,
-                    ReactCurrentOwner: K
-                };
-                function X() {
-                    throw Error("act(...) is not supported in production builds of React.");
-                }
-                exports1.Children = {
-                    map: S,
-                    forEach: function(a, b, e) {
-                        S(a, function() {
-                            b.apply(this, arguments);
-                        }, e);
-                    },
-                    count: function(a) {
-                        var b = 0;
-                        S(a, function() {
-                            b++;
-                        });
-                        return b;
-                    },
-                    toArray: function(a) {
-                        return S(a, function(a) {
-                            return a;
-                        }) || [];
-                    },
-                    only: function(a) {
-                        if (!O(a)) throw Error("React.Children.only expected to receive a single React element child.");
-                        return a;
-                    }
-                };
-                exports1.Component = E;
-                exports1.Fragment = p;
-                exports1.Profiler = r;
-                exports1.PureComponent = G;
-                exports1.StrictMode = q;
-                exports1.Suspense = w;
-                exports1.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = W;
-                exports1.act = X;
-                exports1.cloneElement = function(a, b, e) {
-                    if (null == a) throw Error("React.cloneElement(...): The argument must be a React element, but you passed " + a + ".");
-                    var d = C({}, a.props), c = a.key, k = a.ref, h = a._owner;
-                    if (null != b) {
-                        void 0 !== b.ref && (k = b.ref, h = K.current);
-                        void 0 !== b.key && (c = "" + b.key);
-                        if (a.type && a.type.defaultProps) var g = a.type.defaultProps;
-                        for(f in b)J.call(b, f) && !L.hasOwnProperty(f) && (d[f] = void 0 === b[f] && void 0 !== g ? g[f] : b[f]);
-                    }
-                    var f = arguments.length - 2;
-                    if (1 === f) d.children = e;
-                    else if (1 < f) {
-                        g = Array(f);
-                        for(var m = 0; m < f; m++)g[m] = arguments[m + 2];
-                        d.children = g;
-                    }
-                    return {
-                        $$typeof: l,
-                        type: a.type,
-                        key: c,
-                        ref: k,
-                        props: d,
-                        _owner: h
-                    };
-                };
-                exports1.createContext = function(a) {
-                    a = {
-                        $$typeof: u,
-                        _currentValue: a,
-                        _currentValue2: a,
-                        _threadCount: 0,
-                        Provider: null,
-                        Consumer: null,
-                        _defaultValue: null,
-                        _globalName: null
-                    };
-                    a.Provider = {
-                        $$typeof: t,
-                        _context: a
-                    };
-                    return a.Consumer = a;
-                };
-                exports1.createElement = M;
-                exports1.createFactory = function(a) {
-                    var b = M.bind(null, a);
-                    b.type = a;
-                    return b;
-                };
-                exports1.createRef = function() {
-                    return {
-                        current: null
-                    };
-                };
-                exports1.forwardRef = function(a) {
-                    return {
-                        $$typeof: v,
-                        render: a
-                    };
-                };
-                exports1.isValidElement = O;
-                exports1.lazy = function(a) {
-                    return {
-                        $$typeof: y,
-                        _payload: {
-                            _status: -1,
-                            _result: a
-                        },
-                        _init: T
-                    };
-                };
-                exports1.memo = function(a, b) {
-                    return {
-                        $$typeof: x,
-                        type: a,
-                        compare: void 0 === b ? null : b
-                    };
-                };
-                exports1.startTransition = function(a) {
-                    var b = V.transition;
-                    V.transition = {};
-                    try {
-                        a();
-                    } finally{
-                        V.transition = b;
-                    }
-                };
-                exports1.unstable_act = X;
-                exports1.useCallback = function(a, b) {
-                    return U.current.useCallback(a, b);
-                };
-                exports1.useContext = function(a) {
-                    return U.current.useContext(a);
-                };
-                exports1.useDebugValue = function() {};
-                exports1.useDeferredValue = function(a) {
-                    return U.current.useDeferredValue(a);
-                };
-                exports1.useEffect = function(a, b) {
-                    return U.current.useEffect(a, b);
-                };
-                exports1.useId = function() {
-                    return U.current.useId();
-                };
-                exports1.useImperativeHandle = function(a, b, e) {
-                    return U.current.useImperativeHandle(a, b, e);
-                };
-                exports1.useInsertionEffect = function(a, b) {
-                    return U.current.useInsertionEffect(a, b);
-                };
-                exports1.useLayoutEffect = function(a, b) {
-                    return U.current.useLayoutEffect(a, b);
-                };
-                exports1.useMemo = function(a, b) {
-                    return U.current.useMemo(a, b);
-                };
-                exports1.useReducer = function(a, b, e) {
-                    return U.current.useReducer(a, b, e);
-                };
-                exports1.useRef = function(a) {
-                    return U.current.useRef(a);
-                };
-                exports1.useState = function(a) {
-                    return U.current.useState(a);
-                };
-                exports1.useSyncExternalStore = function(a, b, e) {
-                    return U.current.useSyncExternalStore(a, b, e);
-                };
-                exports1.useTransition = function() {
-                    return U.current.useTransition();
-                };
-                exports1.version = "18.3.1";
-            },
-            "./node_modules/.pnpm/react@18.3.1/node_modules/react/index.js": function(module1, __unused_webpack_exports, __webpack_require__) {
-                module1.exports = __webpack_require__("./node_modules/.pnpm/react@18.3.1/node_modules/react/cjs/react.production.min.js");
-            },
-            "./node_modules/.pnpm/react@18.3.1/node_modules/react/jsx-runtime.js": function(module1, __unused_webpack_exports, __webpack_require__) {
-                module1.exports = __webpack_require__("./node_modules/.pnpm/react@18.3.1/node_modules/react/cjs/react-jsx-runtime.production.min.js");
-            },
-            "./node_modules/.pnpm/@module-federation+enhanced@0.8.6_@rspack+core@1.1.8_@swc+helpers@0.5.15__react-dom@19.0.0_re_zvqcakartxwmiwtid2hcrn2su4/node_modules/@module-federation/enhanced/dist/src/runtime.js": function(__unused_webpack_module, exports1, __webpack_require__) {
+            "./node_modules/.pnpm/@module-federation+enhanced@0.8.5_@rspack+core@1.1.8_@swc+helpers@0.5.15__react-dom@19.0.0_re_cwtym5m743aedphxkrxhvrlumq/node_modules/@module-federation/enhanced/dist/src/runtime.js": function(__unused_webpack_module, exports1, __webpack_require__) {
                 var __createBinding = this && this.__createBinding || (Object.create ? function(o, m, k, k2) {
                     if (void 0 === k2) k2 = k;
                     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -3584,9 +3215,9 @@
                 Object.defineProperty(exports1, "__esModule", {
                     value: true
                 });
-                __exportStar(__webpack_require__("./node_modules/.pnpm/@module-federation+runtime-tools@0.8.6/node_modules/@module-federation/runtime-tools/dist/runtime.cjs.js"), exports1);
+                __exportStar(__webpack_require__("./node_modules/.pnpm/@module-federation+runtime-tools@0.8.5/node_modules/@module-federation/runtime-tools/dist/runtime.cjs.js"), exports1);
             },
-            "./node_modules/.pnpm/isomorphic-rslog@0.0.7/node_modules/isomorphic-rslog/dist/browser/index.cjs": function(module1) {
+            "./node_modules/.pnpm/isomorphic-rslog@0.0.6/node_modules/isomorphic-rslog/dist/browser/index.cjs": function(module1) {
                 var __defProp = Object.defineProperty;
                 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
                 var __getOwnPropNames = Object.getOwnPropertyNames;
@@ -3618,19 +3249,17 @@
                 var supportsSubstitutions = void 0;
                 var supportColor = ()=>{
                     if (void 0 !== supportsSubstitutions) return supportsSubstitutions;
-                    const originalConsoleLog = console.log;
                     try {
                         const testString = "color test";
                         const css = "color: red;";
-                        supportsSubstitutions = false;
+                        const originalConsoleLog = console.log;
                         console.log = (...args)=>{
                             if (args[0] === `%c${testString}` && args[1] === css) supportsSubstitutions = true;
                         };
                         console.log(`%c${testString}`, css);
+                        console.log = originalConsoleLog;
                     } catch (e) {
                         supportsSubstitutions = false;
-                    } finally{
-                        console.log = originalConsoleLog;
                     }
                     return supportsSubstitutions;
                 };
@@ -3670,25 +3299,18 @@
                         ""
                     ];
                     if ("label" in logType) {
-                        const labelText = "log" !== type ? labels[type] : void 0;
                         label = [
-                            labelText || logType.label || ""
+                            labels[type] || logType.label || ""
                         ];
-                        if (logType.color) {
-                            const colorResult = logType.color(label[0]);
-                            label = Array.isArray(colorResult) && 2 === colorResult.length ? bold([
-                                colorResult[0],
-                                colorResult[1]
-                            ]) : bold(colorResult[0] || "");
-                        } else label = bold(label[0]);
+                        label = bold(logType.color ? logType.color(label) : label[0]);
                     }
                     label = label.filter(Boolean);
                     return label;
                 }
                 function finalLog(label, text, args, message) {
                     if (label.length) {
-                        if (Array.isArray(message)) console.log(...label, ...message, ...args);
-                        else console.log(...label, text, ...args);
+                        if (Array.isArray(message)) console.log(...label, ...message);
+                        else console.log(...label, text);
                     } else Array.isArray(message) ? console.log(...message) : console.log(text, ...args);
                 }
                 var LOG_LEVEL = {
@@ -3701,18 +3323,9 @@
                 var errorStackRegExp = /at\s.*:\d+:\d+[\s\)]*$/;
                 var anonymousErrorStackRegExp = /at\s.*\(<anonymous>\)$/;
                 var isErrorStackMessage = (message)=>errorStackRegExp.test(message) || anonymousErrorStackRegExp.test(message);
-                function validateOptions(options) {
-                    const validatedOptions = {
-                        ...options
-                    };
-                    if (options.labels && "object" != typeof options.labels) throw new Error("Labels must be an object");
-                    if (options.level && "string" != typeof options.level) throw new Error("Level must be a string");
-                    return validatedOptions;
-                }
                 var createLogger = (options = {}, { getLabel: getLabel2, handleError, finalLog: finalLog2, greet, LOG_TYPES: LOG_TYPES2 })=>{
-                    const validatedOptions = validateOptions(options);
-                    let maxLevel = validatedOptions.level || "log";
-                    let customLabels = validatedOptions.labels || {};
+                    let maxLevel = options.level || "log";
+                    let customLabels = options.labels || {};
                     let log = (type, message, ...args)=>{
                         if (LOG_LEVEL[LOG_TYPES2[type].level] > LOG_LEVEL[maxLevel]) return;
                         if (null == message) return console.log();
@@ -3904,38 +3517,23 @@ ${handleError(rest.join("\n"))}`;
                 return __WEBPACK_DEFAULT_EXPORT__;
             }
         });
-        var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/.pnpm/react@18.3.1/node_modules/react/jsx-runtime.js");
-        var _module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/.pnpm/@module-federation+enhanced@0.8.6_@rspack+core@1.1.8_@swc+helpers@0.5.15__react-dom@19.0.0_re_zvqcakartxwmiwtid2hcrn2su4/node_modules/@module-federation/enhanced/dist/src/runtime.js");
-        var _module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/ __webpack_require__.n(_module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_1__);
-        var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./node_modules/.pnpm/react@18.3.1/node_modules/react/index.js");
+        var _module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/.pnpm/@module-federation+enhanced@0.8.5_@rspack+core@1.1.8_@swc+helpers@0.5.15__react-dom@19.0.0_re_cwtym5m743aedphxkrxhvrlumq/node_modules/@module-federation/enhanced/dist/src/runtime.js");
+        var _module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(_module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_0__);
+        var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("vue");
+        var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/ __webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
         class Runtime {
             constructor(options){
-                (0, _module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_1__.init)(options);
+                (0, _module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_0__.init)(options);
             }
             loadRemoteComponent(componentName) {
-                const createLazyComponent = ()=>/*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_2__.lazy(async ()=>{
-                        const LazyComponent = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_2__.lazy(()=>(0, _module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_1__.loadRemote)(componentName));
-                        return {
-                            default: /*#__PURE__*/ (0, react__WEBPACK_IMPORTED_MODULE_2__.forwardRef)((props, ref)=>{
-                                console.log("forwardRef", props);
-                                return /*#__PURE__*/ (0, react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LazyComponent, {
-                                    ...props
-                                });
-                            })
-                        };
-                    });
-                return /*#__PURE__*/ (0, react__WEBPACK_IMPORTED_MODULE_2__.forwardRef)((props, ref)=>{
-                    console.log(componentName, props);
-                    const LazyComponent = createLazyComponent();
-                    return /*#__PURE__*/ (0, react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react__WEBPACK_IMPORTED_MODULE_2__.Suspense, {
-                        fallback: /*#__PURE__*/ (0, react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-                            children: "Loading..."
-                        }),
-                        children: /*#__PURE__*/ (0, react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LazyComponent, {
-                            ...props,
-                            ref: ref
-                        })
-                    });
+                return (0, vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)({
+                    loader: ()=>(0, _module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_0__.loadRemote)(componentName),
+                    loadingComponent: ()=>(0, vue__WEBPACK_IMPORTED_MODULE_1__.h)("div", {}, "Loading..."),
+                    errorComponent: ()=>(0, vue__WEBPACK_IMPORTED_MODULE_1__.h)("div", {}, "Error..."),
+                    onError: (error, retry, fail, attempts)=>{
+                        console.log(error, retry, fail, attempts);
+                    },
+                    delay: 0
                 });
             }
         }

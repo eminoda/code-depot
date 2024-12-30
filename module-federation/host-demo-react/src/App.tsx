@@ -9,7 +9,8 @@ import axios from "axios";
 import Hello from "./Hello.vue";
 import { applyVueInReact } from "veaury";
 import { defineAsyncComponent } from "vue";
-import RuntimeAll from "RuntimeAll";
+import RuntimeBridgeReact from "RuntimeBridgeReact";
+import RuntimeBridgeVue from "RuntimeBridgeVue";
 
 const BasicWithNormal = applyVueInReact(Hello);
 
@@ -24,10 +25,10 @@ const options = {
     //   name: "remote_react_vite",
     //   entry: "http://localhost:2002/mf-manifest.json",
     // },
-    // {
-    //   name: "remote_vue_vite",
-    //   entry: "http://localhost:3001/mf-manifest.json",
-    // },
+    {
+      name: "remote_vue_rsbuild",
+      entry: "http://localhost:3001/mf-manifest.json",
+    },
   ],
   shared: {
     axios: {
@@ -50,17 +51,18 @@ const options = {
     },
   },
 };
-console.log(RuntimeAll);
-const runtimeall = new RuntimeAll(options);
-console.log(runtimeall)
-const Hello2 = runtimeall.loadRemoteComponent("remote_react_rsbuild/Button");
-const runtime = new Runtime(options);
-console.log(runtime);
+
+// runtime bridge react 加载组件
+const runtimeBridgeReact = new RuntimeBridgeReact(options);
+const RuntimeBridgeReactButton = runtimeBridgeReact.loadRemoteComponent("remote_react_rsbuild/Button");
+
+const runtimeBridgeVue = new RuntimeBridgeVue(options);
+const RuntimeBridgeVueButton = runtimeBridgeVue.loadRemoteComponent("remote_vue_rsbuild/Button");
+const RuntimeBridgeVueButtonInReact = applyVueInReact(RuntimeBridgeVueButton)
 
 // mf runtime 加载组件
 // init(options);
 // const RemoteReactRsbuildButtonModel = loadRemote("remote_react_rsbuild/Button");
-// const RemoteReactRsbuildButtonModel = runtime.loadRemote("remote_react_rsbuild/Button");
 // const RemoteReactRsbuildButton = React.lazy(() => RemoteReactRsbuildButtonModel);
 
 // const RemoteReactViteButtonModel = runtime.loadRemote("remote_react_vite/Button");
@@ -73,10 +75,10 @@ console.log(runtime);
 //   fallback: (info: any) => <div>{info?.error.message}</div>,
 //   loading: <div>loading...</div>,
 // });
-const RemoteReactRsbuildButton = runtime.createRemoteComponent2("remote_react_rsbuild/Button");
-const RemoteReactRsbuildForm = runtime.createRemoteComponent2("remote_react_rsbuild/Form");
-const RemoteReactRsbuildTable = runtime.createRemoteComponent2("remote_react_rsbuild/Table");
-const RemoteReactViteButton = runtime.createRemoteComponent2("remote_react_vite/Button");
+// const RemoteReactRsbuildButton = runtime.createRemoteComponent2("remote_react_rsbuild/Button");
+// const RemoteReactRsbuildForm = runtime.createRemoteComponent2("remote_react_rsbuild/Form");
+// const RemoteReactRsbuildTable = runtime.createRemoteComponent2("remote_react_rsbuild/Table");
+// const RemoteReactViteButton = runtime.createRemoteComponent2("remote_react_vite/Button");
 // const RemoteReactViteButtonModel = runtime.loadRemote("remote_react_vite/Button");
 // const RemoteReactViteButton = React.lazy(() => RemoteReactViteButtonModel);
 
@@ -85,7 +87,9 @@ const App = () => {
     <div className="content">
       <h1>host-demo-react</h1>
       <p>remote-react-rsbuild</p>
-      <Hello2 name="abc" />
+      {/* <RemoteReactRsbuildButton name="hello"/> */}
+      <RuntimeBridgeReactButton name="hello"/>
+      <RuntimeBridgeVueButtonInReact name="hello2"/>
       {/* <RemoteReactRsbuildButton type="primary" name="弹框1" />
       <div style={{ width: "600px" }}>
         <RemoteReactRsbuildForm

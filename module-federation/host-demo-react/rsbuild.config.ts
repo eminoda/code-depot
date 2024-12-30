@@ -11,17 +11,18 @@ export default defineConfig({
     template: "./static/index.html",
     title: "React Host App",
   },
-  resolve: {
-    alias: {
-      "@runtime": "./public/runtime-lib/index.js",
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     "@runtime": "./public/runtime-lib/index.js",
+  //   },
+  // },
   output: {
     externals: {
-      // runtime: "Runtime",
-      // react: "React",
-      // "react-dom": "ReactDOM",
-      "RuntimeAll": "RuntimeAll",
+      vue: "Vue",
+      react: "React",
+      "react-dom": "ReactDOM",
+      RuntimeBridgeReact: "RuntimeBridgeReact",
+      RuntimeBridgeVue: "RuntimeBridgeVue",
     },
   },
   plugins: [pluginVueJsx(), pluginVue(), pluginReact()],

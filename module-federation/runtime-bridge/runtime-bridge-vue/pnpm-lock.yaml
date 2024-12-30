@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.8.5
+        version: 0.8.5(@rspack/core@1.1.8(@swc/helpers@0.5.15))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(webpack@5.97.1)
       react-dom:
         specifier: '>=16.9.0'
         version: 19.0.0(react@19.0.0)
@@ -18,9 +21,6 @@ importers:
       '@biomejs/biome':
         specifier: ^1.9.3
         version: 1.9.4
-      '@module-federation/enhanced':
-        specifier: ^0.8.5
-        version: 0.8.5(@rspack/core@1.1.8(@swc/helpers@0.5.15))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)(webpack@5.97.1)
       '@rsbuild/plugin-react':
         specifier: ^1.0.7
         version: 1.1.0(@rsbuild/core@1.1.12)
