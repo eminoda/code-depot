@@ -4,17 +4,17 @@
     <h1>Rsbuild with Vue</h1>
     <p>Start building amazing things with Rsbuild.</p>
     <!-- <Suspense> -->
-      <RemoteReactRsbuildButton name="I'm vue remote component" />
+    <RemoteReactRsbuildButton name="I'm vue remote component" />
     <!-- </Suspense> -->
   </div>
   <!-- </Suspense> -->
 </template>
 
 <script setup lange="ts">
-import { init, loadRemote } from "@module-federation/enhanced/runtime";
+// import { init, loadRemote } from "@module-federation/enhanced/runtime";
 import { defineAsyncComponent } from "vue";
 import * as Vue from "vue";
-import RuntimeAll from "RuntimeAll";
+import RuntimeBridgeVue from "RuntimeBridgeVue";
 
 const options = {
   name: "host_vue",
@@ -33,13 +33,8 @@ const options = {
   },
 };
 
-const runtime = new RuntimeAll(options);
-
-init(options);
-
-const RemoteReactRsbuildButton = runtime.loadRemoteComponent("remote_vue_rsbuild/Button");
-// const RemoteReactRsbuildButton = defineAsyncComponent(()=> loadRemote("remote_vue_rsbuild/Button"))
-console.log(RemoteReactRsbuildButton);
+const runtime = new RuntimeBridgeVue(options);
+const RemoteReactRsbuildButton = runtime.loadRemoteComponent("remote_vue_rsbuild/Button", false);
 </script>
 <style scoped>
 .content {

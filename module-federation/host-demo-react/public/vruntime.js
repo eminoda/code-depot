@@ -3194,29 +3194,6 @@
             vue: function(module1) {
                 module1.exports = __WEBPACK_EXTERNAL_MODULE_vue__;
             },
-            "./node_modules/.pnpm/@module-federation+enhanced@0.8.5_@rspack+core@1.1.8_@swc+helpers@0.5.15__react-dom@19.0.0_re_cwtym5m743aedphxkrxhvrlumq/node_modules/@module-federation/enhanced/dist/src/runtime.js": function(__unused_webpack_module, exports1, __webpack_require__) {
-                var __createBinding = this && this.__createBinding || (Object.create ? function(o, m, k, k2) {
-                    if (void 0 === k2) k2 = k;
-                    var desc = Object.getOwnPropertyDescriptor(m, k);
-                    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) desc = {
-                        enumerable: true,
-                        get: function() {
-                            return m[k];
-                        }
-                    };
-                    Object.defineProperty(o, k2, desc);
-                } : function(o, m, k, k2) {
-                    if (void 0 === k2) k2 = k;
-                    o[k2] = m[k];
-                });
-                var __exportStar = this && this.__exportStar || function(m, exports1) {
-                    for(var p in m)if ("default" !== p && !Object.prototype.hasOwnProperty.call(exports1, p)) __createBinding(exports1, m, p);
-                };
-                Object.defineProperty(exports1, "__esModule", {
-                    value: true
-                });
-                __exportStar(__webpack_require__("./node_modules/.pnpm/@module-federation+runtime-tools@0.8.5/node_modules/@module-federation/runtime-tools/dist/runtime.cjs.js"), exports1);
-            },
             "./node_modules/.pnpm/isomorphic-rslog@0.0.6/node_modules/isomorphic-rslog/dist/browser/index.cjs": function(module1) {
                 var __defProp = Object.defineProperty;
                 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -3462,6 +3439,29 @@ ${handleError(rest.join("\n"))}`;
                     });
                 }
                 var logger = createLogger2();
+            },
+            "\\\\?\\C:\\Users\\eminoda\\github\\code-depot\\module-federation\\runtime-bridge\\runtime-bridge-vue\\node_modules\\.pnpm\\@module-federation+enhanced@0.8.5_@rspack+core@1.1.8_@swc+helpers@0.5.15__react-dom@19.0.0_re_cwtym5m743aedphxkrxhvrlumq\\node_modules\\@module-federation\\enhanced\\dist\\src\\runtime.js": function(__unused_webpack_module, exports1, __webpack_require__) {
+                var __createBinding = this && this.__createBinding || (Object.create ? function(o, m, k, k2) {
+                    if (void 0 === k2) k2 = k;
+                    var desc = Object.getOwnPropertyDescriptor(m, k);
+                    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) desc = {
+                        enumerable: true,
+                        get: function() {
+                            return m[k];
+                        }
+                    };
+                    Object.defineProperty(o, k2, desc);
+                } : function(o, m, k, k2) {
+                    if (void 0 === k2) k2 = k;
+                    o[k2] = m[k];
+                });
+                var __exportStar = this && this.__exportStar || function(m, exports1) {
+                    for(var p in m)if ("default" !== p && !Object.prototype.hasOwnProperty.call(exports1, p)) __createBinding(exports1, m, p);
+                };
+                Object.defineProperty(exports1, "__esModule", {
+                    value: true
+                });
+                __exportStar(__webpack_require__("./node_modules/.pnpm/@module-federation+runtime-tools@0.8.5/node_modules/@module-federation/runtime-tools/dist/runtime.cjs.js"), exports1);
             }
         };
         var __webpack_module_cache__ = {};
@@ -3517,7 +3517,7 @@ ${handleError(rest.join("\n"))}`;
                 return __WEBPACK_DEFAULT_EXPORT__;
             }
         });
-        var _module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/.pnpm/@module-federation+enhanced@0.8.5_@rspack+core@1.1.8_@swc+helpers@0.5.15__react-dom@19.0.0_re_cwtym5m743aedphxkrxhvrlumq/node_modules/@module-federation/enhanced/dist/src/runtime.js");
+        var _module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("\\\\?\\C:\\Users\\eminoda\\github\\code-depot\\module-federation\\runtime-bridge\\runtime-bridge-vue\\node_modules\\.pnpm\\@module-federation+enhanced@0.8.5_@rspack+core@1.1.8_@swc+helpers@0.5.15__react-dom@19.0.0_re_cwtym5m743aedphxkrxhvrlumq\\node_modules\\@module-federation\\enhanced\\dist\\src\\runtime.js");
         var _module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(_module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_0__);
         var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("vue");
         var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/ __webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
@@ -3525,8 +3525,8 @@ ${handleError(rest.join("\n"))}`;
             constructor(options){
                 (0, _module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_0__.init)(options);
             }
-            loadRemoteComponent(componentName) {
-                return (0, vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)({
+            loadRemoteComponent(componentName, isVueInReact) {
+                const remoteComponent = (0, vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)({
                     loader: ()=>(0, _module_federation_enhanced_runtime__WEBPACK_IMPORTED_MODULE_0__.loadRemote)(componentName),
                     loadingComponent: ()=>(0, vue__WEBPACK_IMPORTED_MODULE_1__.h)("div", {}, "Loading..."),
                     errorComponent: ()=>(0, vue__WEBPACK_IMPORTED_MODULE_1__.h)("div", {}, "Error..."),
@@ -3535,6 +3535,14 @@ ${handleError(rest.join("\n"))}`;
                     },
                     delay: 0
                 });
+                return isVueInReact ? ()=>Promise.resolve({
+                        default: (0, vue__WEBPACK_IMPORTED_MODULE_1__.defineComponent)({
+                            setup (props, { attrs }) {
+                                console.log(props, attrs);
+                                return ()=>(0, vue__WEBPACK_IMPORTED_MODULE_1__.h)(remoteComponent, attrs);
+                            }
+                        })
+                    }) : remoteComponent;
             }
         }
         const __WEBPACK_DEFAULT_EXPORT__ = Runtime;

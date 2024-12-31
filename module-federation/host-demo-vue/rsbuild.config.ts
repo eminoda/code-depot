@@ -5,7 +5,8 @@ import { pluginModuleFederation } from "@module-federation/rsbuild-plugin";
 export default defineConfig({
   output: {
     externals: {
-      "RuntimeAll": "RuntimeAll",vue: "Vue",
+      vue: "Vue",
+      RuntimeBridgeVue: "RuntimeBridgeVue",
     },
   },
   html: {
