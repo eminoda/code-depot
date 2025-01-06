@@ -10,7 +10,7 @@ export default defineConfig({
     assetPrefix: "http://localhost:3001",
   },
   output: {
-    assetPrefix: "http://localhost:3000/remote_react_rsbuild",
+    assetPrefix: "http://localhost:3000/dist",
     // externals: {
     //   vue: "Vue",
     // },
@@ -21,12 +21,19 @@ export default defineConfig({
       name: "remote_vue_rsbuild",
       exposes: {
         "./Button": "./src/exposes/Button",
+        "./Table": "./src/exposes/Table",
+        "./Modal": "./src/exposes/Modal",
       },
       shared: {
         vue: {
           singleton: true,
           requiredVersion: "^3.5.13",
           version: "3.5.13",
+        },
+        "ant-design-vue": {
+          singleton: false,
+          requiredVersion: "^4.2.0",
+          version: "4.2.6",
         },
       },
     }),
