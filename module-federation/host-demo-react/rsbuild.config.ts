@@ -2,6 +2,7 @@ import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
 import { pluginVue } from "@rsbuild/plugin-vue";
 import { pluginVueJsx } from "@rsbuild/plugin-vue-jsx";
+import { createRoot } from 'react-dom/client'
 
 export default defineConfig({
   server: {
@@ -15,7 +16,7 @@ export default defineConfig({
   //   alias: {
   //     "@runtime": "./public/runtime-lib/index.js",
   //   },
-  // },
+  // }, 
   output: {
     externals: {
       vue: "Vue",

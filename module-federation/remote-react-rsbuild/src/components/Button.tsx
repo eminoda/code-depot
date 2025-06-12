@@ -17,8 +17,6 @@ const _Button: React.FC<{ type: ButtonType; name: string }> = (props) => {
   );
 };
 
-export default _Button;
-
-// export default createBridgeComponent({
-//   rootComponent: _Button,
-// });
+export default createBridgeComponent({
+  rootComponent: _Button,
+});

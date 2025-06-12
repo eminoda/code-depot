@@ -7,8 +7,9 @@ import { createRemoteComponent } from "@module-federation/bridge-react";
 import * as antd from "antd";
 import axios from "axios";
 import Hello from "./Hello.vue";
-import { applyVueInReact } from "veaury";
-import { defineAsyncComponent } from "vue";
+import { applyVueInReact, lazyPureVueInReact, lazyVueInReact } from "veaury";
+import { defineAsyncComponent, h } from "vue";
+import * as Vue from "vue";
 import RuntimeBridgeReact from "RuntimeBridgeReact";
 import RuntimeBridgeVue from "RuntimeBridgeVue";
 
@@ -49,6 +50,10 @@ const options = {
       version: "5.22.4",
       lib: () => antd,
     },
+    vue: {
+      version: "3.5.13",
+      lib: () => Vue,
+    },
   },
 };
 
@@ -57,8 +62,12 @@ const runtimeBridgeReact = new RuntimeBridgeReact(options);
 const RuntimeBridgeReactButton = runtimeBridgeReact.loadRemoteComponent("remote_react_rsbuild/Button");
 
 const runtimeBridgeVue = new RuntimeBridgeVue(options);
-const RuntimeBridgeVueButton = runtimeBridgeVue.loadRemoteComponent("remote_vue_rsbuild/Button");
-const RuntimeBridgeVueButtonInReact = applyVueInReact(RuntimeBridgeVueButton)
+const RuntimeBridgeVueButton = runtimeBridgeVue.loadRemoteComponent("remote_vue_rsbuild/Button", true);
+const RuntimeBridgeVueButtonInReact = lazyPureVueInReact(RuntimeBridgeVueButton, {
+  vue: {
+    componentWrapAttrs: { abc: 1 },
+  },
+});
 
 // mf runtime 加载组件
 // init(options);
@@ -87,129 +96,10 @@ const App = () => {
     <div className="content">
       <h1>host-demo-react</h1>
       <p>remote-react-rsbuild</p>
-      {/* <RemoteReactRsbuildButton name="hello"/> */}
-      <RuntimeBridgeReactButton name="hello"/>
-      <RuntimeBridgeVueButtonInReact name="hello2"/>
-      {/* <RemoteReactRsbuildButton type="primary" name="弹框1" />
-      <div style={{ width: "600px" }}>
-        <RemoteReactRsbuildForm
-          {...{
-            title: "用户注册",
-            api: "/amis/api/mock2/form/saveForm",
-            fields: [
-              {
-                type: "input-text",
-                name: "name",
-                label: "姓名：",
-              },
-              {
-                name: "email",
-                type: "input-email",
-                label: "邮箱：",
-              },
-            ],
-          }}
-        />
-      </div>
-      <div style={{ width: "1000px" }}>
-        <RemoteReactRsbuildTable
-          {...{
-            api: "/amis/api/mock2/sample",
-            columns: [
-              {
-                name: "id",
-                label: "ID",
-              },
-              {
-                name: "engine",
-                label: "Rendering engine",
-              },
-              {
-                name: "browser",
-                label: "Browser",
-              },
-              {
-                name: "platform",
-                label: "Platform(s)",
-              },
-              {
-                name: "version",
-                label: "Engine version",
-              },
-              {
-                name: "grade",
-                label: "CSS grade",
-              },
-              {
-                type: "operation",
-                label: "操作",
-                buttons: [
-                  {
-                    label: "详情",
-                    type: "button",
-                    level: "link",
-                    actionType: "dialog",
-                    dialog: {
-                      title: "查看详情",
-                      body: {
-                        type: "form",
-                        api: "post:/amis/api/mock2/sample/${id}",
-                        body: [
-                          {
-                            type: "input-text",
-                            name: "engine",
-                            label: "Engine",
-                          },
-                          {
-                            type: "input-text",
-                            name: "browser",
-                            label: "Browser",
-                          },
-                          {
-                            type: "input-text",
-                            name: "platform",
-                            label: "platform",
-                          },
-                          {
-                            type: "input-text",
-                            name: "version",
-                            label: "version",
-                          },
-                          {
-                            type: "control",
-                            label: "grade",
-                            body: {
-                              type: "tag",
-                              label: "${grade}",
-                              displayMode: "normal",
-                              color: "active",
-                            },
-                          },
-                        ],
-                      },
-                    },
-                  },
-                  {
-                    label: "删除",
-                    type: "button",
-                    level: "danger",
-                    disabledOn: "this.grade === 'A'",
-                    confirmText: "确认要删除？",
-                    api: "delete:/amis/api/mock2/sample/${id}",
-                    actionType: "ajax",
-                  },
-                ],
-              },
-            ],
-          }}
-        />
-      </div> */}
-      {/* <p>remote-react-vite</p>
-      <div>
-        <RemoteReactViteButton type="primary" name="弹框2" />
-      </div> */}
+      <RuntimeBridgeReactButton name="hello" />
+      <RuntimeBridgeVueButtonInReact name="hello2" />
 
-      {/* <BasicWithNormal /> */}
+      {/* <BasicWithNormal name="123" /> */}
     </div>
   );
 };

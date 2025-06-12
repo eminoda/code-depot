@@ -20,5 +20,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
+  "typeRoots": {
+    "*": ["@mf-types/*"]
+  },
   "include": ["src"]
 }
