@@ -13,20 +13,20 @@
     <script>
       // HelloCanvas.js (c) 2012 matsuda
       function main() {
-        // Retrieve <canvas> element
+        // 获取 canvas 元素
         var canvas = document.getElementById("webgl");
 
-        // Get the rendering context for WebGL
+        // 获取 canvas webgl 上下文，canvas.getContext
         var gl = getWebGLContext(canvas);
         if (!gl) {
           console.log("Failed to get the rendering context for WebGL");
           return;
         }
 
-        // Set clear color
+        // 在 gl.clear 之前指定清空的色值：rgb（蓝色）
         gl.clearColor(0.0, 0.0, 1.0, 1.0);
 
-        // Clear <canvas>
+        // 清空颜色缓冲区
         gl.clear(gl.COLOR_BUFFER_BIT);
       }
 

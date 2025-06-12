@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Draw Multiple Points</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400"> Please use a browser that supports "canvas" </canvas>
+
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script>
+      // MultiPoint.js (c) 2012 matsuda
+      // Vertex shader program
+      var VSHADER_SOURCE = `
+        attribute vec4 a_Position;
+        void main() {
+            gl_Position = a_Position;
+            gl_PointSize = 10.0;
+        }`;
+
+      // Fragment shader program
+      var FSHADER_SOURCE = `
+        void main() {
+            gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+        }`;
+
+      function main() {
+        // Retrieve <canvas> element
+        var canvas = document.getElementById("webgl");
+
+        // Get the rendering context for WebGL
+        var gl = getWebGLContext(canvas);
+        if (!gl) {
+          console.log("Failed to get the rendering context for WebGL");
+          return;
+        }
+
+        // Initialize shaders
+        if (!initShaders(gl, VSHADER_SOURCE, FSHADER_SOURCE)) {
+          console.log("Failed to intialize shaders.");
+          return;
+        }
+
+        /**
+         * 示例：缓存区
+         */
+
+        // Write the positions of vertices to a vertex shader
+        var n = initVertexBuffers(gl);
+        if (n < 0) {
+          console.log("Failed to set the positions of the vertices");
+          return;
+        }
+
+        // Specify the color for clearing <canvas>
+        gl.clearColor(0, 0, 0, 1);
+
+        // Clear <canvas>
+        gl.clear(gl.COLOR_BUFFER_BIT);
+
+        // Draw three points
+        gl.drawArrays(gl.TRIANGLES, 0, n);
+      }
+
+      function initVertexBuffers(gl) {
+        var vertices = new Float32Array([0.0, 0.5, -0.5, -0.5, 0.5, -0.5]);
+        var n = 3; // The number of vertices
+
+        /**
+         * 1. 创建缓存区
+         * 如果返回 null，表示创建缓存区失败
+         * gl.deleteBuffer(buffer) 方法用于删除缓存区对象。
+         */
+        var vertexBuffer = gl.createBuffer();
+        if (!vertexBuffer) {
+          console.log("Failed to create the buffer object");
+          return -1;
+        }
+
+        /**
+         * 2. 将缓存区绑定到目标
+         * gl.bindBuffer(target, buffer) 方法接受两个参数：
+         * target：绑定目标，可以是 gl.ARRAY_BUFFER 或 gl.ELEMENT_ARRAY_BUFFER。
+         *    gl.ARRAY_BUFFER：顶点属性数据缓存区（本例子）。
+         *    gl.ELEMENT_ARRAY_BUFFER：顶点索引缓存区。
+         * buffer：缓存区对象。
+         */
+        gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+
+        /**
+         * 3. 向缓存区写入数据
+         * gl.bufferData(target, data, usage) 方法接受三个参数：
+         * target：缓存区目标，可以是 gl.ARRAY_BUFFER 或 gl.ELEMENT_ARRAY_BUFFER。
+         * data：数据
+         * usage：使用方法，可以是 gl.STATIC_DRAW、gl.DYNAMIC_DRAW 或 gl.STREAM_DRAW。
+         *    gl.STATIC_DRAW：只会向缓冲区写入一次，但需要绘制多次(本例子)。
+         *    gl.DYNAMIC_DRAW：只会向缓冲区写入一次，但需要绘制若干次。
+         *    gl.STREAM_DRAW：会向缓存区多次写入数据，并绘制多次。
+         */
+        gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+        var a_Position = gl.getAttribLocation(gl.program, "a_Position");
+
+        /**
+         * 4. 将缓存区数据分配给 a_Position 变量
+         * gl.vertexAttribPointer(location, size, type, normalized, stride, offset) 方法接受多个参数：
+         * location：attribute 变量的存储位置，即 gl.getAttribLocation 返回的变量。
+         * size：顶点属性的大小。（本例为2，表示每个顶点属性有 2 个值 x,y。）
+         * type：数据类型。
+         *      gl.FLOAT：32 位浮点数。
+         *      gl.BYTE：8 位有符号整数，范围是 [-128, 127]。
+         *      gl.UNSIGNED_BYTE：8 位无符号整数，范围是 [0, 255]。
+         *      gl.SHORT：16 位有符号整数，范围是 [-32768, 32767]。
+         *      gl.UNSIGNED_SHORT：16 位无符号整数，范围是 [0, 65535]。
+         *      gl.INT：32 位有符号整数，范围是 [-2147483648, 2147483647]。
+         *      gl.UNSIGNED_INT：32 位无符号整数，范围是 [0, 4294967295]。
+         * normalized：是否归一化，WebGL 默认是 false。
+         * stride：相邻顶点属性之间的字节数。
+         * offset：顶点属性的起始位置（偏移量）。
+         */
+        gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0);
+
+        /**
+         * 5. 链接 a_Position 变量和缓存区
+         * gl.enableVertexAttribArray(index) 方法接受一个参数：
+         * index：顶点属性索引，即 gl.getAttribLocation 返回的变量。
+         */
+        gl.enableVertexAttribArray(a_Position);
+
+        return n;
+      }
+    </script>
+  </body>
+</html>
