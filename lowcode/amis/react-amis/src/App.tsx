@@ -17,6 +17,13 @@ import Buss02 from "./components/buss/Buss02";
 import Buss03 from "./components/buss/Buss03";
 import Buss04 from "./components/buss/Buss04";
 
+import Event01 from "./components/event/Event01";
+
+// import Curd01 from "./components/curd/Curd01";
+import Curd02 from "./components/curd/Curd02";
+import Curd03 from "./components/curd/Curd03";
+import Curd04 from "./components/curd/Curd04";
+
 const App = () => {
   return (
     <>
@@ -39,11 +46,22 @@ const App = () => {
         <Mapping01 />
       </div> */}
 
-      <div>
+      {/* <div>
         <Buss01 />
         <Buss02 />
         <Buss03 />
         <Buss04 />
+      </div> */}
+
+      {/* <div>
+        <Event01 />
+      </div> */}
+
+      <div>
+        {/* <Curd01 /> */}
+        {/* <Curd02 /> */}
+        {/* <Curd03 /> */}
+        <Curd04 />
       </div>
     </>
   );

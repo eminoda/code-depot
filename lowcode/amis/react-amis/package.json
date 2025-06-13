@@ -10,7 +10,9 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "amis": "6.9.0-rc.10",
+    "amis-ui": "^6.12.0",
     "axios": "^1.7.8",
     "copy-to-clipboard": "^3.3.3",
     "react": "18.2.0",
