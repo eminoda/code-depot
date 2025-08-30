@@ -4,12 +4,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  devServer: {
-    port: 8081,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
-  },
+  publicPath: "/subApp/audit",
   configureWebpack: {
     externals: {
       amis: "amisRequire",
@@ -26,7 +21,11 @@ module.exports = defineConfig({
     ],
   },
   devServer: {
+    port: 8001,
     devMiddleware: { writeToDisk: true },
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
     proxy: {
       "/amis": {
         target: "https://aisuda.bce.baidu.com/",

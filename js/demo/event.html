@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test">test</div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script>
+        const $test = document.getElementById('test')
+
+        $test.addEventListener('mouseup', (e) => {
+            console.log('mouseup');
+            var a = 1;
+            // e.preventDefault(); // not prevent
+
+            window.addEventListener(
+                'click',
+                captureClick,
+                true // <-- This registeres this listener for the capture
+                //     phase instead of the bubbling phase!
+            );
+        })
+
+        $test.addEventListener('click', () => {
+            console.log('click');
+        })
+
+        function captureClick(e) {
+            e.stopPropagation(); // Stop the click from being propagated.
+            console.log('click captured');
+            window.removeEventListener('click', captureClick, true); // cleanup
+        }
+    </script>
+</body>
+
+</html>
