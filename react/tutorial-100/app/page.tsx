@@ -7,6 +7,12 @@ const ARTICLES = [
     description:
       "传函数用 useCallback 还是 useMemo？包了有没有用？结合列表重渲染、正确依赖、useMemo 缓存与 React Compiler 的示例与避坑。",
   },
+  {
+    slug: "set-state-batching",
+    title: "setState 到底是同步还是异步？搞懂 React 18 的批处理机制",
+    description:
+      "批处理是什么、为何 console.log 拿到旧值、函数式更新、setTimeout 内批处理、flushSync 打破批处理及对性能的意义。",
+  },
 ];
 
 export default function Home() {
