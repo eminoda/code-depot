@@ -2,6 +2,12 @@ import Link from "next/link";
 
 const ARTICLES = [
   {
+    slug: "context-performance",
+    title: "Context 一用就卡？性能问题的根源与解决方案",
+    description:
+      "value 引用一变整棵子树重渲染、内联 value 与 useMemo、拆分 Context、use-context-selector 按需订阅、状态下沉。",
+  },
+  {
     slug: "use-callback-use-memo",
     title: "useCallback 和 useMemo 傻傻分不清？一次讲透两者的本质区别",
     description:
