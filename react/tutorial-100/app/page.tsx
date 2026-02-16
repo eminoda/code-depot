@@ -13,6 +13,12 @@ const ARTICLES = [
     description:
       "批处理是什么、为何 console.log 拿到旧值、函数式更新、setTimeout 内批处理、flushSync 打破批处理及对性能的意义。",
   },
+  {
+    slug: "use-ref",
+    title: "useRef 不只是存 DOM：作为可变容器的 3 大妙用",
+    description:
+      "为什么需要 useRef、与 useState 的区别、改 ref 不触发渲染、DOM 引用、定时器与跨渲染存可变值、闭包问题。",
+  },
 ];
 
 export default function Home() {
