@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useLayoutEffect, useImperativeHandle, forwardRef } from "react";
+import React, { useState, useRef, useLayoutEffect, useImperativeHandle, forwardRef } from "react";
 
 type Item = { id: number; name: string };
 
@@ -87,9 +87,6 @@ export function Demos001() {
       <h2 className="text-lg font-semibold">
         你知道 React 组件渲染机制吗？
       </h2>
-      <p className="text-sm text-zinc-600 dark:text-zinc-400">
-        本 demo 意图：演示父组件 state（如 keyword）变化时，未使用 useCallback 与 memo 会导致其渲染出的所有子组件重复渲染；可调节子组件数量并观察输入时的渲染耗时与控制台打印。
-      </p>
 
       <div className="flex flex-wrap items-center gap-4">
         <label className="flex items-center gap-2">

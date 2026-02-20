@@ -38,9 +38,6 @@ export function Demos003() {
       <h2 className="text-lg font-semibold">
         useMemo、useCallback 基本用法（追本溯源）
       </h2>
-      <p className="text-sm text-zinc-600 dark:text-zinc-400">
-        本 demo 意图：按官网定义展示 useMemo（缓存「算出来的结果」）与 useCallback（缓存「函数本身」）的最基础用法；useMemo 通过控制台日志体现缓存，useCallback 通过 Child 不重复渲染（「Child 渲染」不再次打印）体现引用稳定。
-      </p>
       <p className="mb-2 flex items-center gap-2">
         <button
           type="button"

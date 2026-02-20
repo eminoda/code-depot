@@ -85,9 +85,6 @@ export function Demos002() {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">用了 useCallback 还是不够</h2>
-      <p className="text-sm text-zinc-600 dark:text-zinc-400">
-        本 demo 意图：演示对点击事件使用了 useCallback 稳定引用，但子组件未使用 memo 时，父组件重渲染仍会导致所有子组件重复渲染，说明单靠 useCallback 无法避免子组件重渲染，memo 不可或缺。
-      </p>
 
       <div className="flex flex-wrap items-center gap-4">
         <label className="flex items-center gap-2">
