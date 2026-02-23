@@ -60,7 +60,7 @@ function Parent({ items }: { items: Item[] }) {
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
         className="mb-2 w-full rounded border border-zinc-300 px-2 py-1 dark:border-zinc-600 dark:bg-zinc-800"
-        placeholder="输入会触发父组件重渲染；虽用了 useCallback，子未 memo 仍会全量重渲染（看控制台）"
+        placeholder="打开控制台可见「Child 触发渲染」打印次数"
       />
       <RenderDurationDisplay ref={durationDisplayRef} itemCount={items.length} />
       {items.map((item) => (
@@ -84,7 +84,8 @@ export function Demos002() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-semibold">用了 useCallback 还是不够</h2>
+      <h2 className="text-lg font-semibold">场景二：用了 useCallback，但没用 memo
+      </h2>
 
       <div className="flex flex-wrap items-center gap-4">
         <label className="flex items-center gap-2">

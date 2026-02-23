@@ -60,7 +60,7 @@ function Parent({ items }: { items: Item[] }) {
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
         className="mb-2 w-full rounded border border-zinc-300 px-2 py-1 dark:border-zinc-600 dark:bg-zinc-800"
-        placeholder="输入会触发父组件重渲染，子组件全跟渲染（看控制台）"
+        placeholder="打开控制台可见「Child 触发渲染」打印次数"
       />
       <RenderDurationDisplay ref={durationDisplayRef} itemCount={items.length} />
       {items.map((item) => (
@@ -85,24 +85,22 @@ export function Demos001() {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">
-        你知道 React 组件渲染机制吗？
+        场景一：对 React 的渲染机制不了解
       </h2>
 
-      <div className="flex flex-wrap items-center gap-4">
-        <label className="flex items-center gap-2">
-          <span className="text-sm text-zinc-600 dark:text-zinc-400">子组件数量：</span>
-          <input
-            type="number"
-            min={1}
-            max={500}
-            value={childCount}
-            onChange={(e) =>
-              setChildCount(e.target.value === "" ? "" : Number(e.target.value))
-            }
-            className="w-20 rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-600 dark:bg-zinc-800"
-          />
-        </label>
-        <span className="text-sm text-zinc-500">当前渲染 {count} 个子组件，输入时打开控制台可见「child component 触发渲染」打印次数</span>
+      <div className="flex flex-wrap items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
+        <span>当前渲染</span>
+        <input
+          type="number"
+          min={1}
+          max={500}
+          value={childCount}
+          onChange={(e) =>
+            setChildCount(e.target.value === "" ? "" : Number(e.target.value))
+          }
+          className="w-20 rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-600 dark:bg-zinc-800"
+        />
+        <span>个子组件。</span>
       </div>
 
       <div className="rounded border border-zinc-200 dark:border-zinc-700 p-3">

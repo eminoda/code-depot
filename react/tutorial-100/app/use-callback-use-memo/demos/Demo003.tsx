@@ -2,9 +2,9 @@
 
 import { useState, useMemo, useCallback, memo, useRef, useEffect } from "react";
 
-const Child = memo(({ onClick }: { onClick: () => void }) => {
+const Child = memo(function Child({ onClick }: { onClick: () => void }) {
   console.log("Child 渲染");
-  return <></>
+  return <div onClick={onClick}>Child</div>;
 });
 
 export function Demos003() {
@@ -14,7 +14,7 @@ export function Demos003() {
 
   // useMemo：依赖不变时不会重新执行，直接返回上次结果（打日志体现缓存）
   const list = useMemo(() => {
-    console.log("useMemo：昂贵计算执行（依赖 [data] 不变则不会再次打印，体现缓存）");
+    console.log("useMemo：只要依赖 [data] 不变，就不会重新执行");
     return data.filter((n) => n % 2 === 0);
   }, [data]);
 
@@ -36,7 +36,7 @@ export function Demos003() {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">
-        useMemo、useCallback 基本用法（追本溯源）
+        useMemo、useCallback 基本用法
       </h2>
       <p className="mb-2 flex items-center gap-2">
         <button
@@ -52,24 +52,23 @@ export function Demos003() {
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="rounded border border-zinc-200 dark:border-zinc-700 p-4">
           <h3 className="mb-2 text-sm font-medium text-violet-600 dark:text-violet-400">
-            useMemo 最基础用法
+            useMemo 缓存计算结果
           </h3>
           <p className="mb-2 text-xs text-zinc-500">
-            useMemo 内打日志；依赖 [data] 不变时重渲染不会再次执行，控制台不再打印。
+            只要依赖 [data] 不变，重渲染不会再次执行
           </p>
           <pre className="mb-2 overflow-x-auto rounded bg-zinc-100 p-2 text-xs dark:bg-zinc-800">
 {`const list = useMemo(() => {
-  console.log("useMemo：昂贵计算执行…");
   return data.filter((n) => n % 2 === 0);
 }, [data]);`}
           </pre>
         </div>
         <div className="rounded border border-zinc-200 dark:border-zinc-700 p-4">
           <h3 className="mb-2 text-sm font-medium text-violet-600 dark:text-violet-400">
-            useCallback 最基础用法
+            useCallback 缓存函数引用
           </h3>
           <p className="mb-2 text-xs text-zinc-500">
-            依赖 [] 不变时不会重新创建函数，Child 为 memo，故重渲染时「Child 渲染」不重复打印。
+            只要依赖 [] 不变，就不会重新创建函数
           </p>
           <pre className="mb-2 overflow-x-auto rounded bg-zinc-100 p-2 text-xs dark:bg-zinc-800">
 {`const handler = useCallback(
