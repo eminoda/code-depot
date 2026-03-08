@@ -1,113 +1,67 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useState,
-  useMemo,
-  useRef,
-  memo,
-} from "react";
+import React, { useState } from "react";
 
-type AppValue = { user: string; theme: string };
-const AppContext = createContext<AppValue | null>(null);
-
-function useRenderCount(label: string) {
-  const ref = useRef(0);
-  ref.current += 1;
-  return ref.current;
+/** Demo001：逐层透传 props 的痛点 */
+function Level1({ theme }: { theme: string }) {
+  return <Level2 theme={theme} />;
 }
 
-function ConsumerUser() {
-  const ctx = useContext(AppContext);
-  const renders = useRenderCount("ConsumerUser");
+function Level2({ theme }: { theme: string }) {
+  return <Level3 theme={theme} />;
+}
+
+function Level3({ theme }: { theme: string }) {
+  return <Level4 theme={theme} />;
+}
+
+const themeStyles = {
+  light: { bg: "#f5f5f5", text: "#171717", border: "#e5e5e5" },
+  dark: { bg: "#27272a", text: "#fafafa", border: "#3f3f46" },
+} as const;
+
+function Level4({ theme }: { theme: string }) {
+  const style = themeStyles[theme as keyof typeof themeStyles] ?? themeStyles.light;
   return (
-    <div className="rounded border border-amber-200 bg-amber-50/50 px-3 py-2 dark:border-amber-800 dark:bg-amber-950/30">
-      <span className="font-medium">ConsumerUser</span> user={ctx?.user ?? "-"} · 渲染次数{" "}
-      <strong>{renders}</strong>
+    <div
+      className="rounded px-3 py-2 text-sm"
+      style={{ backgroundColor: style.bg, color: style.text, border: `1px solid ${style.border}` }}
+    >
+      最底层组件拿到的 theme：<strong>{theme}</strong>
     </div>
   );
 }
-
-function ConsumerTheme() {
-  const ctx = useContext(AppContext);
-  const renders = useRenderCount("ConsumerTheme");
-  return (
-    <div className="rounded border border-emerald-200 bg-emerald-50/50 px-3 py-2 dark:border-emerald-800 dark:bg-emerald-950/30">
-      <span className="font-medium">ConsumerTheme</span> theme={ctx?.theme ?? "-"} · 渲染次数{" "}
-      <strong>{renders}</strong>
-    </div>
-  );
-}
-
-// 订阅 Context 且用 memo 包裹：只有 value 引用变时才重渲染，父组件因 tick 重渲染不会带起这里
-const ConsumerLayout = memo(function ConsumerLayout() {
-  useContext(AppContext);
-  return (
-    <div className="flex flex-wrap gap-3">
-      <ConsumerUser />
-      <ConsumerTheme />
-    </div>
-  );
-});
 
 export function Demos001() {
-  const [user, setUser] = useState("alice");
   const [theme, setTheme] = useState("light");
-  const [tick, setTick] = useState(0);
-  const [useStableValue, setUseStableValue] = useState(true);
-  const parentRenders = useRenderCount("Parent");
-
-  const stableValue = useMemo(() => ({ user, theme }), [user, theme]);
-  const value = useStableValue ? stableValue : { user, theme };
 
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-semibold">
-        001 内联 value vs useMemo 稳定引用
-      </h2>
+      <h2 className="text-lg font-semibold">逐层透传 props 的痛点</h2>
       <p className="text-sm text-zinc-600 dark:text-zinc-400">
-        父组件有 user、theme、tick 三个 state。用「改 tick」触发父组件重渲染但不改 value 内容：内联 value 时每次都是新对象，所有 consumer 跟着重渲染；用 useMemo 包 value 时引用不变，consumer 不重渲染。
+        父组件的 theme 要通过 props 一层层传给 Level1 → Level2 → Level3 → Level4，中间层根本不用 theme，却要透传。
       </p>
-
-      <div className="flex flex-wrap gap-2">
-        <button
-          type="button"
-          className="rounded bg-violet-500 px-3 py-1.5 text-sm text-white hover:bg-violet-600"
-          onClick={() => setUser((u) => (u === "alice" ? "bob" : "alice"))}
+      <div className="flex items-center gap-4">
+        <select
+          value={theme}
+          onChange={(e) => setTheme(e.target.value)}
+          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-600 dark:bg-zinc-800"
         >
-          改 user
-        </button>
-        <button
-          type="button"
-          className="rounded bg-violet-500 px-3 py-1.5 text-sm text-white hover:bg-violet-600"
-          onClick={() => setTheme((t) => (t === "light" ? "dark" : "light"))}
-        >
-          改 theme
-        </button>
-        <button
-          type="button"
-          className="rounded bg-zinc-500 px-3 py-1.5 text-sm text-white hover:bg-zinc-600"
-          onClick={() => setTick((c) => c + 1)}
-        >
-          改 tick（与 Context 无关）
-        </button>
-        <button
-          type="button"
-          className="rounded border border-violet-500 px-3 py-1.5 text-sm text-violet-600 dark:text-violet-400"
-          onClick={() => setUseStableValue((v) => !v)}
-        >
-          {useStableValue ? "当前：useMemo 稳定" : "当前：内联 value"}
-        </button>
+          <option value="light">light</option>
+          <option value="dark">dark</option>
+        </select>
+        <span className="text-sm text-zinc-500">切换 theme，每层都要透传 props</span>
       </div>
-
-      <p className="text-xs text-zinc-500">
-        父组件渲染次数：<strong>{parentRenders}</strong>
-      </p>
-
-      <AppContext.Provider value={value}>
-        <ConsumerLayout />
-      </AppContext.Provider>
+      <div
+        className="rounded border p-4"
+        style={
+          theme === "dark"
+            ? { backgroundColor: "#18181b", borderColor: "#3f3f46" }
+            : { backgroundColor: "#fff", borderColor: "#e5e5e5" }
+        }
+      >
+        <Level1 theme={theme} />
+      </div>
     </div>
   );
 }
