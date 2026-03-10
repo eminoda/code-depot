@@ -20,7 +20,7 @@ function ConsumerTheme() {
 }
 
 /** 父组件：管理 user、theme，控制按钮 */
-function Parent({
+function Demo004({
   mode,
   children,
 }: {
@@ -96,12 +96,12 @@ export function Demos004() {
         </button>
       </div>
 
-      <Parent mode={mode}>
+      <Demo004 mode={mode}>
         <div className="flex gap-4">
           <ConsumerUser />
           <ConsumerTheme />
         </div>
-      </Parent>
+      </Demo004>
     </div>
   );
 }

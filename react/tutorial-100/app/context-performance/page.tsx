@@ -10,7 +10,7 @@ import {
   Demos004,
   Demos005,
   Demos006,
-  Demos007,
+  Demos008,
 } from "./demos";
 
 const TABS = [
@@ -21,6 +21,7 @@ const TABS = [
   { id: "005", label: "005 拆分 Context 可降低渲染" },
   { id: "006", label: "006 状态下沉" },
   { id: "007", label: "007 useContextSelector 按字段订阅" },
+  { id: "008", label: "008 Context 最小化 + 表单本地 state" },
 ] as const;
 
 const TAB_IDS = TABS.map((t) => t.id);
@@ -103,6 +104,7 @@ export default function ContextPerformancePage() {
           {active === "005" && <Demos005 />}
           {active === "006" && <Demos006 />}
           {active === "007" && <Demos007 />}
+          {active === "008" && <Demos008 />}
         </div>
       </main>
     </div>

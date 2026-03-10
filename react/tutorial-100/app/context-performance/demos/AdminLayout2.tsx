@@ -2,13 +2,23 @@
 
 import React, { createContext, useContext, useState } from "react";
 
+/**
+ * AdminLayout2：只把真正需要跨层级共享的放 Context，表单内部状态放本地 state
+ *
+ * 原则（参考 Demo006 状态下沉）：
+ * 1. Context 只放跨层级共享：user（Header 需要展示）
+ * 2. 表单内部状态放本地：Modal 的 input、Content 的搜索框
+ * 3. 不订阅的组件不放进 Provider 的消费范围，或只让真正需要的组件订阅
+ */
+
 export type AdminUser = { nickname: string };
 
-export const AdminUserContext = createContext<{
+export const AdminUserContext2 = createContext<{
   user: AdminUser;
   setUser: (u: AdminUser) => void;
 } | null>(null);
 
+/** Modal 内的 input 用本地 state，不放进 Context */
 function EditNicknameModal({
   nickname,
   onClose,
@@ -16,8 +26,8 @@ function EditNicknameModal({
   nickname: string;
   onClose: () => void;
 }) {
-  const ctx = useContext(AdminUserContext);
-  const [value, setValue] = useState(nickname);
+  const ctx = useContext(AdminUserContext2);
+  const [value, setValue] = useState(nickname); // 本地 state
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,10 +66,11 @@ function EditNicknameModal({
   );
 }
 
-export function AdminHeader() {
-  const ctx = useContext(AdminUserContext);
-  const [modalOpen, setModalOpen] = useState(false);
-  console.log("Header 重渲染");
+/** 唯一需要 user 的组件，订阅 Context */
+export function AdminHeader2() {
+  const ctx = useContext(AdminUserContext2);
+  const [modalOpen, setModalOpen] = useState(false); // 本地 state
+  console.log("Header2 重渲染");
 
   if (!ctx) return null;
   const { user } = ctx;
@@ -67,13 +78,12 @@ export function AdminHeader() {
   return (
     <div className="flex items-center justify-between border-b border-zinc-200 px-4 py-2 dark:border-zinc-700">
       <span className="text-sm font-medium">后管系统</span>
-      <div
-        className="relative"
+      <span
+        className="cursor-pointer text-sm text-zinc-600 dark:text-zinc-400"
+        onClick={() => setModalOpen(true)}
       >
-        <span className="text-sm text-zinc-600 dark:text-zinc-400" onClick={() => setModalOpen(true)}>
-          用户：{user.nickname}
-        </span>
-      </div>
+        用户：{user.nickname}
+      </span>
       {modalOpen && (
         <EditNicknameModal
           nickname={user.nickname}
@@ -84,9 +94,9 @@ export function AdminHeader() {
   );
 }
 
-export function AdminSidebar() {
-  useContext(AdminUserContext);
-  console.log("Sidebar 重渲染");
+/** 不订阅 Context，不需要 user，用 memo 避免被父级重渲染牵连 */
+export const AdminSidebar2 = React.memo(function AdminSidebar2() {
+  console.log("Sidebar2 重渲染");
   return (
     <aside className="w-40 border-r border-zinc-200 p-2 dark:border-zinc-700">
       <div className="text-sm text-zinc-500">菜单</div>
@@ -96,26 +106,44 @@ export function AdminSidebar() {
       </ul>
     </aside>
   );
-}
+});
 
-export function AdminContent() {
-  useContext(AdminUserContext);
-  console.log("Content 重渲染");
+/**
+ * Content 区：不订阅 Context，内含表单用本地 state。
+ * 输入搜索时只有本组件重渲染，Header/Sidebar 不受影响。
+ */
+export const AdminContent2 = React.memo(function AdminContent2() {
+  const [search, setSearch] = useState(""); // 本地 state，不放进 Context
+  console.log("Content2 重渲染");
+
   return (
     <main className="flex-1 p-4">
-      <div className="text-sm text-zinc-600 dark:text-zinc-400">内容区</div>
+      <div className="space-y-3">
+        <label className="block text-sm text-zinc-600 dark:text-zinc-400">
+          搜索（本地 state，不放进 Context）
+        </label>
+        <input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="输入搜索关键词"
+          className="w-full max-w-xs rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-600 dark:bg-zinc-800"
+        />
+        <p className="text-xs text-zinc-500">
+          输入时只有 Content2 重渲染，Header2、Sidebar2 不受影响
+        </p>
+      </div>
     </main>
   );
-}
+});
 
-/** 后管界面布局：Header + Sidebar + Content */
-export function AdminLayout() {
+/** 后管界面布局 2：Header 订阅 Context，Sidebar/Content 不订阅，表单用本地 state */
+export function AdminLayout2() {
   return (
     <div className="overflow-hidden rounded border border-zinc-200 dark:border-zinc-700">
-      <AdminHeader />
+      <AdminHeader2 />
       <div className="flex min-h-[200px]">
-        <AdminSidebar />
-        <AdminContent />
+        <AdminSidebar2 />
+        <AdminContent2 />
       </div>
     </div>
   );
