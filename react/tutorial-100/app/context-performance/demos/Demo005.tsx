@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, memo, useContext, useState } from "react";
+import React, { createContext, memo, useContext, useState } from "react";
 
 type User = { name: string };
 type Theme = "light" | "dark";

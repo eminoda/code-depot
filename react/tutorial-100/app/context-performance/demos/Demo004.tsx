@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, ReactNode, useContext, useState, useMemo } from "react";
+import React,{ createContext, ReactNode, useContext, useState, useMemo } from "react";
 
 type User = { name: string };
 type Theme = "light" | "dark";
@@ -27,6 +27,7 @@ function Demo004({
   mode: "inline" | "useMemo";
   children: ReactNode;
 }) {
+  console.log("Demo004 重渲染");
   const [user, setUser] = useState<User>({ name: "张三" });
   const [theme, setTheme] = useState<Theme>("light");
   const [, setTick] = useState(0);

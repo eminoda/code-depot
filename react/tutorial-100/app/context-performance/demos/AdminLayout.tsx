@@ -56,6 +56,19 @@ function EditNicknameModal({
   );
 }
 
+/** 后管界面布局：Header + Sidebar + Content */
+export function AdminLayout() {
+  return (
+    <div className="overflow-hidden rounded border border-zinc-200 dark:border-zinc-700">
+      <AdminHeader />
+      <div className="flex min-h-[200px]">
+        <AdminSidebar />
+        <AdminContent />
+      </div>
+    </div>
+  );
+}
+
 export function AdminHeader() {
   const ctx = useContext(AdminUserContext);
   const [modalOpen, setModalOpen] = useState(false);
@@ -105,18 +118,5 @@ export function AdminContent() {
     <main className="flex-1 p-4">
       <div className="text-sm text-zinc-600 dark:text-zinc-400">内容区</div>
     </main>
-  );
-}
-
-/** 后管界面布局：Header + Sidebar + Content */
-export function AdminLayout() {
-  return (
-    <div className="overflow-hidden rounded border border-zinc-200 dark:border-zinc-700">
-      <AdminHeader />
-      <div className="flex min-h-[200px]">
-        <AdminSidebar />
-        <AdminContent />
-      </div>
-    </div>
   );
 }

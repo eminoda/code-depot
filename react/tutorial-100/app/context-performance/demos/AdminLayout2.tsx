@@ -18,6 +18,46 @@ export const AdminUserContext2 = createContext<{
   setUser: (u: AdminUser) => void;
 } | null>(null);
 
+/** 后管界面布局 2：Header 订阅 Context，Sidebar/Content 不订阅，表单用本地 state */
+export function AdminLayout2() {
+  return (
+    <div className="overflow-hidden rounded border border-zinc-200 dark:border-zinc-700">
+      <AdminHeader2 />
+      <div className="flex min-h-[200px]">
+        <AdminSidebar2 />
+        <AdminContent2 />
+      </div>
+    </div>
+  );
+}
+
+/** 唯一需要 user 的组件，订阅 Context */
+export function AdminHeader2() {
+  const ctx = useContext(AdminUserContext2);
+  const [modalOpen, setModalOpen] = useState(false); // 本地 state
+  console.log("Header2 重渲染");
+
+  if (!ctx) return null;
+  const { user } = ctx;
+
+  return (
+    <div className="flex items-center justify-between border-b border-zinc-200 px-4 py-2 dark:border-zinc-700">
+      <span className="text-sm font-medium">后管系统</span>
+      <span
+        className="cursor-pointer text-sm text-zinc-600 dark:text-zinc-400"
+        onClick={() => setModalOpen(true)}
+      >
+        用户：{user.nickname}
+      </span>
+      {modalOpen && (
+        <EditNicknameModal
+          nickname={user.nickname}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
+    </div>
+  );
+}
 /** Modal 内的 input 用本地 state，不放进 Context */
 function EditNicknameModal({
   nickname,
@@ -66,34 +106,6 @@ function EditNicknameModal({
   );
 }
 
-/** 唯一需要 user 的组件，订阅 Context */
-export function AdminHeader2() {
-  const ctx = useContext(AdminUserContext2);
-  const [modalOpen, setModalOpen] = useState(false); // 本地 state
-  console.log("Header2 重渲染");
-
-  if (!ctx) return null;
-  const { user } = ctx;
-
-  return (
-    <div className="flex items-center justify-between border-b border-zinc-200 px-4 py-2 dark:border-zinc-700">
-      <span className="text-sm font-medium">后管系统</span>
-      <span
-        className="cursor-pointer text-sm text-zinc-600 dark:text-zinc-400"
-        onClick={() => setModalOpen(true)}
-      >
-        用户：{user.nickname}
-      </span>
-      {modalOpen && (
-        <EditNicknameModal
-          nickname={user.nickname}
-          onClose={() => setModalOpen(false)}
-        />
-      )}
-    </div>
-  );
-}
-
 /** 不订阅 Context，不需要 user，用 memo 避免被父级重渲染牵连 */
 export const AdminSidebar2 = React.memo(function AdminSidebar2() {
   console.log("Sidebar2 重渲染");
@@ -118,33 +130,7 @@ export const AdminContent2 = React.memo(function AdminContent2() {
 
   return (
     <main className="flex-1 p-4">
-      <div className="space-y-3">
-        <label className="block text-sm text-zinc-600 dark:text-zinc-400">
-          搜索（本地 state，不放进 Context）
-        </label>
-        <input
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="输入搜索关键词"
-          className="w-full max-w-xs rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-600 dark:bg-zinc-800"
-        />
-        <p className="text-xs text-zinc-500">
-          输入时只有 Content2 重渲染，Header2、Sidebar2 不受影响
-        </p>
-      </div>
+      主内容
     </main>
   );
 });
-
-/** 后管界面布局 2：Header 订阅 Context，Sidebar/Content 不订阅，表单用本地 state */
-export function AdminLayout2() {
-  return (
-    <div className="overflow-hidden rounded border border-zinc-200 dark:border-zinc-700">
-      <AdminHeader2 />
-      <div className="flex min-h-[200px]">
-        <AdminSidebar2 />
-        <AdminContent2 />
-      </div>
-    </div>
-  );
-}
